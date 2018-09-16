@@ -1,0 +1,37 @@
+instructions
+
+base project> build
+cursos> same level as base project
+	refereneces> nuget> MIcrosoft.reportviewr y microsoft.reporting.winforms y todo lo necesario
+	build
+	https://social.msdn.microsoft.com/Forums/sqlserver/en-US/3a756ef3-38e0-47de-a8b4-44ddedb6a05f/visual-studio-2017-reportviewer-runtime-redistributable?forum=winforms
+	
+	https://docs.microsoft.com/en-us/azure/devops/repos/tfvc/share-your-code-in-tfvc-vs?toc=%2Fvisualstudio%2Fversion-control%2Ftoc.json&bc=%2Fazure%2Fdevops%2Frepos%2Fgit%2Fbreadcrumb%2Fvc%2Ftoc.json&view=vsts
+	
+	copy data bak to c: data
+	restore on ms sql management studio
+	delete local user
+	create login global on cursos db, data reader data writer, id cursos password cursos
+	
+	verfy data conecction on CursosData project> App.Config
+	and Dta> .edmx> update model from datbase
+	
+	eliminar dll conflicts: se actualiz[o el entity a 6.2, se inatal[o con nuget 2010 SP1 Redistributable Package versionÑ 10.0.40219.1: Microsoft.ReportViewer.Common y Microsoft.ReportViewer.Winforms 
+			<package id="EntityFramework" version="6.2.0" targetFramework="net45" />
+			<package id="Microsoft.ReportViewer.Common" version="10.0.40219.1" targetFramework="net45" />
+			<package id="Microsoft.ReportViewer.WinForms" version="10.0.40219.1" targetFramework="net45" />
+	
+	build all
+	
+	run
+	
+	publish
+	
+	add to git: connect, home, sync> publish git repo: url
+		git pull
+		# Fix any merge conflicts, if you have a `README.md` locally
+		git push -f origin master
+		
+		changes: commit + push
+	
+	add Control project
