@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CursosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ausencias">
+          <Key>
+            <PropertyRef Name="IdAusencia" />
+          </Key>
+          <Property Name="IdAusencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Ausente" Type="bit" Nullable="false" />
+          <Property Name="IdCursosEstudiantes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fecha" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Error" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CantidadHoras" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CantidadEstudiantes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursosEstudiantes">
+          <Key>
+            <PropertyRef Name="IdCursosEstudiantes" />
+          </Key>
+          <Property Name="IdCursosEstudiantes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCurso" Type="int" Nullable="false" />
+          <Property Name="IdEstudiante" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdCursosHorarios" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursosHorarios">
+          <Key>
+            <PropertyRef Name="IdCursosHorarios" />
+          </Key>
+          <Property Name="IdCursosHorarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCurso" Type="int" Nullable="false" />
+          <Property Name="IdHorario" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursosProfesor">
+          <Key>
+            <PropertyRef Name="IdCursosHorarios" />
+            <PropertyRef Name="IdProfesor" />
+          </Key>
+          <Property Name="IdCursosHorarios" Type="int" Nullable="false" />
+          <Property Name="IdProfesor" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime2" Precision="7" />
+          <Property Name="FechaFinal" Type="datetime2" Precision="7" />
+          <Property Name="LimiteAusencias" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estudiantes">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Horarios">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
+          <Property Name="RutaLogo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="RutaSistema" Type="nvarchar" MaxLength="250" />
+          <Property Name="HostCorreo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PortCorreo" Type="int" Nullable="false" />
+          <Property Name="TimeOutCorreo" Type="int" Nullable="false" />
+          <Property Name="UserNameCorreo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PasswordCorreo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FromCorreo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisplayNameCorreo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Profesores">
+          <Key>
+            <PropertyRef Name="IdProfesor" />
+          </Key>
+          <Property Name="IdProfesor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Institucion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Administrador" Type="bit" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Mantenimientos" Type="bit" Nullable="false" />
+          <Property Name="Procesos" Type="bit" Nullable="false" />
+          <Property Name="Consultas" Type="bit" Nullable="false" />
+          <Property Name="Seguridad" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ausencias_CursosEstudiantes">
+          <End Role="CursosEstudiantes" Type="Self.CursosEstudiantes" Multiplicity="1" />
+          <End Role="Ausencias" Type="Self.Ausencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursosEstudiantes">
+              <PropertyRef Name="IdCursosEstudiantes" />
+            </Principal>
+            <Dependent Role="Ausencias">
+              <PropertyRef Name="IdCursosEstudiantes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bitacora_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosEstudiantes_CursosEstudiantes">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="CursosEstudiantes" Type="Self.CursosEstudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CursosEstudiantes">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosEstudiantes_Estudiantes">
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="1" />
+          <End Role="CursosEstudiantes" Type="Self.CursosEstudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="IdEstudiante" />
+            </Principal>
+            <Dependent Role="CursosEstudiantes">
+              <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosHorarios_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="CursosHorarios" Type="Self.CursosHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="CursosHorarios">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosHorarios_Horarios">
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="1" />
+          <End Role="CursosHorarios" Type="Self.CursosHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horarios">
+              <PropertyRef Name="IdHorario" />
+            </Principal>
+            <Dependent Role="CursosHorarios">
+              <PropertyRef Name="IdHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosProfesor_CursosHorarios">
+          <End Role="CursosHorarios" Type="Self.CursosHorarios" Multiplicity="1" />
+          <End Role="CursosProfesor" Type="Self.CursosProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursosHorarios">
+              <PropertyRef Name="IdCursosHorarios" />
+            </Principal>
+            <Dependent Role="CursosProfesor">
+              <PropertyRef Name="IdCursosHorarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosProfesor_Profesores">
+          <End Role="Profesores" Type="Self.Profesores" Multiplicity="1" />
+          <End Role="CursosProfesor" Type="Self.CursosProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesores">
+              <PropertyRef Name="IdProfesor" />
+            </Principal>
+            <Dependent Role="CursosProfesor">
+              <PropertyRef Name="IdProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CursosModelStoreContainer">
+          <EntitySet Name="Ausencias" EntityType="Self.Ausencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursosEstudiantes" EntityType="Self.CursosEstudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursosHorarios" EntityType="Self.CursosHorarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursosProfesor" EntityType="Self.CursosProfesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesores" EntityType="Self.Profesores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ausencias_CursosEstudiantes" Association="Self.FK_Ausencias_CursosEstudiantes">
+            <End Role="CursosEstudiantes" EntitySet="CursosEstudiantes" />
+            <End Role="Ausencias" EntitySet="Ausencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bitacora_Usuarios" Association="Self.FK_Bitacora_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Bitacora" EntitySet="Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosEstudiantes_CursosEstudiantes" Association="Self.FK_CursosEstudiantes_CursosEstudiantes">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="CursosEstudiantes" EntitySet="CursosEstudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosEstudiantes_Estudiantes" Association="Self.FK_CursosEstudiantes_Estudiantes">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="CursosEstudiantes" EntitySet="CursosEstudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosHorarios_Cursos" Association="Self.FK_CursosHorarios_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosHorarios" EntitySet="CursosHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosHorarios_Horarios" Association="Self.FK_CursosHorarios_Horarios">
+            <End Role="Horarios" EntitySet="Horarios" />
+            <End Role="CursosHorarios" EntitySet="CursosHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosProfesor_CursosHorarios" Association="Self.FK_CursosProfesor_CursosHorarios">
+            <End Role="CursosHorarios" EntitySet="CursosHorarios" />
+            <End Role="CursosProfesor" EntitySet="CursosProfesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosProfesor_Profesores" Association="Self.FK_CursosProfesor_Profesores">
+            <End Role="Profesores" EntitySet="Profesores" />
+            <End Role="CursosProfesor" EntitySet="CursosProfesor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CursosEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CursosEstudiantes" EntityType="CursosModel.CursosEstudiante" />
+          <EntitySet Name="Horarios" EntityType="CursosModel.Horario" />
+          <EntitySet Name="Ausencias" EntityType="CursosModel.Ausencia" />
+          <EntitySet Name="Bitacoras" EntityType="CursosModel.Bitacora" />
+          <EntitySet Name="Usuarios" EntityType="CursosModel.Usuario" />
+          <AssociationSet Name="FK_Ausencias_CursosEstudiantes" Association="CursosModel.FK_Ausencias_CursosEstudiantes">
+            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
+            <End Role="Ausencia" EntitySet="Ausencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bitacora_Usuarios" Association="CursosModel.FK_Bitacora_Usuarios">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Bitacora" EntitySet="Bitacoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosEstudiantes_CursosEstudiantes" Association="CursosModel.FK_CursosEstudiantes_CursosEstudiantes">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
+          </AssociationSet>
+          <EntitySet Name="Estudiantes" EntityType="CursosModel.Estudiante" />
+          <AssociationSet Name="FK_CursosEstudiantes_Estudiantes" Association="CursosModel.FK_CursosEstudiantes_Estudiantes">
+            <End Role="Estudiante" EntitySet="Estudiantes" />
+            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
+          </AssociationSet>
+          <EntitySet Name="Profesores" EntityType="CursosModel.Profesore" />
+          <EntitySet Name="CursosHorarios" EntityType="CursosModel.CursosHorario" />
+          <EntitySet Name="CursosProfesors" EntityType="CursosModel.CursosProfesor" />
+          <AssociationSet Name="FK_CursosHorarios_Horarios" Association="CursosModel.FK_CursosHorarios_Horarios">
+            <End Role="Horario" EntitySet="Horarios" />
+            <End Role="CursosHorario" EntitySet="CursosHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosProfesor_CursosHorarios" Association="CursosModel.FK_CursosProfesor_CursosHorarios">
+            <End Role="CursosHorario" EntitySet="CursosHorarios" />
+            <End Role="CursosProfesor" EntitySet="CursosProfesors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosProfesor_Profesores" Association="CursosModel.FK_CursosProfesor_Profesores">
+            <End Role="Profesore" EntitySet="Profesores" />
+            <End Role="CursosProfesor" EntitySet="CursosProfesors" />
+          </AssociationSet>
+          <EntitySet Name="Parametros" EntityType="CursosModel.Parametro" />
+          <EntitySet Name="Cursos" EntityType="CursosModel.Curso" />
+          <AssociationSet Name="FK_CursosHorarios_Cursos" Association="CursosModel.FK_CursosHorarios_Cursos">
+            <End Role="Curso" EntitySet="Cursos" />
+            <End Role="CursosHorario" EntitySet="CursosHorarios" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="CursosEstudiante">
+          <Key>
+            <PropertyRef Name="IdCursosEstudiantes" />
+          </Key>
+          <Property Name="IdCursosEstudiantes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <Property Name="IdEstudiante" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ausencias" Relationship="CursosModel.FK_Ausencias_CursosEstudiantes" FromRole="CursosEstudiante" ToRole="Ausencia" />
+          <NavigationProperty Name="Usuario" Relationship="CursosModel.FK_CursosEstudiantes_CursosEstudiantes" FromRole="CursosEstudiante" ToRole="Usuario" />
+          <NavigationProperty Name="Estudiante" Relationship="CursosModel.FK_CursosEstudiantes_Estudiantes" FromRole="CursosEstudiante" ToRole="Estudiante" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="Horario" ToRole="CursosHorario" />
+        </EntityType>
+        <EntityType Name="Ausencia">
+          <Key>
+            <PropertyRef Name="IdAusencia" />
+          </Key>
+          <Property Name="IdAusencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ausente" Type="Boolean" Nullable="false" />
+          <Property Name="IdCursosEstudiantes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursosEstudiante" Relationship="CursosModel.FK_Ausencias_CursosEstudiantes" FromRole="Ausencia" ToRole="CursosEstudiante" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Error" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="CursosModel.FK_Bitacora_Usuarios" FromRole="Bitacora" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Administrador" Type="Boolean" Nullable="false" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Mantenimientos" Type="Boolean" Nullable="false" />
+          <Property Name="Procesos" Type="Boolean" Nullable="false" />
+          <Property Name="Consultas" Type="Boolean" Nullable="false" />
+          <Property Name="Seguridad" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bitacoras" Relationship="CursosModel.FK_Bitacora_Usuarios" FromRole="Usuario" ToRole="Bitacora" />
+          <NavigationProperty Name="CursosEstudiantes" Relationship="CursosModel.FK_CursosEstudiantes_CursosEstudiantes" FromRole="Usuario" ToRole="CursosEstudiante" />
+        </EntityType>
+        <Association Name="FK_Ausencias_CursosEstudiantes">
+          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="1" />
+          <End Type="CursosModel.Ausencia" Role="Ausencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursosEstudiante">
+              <PropertyRef Name="IdCursosEstudiantes" />
+            </Principal>
+            <Dependent Role="Ausencia">
+              <PropertyRef Name="IdCursosEstudiantes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bitacora_Usuarios">
+          <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="CursosModel.Bitacora" Role="Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosEstudiantes_CursosEstudiantes">
+          <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CursosEstudiante">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursosEstudiantes" Relationship="CursosModel.FK_CursosEstudiantes_Estudiantes" FromRole="Estudiante" ToRole="CursosEstudiante" />
+        </EntityType>
+        <Association Name="FK_CursosEstudiantes_Estudiantes">
+          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="1" />
+          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="IdEstudiante" />
+            </Principal>
+            <Dependent Role="CursosEstudiante">
+              <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Profesore">
+          <Key>
+            <PropertyRef Name="IdProfesor" />
+          </Key>
+          <Property Name="IdProfesor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Institucion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursosProfesors" Relationship="CursosModel.FK_CursosProfesor_Profesores" FromRole="Profesore" ToRole="CursosProfesor" />
+        </EntityType>
+        <EntityType Name="CursosHorario">
+          <Key>
+            <PropertyRef Name="IdCursosHorarios" />
+          </Key>
+          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <Property Name="IdHorario" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Horario" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="CursosHorario" ToRole="Horario" />
+          <NavigationProperty Name="CursosProfesors" Relationship="CursosModel.FK_CursosProfesor_CursosHorarios" FromRole="CursosHorario" ToRole="CursosProfesor" />
+          <NavigationProperty Name="Curso" Relationship="CursosModel.FK_CursosHorarios_Cursos" FromRole="CursosHorario" ToRole="Curso" />
+        </EntityType>
+        <EntityType Name="CursosProfesor">
+          <Key>
+            <PropertyRef Name="IdCursosHorarios" />
+            <PropertyRef Name="IdProfesor" />
+          </Key>
+          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" />
+          <Property Name="IdProfesor" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="7" />
+          <Property Name="FechaFinal" Type="DateTime" Precision="7" />
+          <Property Name="LimiteAusencias" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursosHorario" Relationship="CursosModel.FK_CursosProfesor_CursosHorarios" FromRole="CursosProfesor" ToRole="CursosHorario" />
+          <NavigationProperty Name="Profesore" Relationship="CursosModel.FK_CursosProfesor_Profesores" FromRole="CursosProfesor" ToRole="Profesore" />
+        </EntityType>
+        <Association Name="FK_CursosHorarios_Horarios">
+          <End Type="CursosModel.Horario" Role="Horario" Multiplicity="1" />
+          <End Type="CursosModel.CursosHorario" Role="CursosHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horario">
+              <PropertyRef Name="IdHorario" />
+            </Principal>
+            <Dependent Role="CursosHorario">
+              <PropertyRef Name="IdHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosProfesor_CursosHorarios">
+          <End Type="CursosModel.CursosHorario" Role="CursosHorario" Multiplicity="1" />
+          <End Type="CursosModel.CursosProfesor" Role="CursosProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursosHorario">
+              <PropertyRef Name="IdCursosHorarios" />
+            </Principal>
+            <Dependent Role="CursosProfesor">
+              <PropertyRef Name="IdCursosHorarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosProfesor_Profesores">
+          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="1" />
+          <End Type="CursosModel.CursosProfesor" Role="CursosProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesore">
+              <PropertyRef Name="IdProfesor" />
+            </Principal>
+            <Dependent Role="CursosProfesor">
+              <PropertyRef Name="IdProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RutaLogo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RutaSistema" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HostCorreo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PortCorreo" Type="Int32" Nullable="false" />
+          <Property Name="TimeOutCorreo" Type="Int32" Nullable="false" />
+          <Property Name="UserNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FromCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CantidadHoras" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CantidadEstudiantes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Cursos" FromRole="Curso" ToRole="CursosHorario" />
+        </EntityType>
+        <Association Name="FK_CursosHorarios_Cursos">
+          <End Type="CursosModel.Curso" Role="Curso" Multiplicity="1" />
+          <End Type="CursosModel.CursosHorario" Role="CursosHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="CursosHorario">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CursosModelStoreContainer" CdmEntityContainer="CursosEntity">
+          <EntitySetMapping Name="CursosEstudiantes">
+            <EntityTypeMapping TypeName="CursosModel.CursosEstudiante">
+              <MappingFragment StoreEntitySet="CursosEstudiantes">
+                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdCursosEstudiantes" ColumnName="IdCursosEstudiantes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horarios">
+            <EntityTypeMapping TypeName="CursosModel.Horario">
+              <MappingFragment StoreEntitySet="Horarios">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ausencias">
+            <EntityTypeMapping TypeName="CursosModel.Ausencia">
+              <MappingFragment StoreEntitySet="Ausencias">
+                <ScalarProperty Name="IdCursosEstudiantes" ColumnName="IdCursosEstudiantes" />
+                <ScalarProperty Name="Ausente" ColumnName="Ausente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdAusencia" ColumnName="IdAusencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bitacoras">
+            <EntityTypeMapping TypeName="CursosModel.Bitacora">
+              <MappingFragment StoreEntitySet="Bitacora">
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="CursosModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Seguridad" ColumnName="Seguridad" />
+                <ScalarProperty Name="Consultas" ColumnName="Consultas" />
+                <ScalarProperty Name="Procesos" ColumnName="Procesos" />
+                <ScalarProperty Name="Mantenimientos" ColumnName="Mantenimientos" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiantes">
+            <EntityTypeMapping TypeName="CursosModel.Estudiante">
+              <MappingFragment StoreEntitySet="Estudiantes">
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesores">
+            <EntityTypeMapping TypeName="CursosModel.Profesore">
+              <MappingFragment StoreEntitySet="Profesores">
+                <ScalarProperty Name="Institucion" ColumnName="Institucion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosHorarios">
+            <EntityTypeMapping TypeName="CursosModel.CursosHorario">
+              <MappingFragment StoreEntitySet="CursosHorarios">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosProfesors">
+            <EntityTypeMapping TypeName="CursosModel.CursosProfesor">
+              <MappingFragment StoreEntitySet="CursosProfesor">
+                <ScalarProperty Name="LimiteAusencias" ColumnName="LimiteAusencias" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="CursosModel.Parametro">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="DisplayNameCorreo" ColumnName="DisplayNameCorreo" />
+                <ScalarProperty Name="FromCorreo" ColumnName="FromCorreo" />
+                <ScalarProperty Name="PasswordCorreo" ColumnName="PasswordCorreo" />
+                <ScalarProperty Name="UserNameCorreo" ColumnName="UserNameCorreo" />
+                <ScalarProperty Name="TimeOutCorreo" ColumnName="TimeOutCorreo" />
+                <ScalarProperty Name="PortCorreo" ColumnName="PortCorreo" />
+                <ScalarProperty Name="HostCorreo" ColumnName="HostCorreo" />
+                <ScalarProperty Name="RutaSistema" ColumnName="RutaSistema" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RutaLogo" ColumnName="RutaLogo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="CursosModel.Curso">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="CantidadEstudiantes" ColumnName="CantidadEstudiantes" />
+                <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
