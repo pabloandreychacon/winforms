@@ -4,6 +4,7 @@ using CursosBusiness.Business;
 using CursosBusiness.BusinessHelpers;
 using CursosEntities.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -116,6 +117,16 @@ namespace Cursos.Presentation.Forms.Mantenimientos
         {
             try
             {
+				//// combo de roles
+				var roleListBind = commB.GetBindList<Role>();
+				roleBindingSource.DataSource = roleListBind;
+				// si lo hago visual entoces llego hasta aquí, si no continúo con las siguientes 4 líneas
+				cboFiltros.DataSource = roleListBind;
+				cboFiltros.DisplayMember = "Descripcion";
+				cboFiltros.ValueMember = "IdRole";
+				cboFiltros.DataBindings.Add(new Binding("SelectedValue", this.usuarioBindingSource, "IdRole", true));
+
+				// usuario
                 var userListBind = commB.GetBindList<Usuario>();//.ToList();
 
                 usuarioBindingSource.DataSource = userListBind;
@@ -130,11 +141,17 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 {
                     btnFind.Enabled = false;
                 }
+				
             }
             catch (Exception ex)
             {
                 CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
-    }
+
+		private void usuarioBindingNavigator_RefreshItems(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

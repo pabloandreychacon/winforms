@@ -1,4 +1,4 @@
-instructions
+﻿instructions
 
 base project> build
 cursos> same level as base project
@@ -27,7 +27,7 @@ cursos> same level as base project
 	
 	publish
 	
-	add to git: connect, home, sync> publish git repo: url
+	add to git: connect, home, sync> publish git repo: url (primero crear los repos en github)
 		git pull
 		# Fix any merge conflicts, if you have a `README.md` locally
 		git push -f origin master
@@ -35,3 +35,12 @@ cursos> same level as base project
 		changes: commit + push
 	
 	add Control project
+
+En SQL Management Studio: Tools, Optons, Designer, Table and database designers, Prevent saving changes that prevent...
+
+Nueva Relatioship: desde tabla hija, Add new, Tables and column spec, busca tabla Primary key table y la foreign key table ya sale seleccionada (tabla hija desd donde iniciamos la nueva relatioship),
+	los fields deber[ian llamarse igual, los valores en la tabla hija deben existir en la tabla padre.
+
+CursosData: ModelCursos.edmx: borrar todas la entidades que fueron modificadas, Update Model from database
+
+CursosEntities: ModelCursos.tt y ModelCursos.tt, click derecho > Run Custom Tool

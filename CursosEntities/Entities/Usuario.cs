@@ -22,7 +22,7 @@ namespace CursosEntities.Entities
     
         public int IdUsuario { get; set; }
         public string Nombre { get; set; }
-        public bool Administrador { get; set; }
+        public int IdRole { get; set; }
         public string Clave { get; set; }
         public bool Activo { get; set; }
         public bool Mantenimientos { get; set; }
@@ -32,5 +32,6 @@ namespace CursosEntities.Entities
     
         public virtual ICollection<Bitacora> Bitacoras { get; set; }
         public virtual ICollection<CursosEstudiante> CursosEstudiantes { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

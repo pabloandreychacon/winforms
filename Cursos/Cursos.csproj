@@ -12,6 +12,10 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <PublishUrl>C:\Users\pablo.a.chacon.luna\OneDrive\Projects\Publications\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,10 +35,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -396,6 +396,9 @@
     <None Include="Properties\DataSources\CursosEntities.Entities.Parametro.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.ParametrosGeneral.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Profesore.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.Role.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.sp_helpdiagramdefinition_Result.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.sp_helpdiagrams_Result.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Usuario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

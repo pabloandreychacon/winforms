@@ -9,10 +9,7 @@
         <EntityTypeShape EntityType="CursosModel.Horario" Width="1.5" PointX="4.5" PointY="9.25" />
         <EntityTypeShape EntityType="CursosModel.Ausencia" Width="1.5" PointX="5" PointY="6.5" />
         <EntityTypeShape EntityType="CursosModel.Bitacora" Width="1.5" PointX="7.625" PointY="2.375" />
-        <EntityTypeShape EntityType="CursosModel.Usuario" Width="1.5" PointX="5.375" PointY="2" />
         <AssociationConnector Association="CursosModel.FK_Ausencias_CursosEstudiantes" />
-        <AssociationConnector Association="CursosModel.FK_Bitacora_Usuarios" />
-        <AssociationConnector Association="CursosModel.FK_CursosEstudiantes_CursosEstudiantes" />
         <EntityTypeShape EntityType="CursosModel.Estudiante" Width="1.5" PointX="7.375" PointY="7" />
         <AssociationConnector Association="CursosModel.FK_CursosEstudiantes_Estudiantes" />
         <EntityTypeShape EntityType="CursosModel.Profesore" Width="1.5" PointX="9.375" PointY="7" />
@@ -24,6 +21,11 @@
         <EntityTypeShape EntityType="CursosModel.Parametro" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="CursosModel.Curso" Width="1.5" PointX="0.75" PointY="7" />
         <AssociationConnector Association="CursosModel.FK_CursosHorarios_Cursos" />
+        <EntityTypeShape EntityType="CursosModel.Usuario" Width="1.5" PointX="5.375" PointY="1.625" />
+        <AssociationConnector Association="CursosModel.FK_Bitacora_Usuarios" />
+        <AssociationConnector Association="CursosModel.FK_CursosEstudiantes_CursosEstudiantes" />
+        <EntityTypeShape EntityType="CursosModel.Role" Width="1.5" PointX="3.125" PointY="0.75" />
+        <AssociationConnector Association="CursosModel.FK_Usuarios_Roles" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

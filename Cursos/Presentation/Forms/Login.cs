@@ -42,7 +42,7 @@ namespace Cursos.Presentation.Forms
                             }
                             Tools.UserCredentials.UserName = txtUser.Text.Trim();
                             Tools.UserCredentials.UserId = UsuarioActivo.IdUsuario;
-                            Tools.UserCredentials.IsAdmin = UsuarioActivo.Administrador;
+                            Tools.UserCredentials.IsAdmin = UsuarioActivo.Role.IsAdmin;
                         }
                         Tools.FormManager.DestroyForm("Main");
                         //#if !DEBUG

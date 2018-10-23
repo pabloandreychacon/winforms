@@ -93,6 +93,15 @@
     <Compile Include="Entities\Profesore.cs">
       <DependentUpon>ModelCursos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>ModelCursos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelCursos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelCursos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Usuario.cs">
       <DependentUpon>ModelCursos.tt</DependentUpon>
     </Compile>
@@ -109,29 +118,6 @@
       <LastGenOutput>ModelCursos.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AusenciasCursoList.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AusenciasEstudiantesList.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosEstudiantesList.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosListSearch.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosProfesorList.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+EstudiantesListSearch.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+InventarioDtos+ExistenciasCantidad.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+InventarioDtos+ProdListSearch.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+InventarioDtos.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+ProfesoresListSearch.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+ReporteCursosList.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Ausencia.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Bitacora.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Curso.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.CursosEntity.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.CursosEstudiante.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.CursosProfesor.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Estudiante.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Horario.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.ParametrosGeneral.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Profesore.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.Usuario.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

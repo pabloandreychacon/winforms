@@ -114,7 +114,7 @@ namespace CursosBusiness.Business
                 var newListUsuario = new List<Usuario>();
                 var newUsuario = new Usuario()  {  
                     Activo = false, 
-                    Administrador = false,
+                    IdRole = 0,
                     Clave = "",
                     Consultas = false,
                     IdUsuario = 0,
