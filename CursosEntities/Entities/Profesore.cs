@@ -28,7 +28,11 @@ namespace CursosEntities.Entities
         public string Celular { get; set; }
         public string Direccion { get; set; }
         public string Institucion { get; set; }
+        public string Apellido { get; set; }
+        public string ApellidoFinal { get; set; }
+        public int IdTipoId { get; set; }
     
         public virtual ICollection<CursosProfesor> CursosProfesors { get; set; }
+        public virtual TipoId TipoId { get; set; }
     }
 }

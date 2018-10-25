@@ -77,14 +77,17 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BaseControls">
-      <HintPath>..\..\Base\BaseControls\bin\Debug\BaseControls.dll</HintPath>
+    <Reference Include="BaseControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Base\BaseForms\bin\Debug\BaseControls.dll</HintPath>
     </Reference>
-    <Reference Include="BaseForms">
+    <Reference Include="BaseForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Base\BaseForms\bin\Debug\BaseForms.dll</HintPath>
     </Reference>
-    <Reference Include="BaseHelpers">
-      <HintPath>..\..\Base\BaseHelpers\bin\Debug\BaseHelpers.dll</HintPath>
+    <Reference Include="BaseHelpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Base\BaseForms\bin\Debug\BaseHelpers.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -161,6 +164,12 @@
     </Compile>
     <Compile Include="Presentation\Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\MantTiposIdsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\MantTiposIdsForm.Designer.cs">
+      <DependentUpon>MantTiposIdsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Forms\Mantenimientos\MantCursosForm.cs">
       <SubType>Form</SubType>
@@ -314,6 +323,9 @@
     <EmbeddedResource Include="Presentation\Forms\Mantenimientos\MantProfesoresForm.resx">
       <DependentUpon>MantProfesoresForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\MantTiposIdsForm.resx">
+      <DependentUpon>MantTiposIdsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Mantenimientos\MantUsuariosForm.resx">
       <DependentUpon>MantUsuariosForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +359,9 @@
     <EmbeddedResource Include="Presentation\Forms\Sistema\SistLoginForm.resx">
       <DependentUpon>SistLoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Sistema\SistMainForm.resx">
+      <DependentUpon>SistMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Reports\Ausencias\Ausencias2.rdlc" />
     <EmbeddedResource Include="Presentation\Reports\Ausencias\Ausencias.rdlc" />
     <EmbeddedResource Include="Presentation\Reports\Ausencias\Report1.rdlc" />
@@ -370,7 +385,9 @@
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AusenciasCursoList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AusenciasEstudiantesList.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CorreoListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosEstudiantesList.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosHorarioListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosProfesorCerrarList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosProfesorList.datasource" />
@@ -384,6 +401,7 @@
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+ReporteCursosList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+UsuariosListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.Aula.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Ausencia.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Bitacora.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Curso.datasource" />
@@ -399,6 +417,7 @@
     <None Include="Properties\DataSources\CursosEntities.Entities.Role.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.sp_helpdiagramdefinition_Result.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.sp_helpdiagrams_Result.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.TipoId.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Usuario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

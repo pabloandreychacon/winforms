@@ -417,6 +417,7 @@
 			this.label1.Size = new System.Drawing.Size(99, 24);
 			this.label1.TabIndex = 26;
 			this.label1.Text = "Rol Visual:";
+			this.label1.Visible = false;
 			// 
 			// comboBasic1
 			// 
@@ -429,6 +430,7 @@
 			this.comboBasic1.Size = new System.Drawing.Size(177, 30);
 			this.comboBasic1.TabIndex = 27;
 			this.comboBasic1.ValueMember = "IdRole";
+			this.comboBasic1.Visible = false;
 			// 
 			// comboBasic2
 			// 
@@ -440,6 +442,7 @@
 			this.comboBasic2.Name = "comboBasic2";
 			this.comboBasic2.Size = new System.Drawing.Size(121, 30);
 			this.comboBasic2.TabIndex = 28;
+			this.comboBasic2.Visible = false;
 			// 
 			// MantUsuariosForm
 			// 

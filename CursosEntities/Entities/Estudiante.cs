@@ -30,7 +30,11 @@ namespace CursosEntities.Entities
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public string Direccion { get; set; }
         public int Edad { get; set; }
+        public string Apellido { get; set; }
+        public string ApellidoFinal { get; set; }
+        public int IdTipoId { get; set; }
     
         public virtual ICollection<CursosEstudiante> CursosEstudiantes { get; set; }
+        public virtual TipoId TipoId { get; set; }
     }
 }

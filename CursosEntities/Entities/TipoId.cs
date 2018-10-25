@@ -12,23 +12,19 @@ namespace CursosEntities.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Curso
+    public partial class TipoId
     {
-        public Curso()
+        public TipoId()
         {
-            this.CursosHorarios = new HashSet<CursosHorario>();
+            this.Estudiantes = new HashSet<Estudiante>();
+            this.Profesores = new HashSet<Profesore>();
         }
     
-        public int IdCurso { get; set; }
+        public int IdTipoId { get; set; }
         public string Descripcion { get; set; }
-        public bool Activo { get; set; }
-        public string Codigo { get; set; }
-        public decimal CantidadHoras { get; set; }
-        public int CantidadEstudiantes { get; set; }
-        public string NombreCurso { get; set; }
-        public int IdAula { get; set; }
+        public string Mask { get; set; }
     
-        public virtual ICollection<CursosHorario> CursosHorarios { get; set; }
-        public virtual Aula Aula { get; set; }
+        public virtual ICollection<Estudiante> Estudiantes { get; set; }
+        public virtual ICollection<Profesore> Profesores { get; set; }
     }
 }

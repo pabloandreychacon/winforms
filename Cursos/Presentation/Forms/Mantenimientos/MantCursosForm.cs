@@ -45,7 +45,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                     btnFind.Enabled = false;
                 }
                 
+				var aulasListBind = commB.GetBindList<Aula>();//.ToList();
 
+				aulaBindingSource.DataSource = aulasListBind;
             }
             catch (Exception ex)
             {
@@ -59,8 +61,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             //return Validator(descripcionTextBox, ValidationTypes.Text, "Debe digitar una descripción válida.") &&
             //       (Validator(idHorarrioComboBox, ValidationTypes.Text, "Debe seleccionar un horario."));
             return Validator(descripcionTextBox, ValidationTypes.Text, "Debe digitar una descripción válida.") &&
-                Validator(cantidadEstudiantesTextBox, ValidationTypes.PositiveNumeric, "Debe digitar una cantidad de estudiantes válida.") &&
-                Validator(cantidadHorasTextBox, ValidationTypes.Numeric, "Debe digitar una cantidad de horas válida.");
+                Validator(cantidadEstudiantesNumericUpDown, ValidationTypes.PositiveNumeric, "Debe digitar una cantidad de estudiantes válida.") &&
+                Validator(cantidadHorasNumericUpDown, ValidationTypes.Numeric, "Debe digitar una cantidad de horas válida.") && 
+				Validator(nombreCursoTextBox, ValidationTypes.Text, "Debe digitar una descripción válida.");
         }
 
         private void cursoBindingNavigatorSaveItem_Click(object sender, EventArgs e)

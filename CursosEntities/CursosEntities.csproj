@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\CursosDtos.cs" />
+    <Compile Include="Entities\Aula.cs">
+      <DependentUpon>ModelCursos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Ausencia.cs">
       <DependentUpon>ModelCursos.tt</DependentUpon>
     </Compile>
@@ -100,6 +103,9 @@
       <DependentUpon>ModelCursos.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelCursos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TipoId.cs">
       <DependentUpon>ModelCursos.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Usuario.cs">

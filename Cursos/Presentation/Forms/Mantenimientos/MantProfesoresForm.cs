@@ -22,7 +22,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
         }
         public override bool ValidateFields()
         {
-            return Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar una descripción válida.");
+            return (Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar un nombre válida.")
+				&& Validator(apellidoTextBox, ValidationTypes.Text, "Debe digitar un apellido válido."));
         }
 
         private void profesoreBindingNavigatorSaveItem_Click(object sender, EventArgs e)

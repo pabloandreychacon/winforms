@@ -23,7 +23,14 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 
         public override bool ValidateFields()
         {
-            return Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar una descripción válida.");
+            return (Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar un nombre válida.")
+				&& Validator(apellidoTextBox, ValidationTypes.Text, "Debe digitar un apellido válido.")
+				&& Validator(correoTextBox, ValidationTypes.Email, "Debe digitar un correo válido.")
+				&& Validator(telefonoMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar un teléfono válido.")
+				&& Validator(celularMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar un celular válido.")
+				&& Validator(edadNumericUpDown, ValidationTypes.PositiveNumeric, "Debe digitar una edad válida.")
+				&& Validator(identificacionMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar una identificación válida.")
+				);
         }
 
         private void estudianteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -76,6 +83,11 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 {
                     btnFind.Enabled = false;
                 }
+
+				var idsListBind = commB.GetBindList<TipoId>();//.ToList();
+
+				tipoIdBindingSource.DataSource = idsListBind;
+             
             }
             catch (Exception ex)
             {
@@ -142,5 +154,11 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             formToShow.Show();
             formToShow.bindingNavigatorAddNewItem.PerformClick();
         }
-    }
+
+		private void tipoIdComboBasic_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var currTipo = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
+			if (currTipo != null) identificacionMaskedTextBox.Mask = currTipo.Mask;
+		}
+	}
 }

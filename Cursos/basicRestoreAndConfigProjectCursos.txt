@@ -44,3 +44,13 @@ Nueva Relatioship: desde tabla hija, Add new, Tables and column spec, busca tabl
 CursosData: ModelCursos.edmx: borrar todas la entidades que fueron modificadas, Update Model from database
 
 CursosEntities: ModelCursos.tt y ModelCursos.tt, click derecho > Run Custom Tool
+
+Add tabOrder button to ribbon on toolbars
+
+"The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_Bitacora_Usuarios\". The conflict occurred in database \"Cursos\", table \"dbo.Usuarios\", column 'IdUsuario'.\r\nThe statement has been terminated." se pone Enforce foreign key constraint to NO, as[i puedo guardar IdUSuarios que no existan en la tabla Usuarios
+
+Para actualizar los DataSources (arrastrar y soltar en los forms), primero debo actuailizar CursosData y CursosEntities y luego agregar datasource > objects > CursosEntities
+
+Nuevos forms heredan from Maintnance
+
+LOs bindingSource objects necesitan ser cargados en el load de cada formulario

@@ -45,7 +45,7 @@ namespace Cursos.Presentation.Forms
                     if (usuarioActivo.Consultas) consultasToolStripMenuItem.Enabled = true;
                     if (usuarioActivo.Seguridad) seguridadToolStripMenuItem.Enabled = true;
                     // algunos items deben ser solo para usuario tipo administrador
-                    //if (usuarioActivo.Administrador) configurarToolStripMenuItem.Enabled = true;
+                    if (Tools.UserCredentials.IsAdmin) usuariosToolStripMenuItem1.Enabled = true;
                 }
             }
         }
@@ -108,6 +108,13 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Forms.Mantenimientos.MantProfesoresForm { MdiParent = this };
             formToShow.Show();
         }
+
+		private void tiposIdentificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Tools.FormManager.FindAndOpenForm("MantTiposIdsForm")) return;
+            var formToShow = new Forms.Mantenimientos.MantTiposIdsForm { MdiParent = this };
+            formToShow.Show();
+		}
         #endregion        
 
         #region seguridad
@@ -303,5 +310,7 @@ namespace Cursos.Presentation.Forms
             formToShow.txtConexion.Text = conn;
             formToShow.Show();
         }
-    }
+
+		
+	}
 }

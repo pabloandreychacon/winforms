@@ -56,6 +56,11 @@ namespace Cursos.Presentation.Forms
                     else
                     {
                         MessageBox.Show("Usuario o clave incorrectos. Por favor verifique.");
+						commB.SaveBitacora("Error en entrada al sistema Control. User text: " + txtUser.Text.Trim() + " Password text: " + txtPass.Text.Trim(),
+                            false, 0);
+						errorContainer1.Control = txtUser;
+                        errorContainer1.Message = "Usuario o clave incorrectos. Por favor verifique.";
+                        txtUser.Focus();
                         return;
                     }
                 }
