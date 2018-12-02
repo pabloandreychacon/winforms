@@ -31,6 +31,11 @@
         <AssociationConnector Association="CursosModel.FK_Profesores_TipoIds" />
         <EntityTypeShape EntityType="CursosModel.Aula" Width="1.5" PointX="3.5" PointY="12.75" />
         <AssociationConnector Association="CursosModel.FK_Cursos_Cursos" />
+        <EntityTypeShape EntityType="CursosModel.Cantone" Width="1.5" PointX="13" PointY="11.875" />
+        <EntityTypeShape EntityType="CursosModel.Distrito" Width="1.5" PointX="8.75" PointY="13.375" />
+        <EntityTypeShape EntityType="CursosModel.Provincia" Width="1.5" PointX="10.75" PointY="12" />
+        <AssociationConnector Association="CursosModel.FK_Cantones_Provincias" />
+        <AssociationConnector Association="CursosModel.FK_Distritos_Cantones" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

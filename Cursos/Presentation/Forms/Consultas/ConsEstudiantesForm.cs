@@ -76,7 +76,7 @@ namespace Cursos.Presentation.Forms.Consultas
             }
             catch (Exception ex)
             {
-                General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 

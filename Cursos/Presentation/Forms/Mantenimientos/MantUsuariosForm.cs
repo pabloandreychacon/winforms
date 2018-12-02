@@ -21,12 +21,15 @@ namespace Cursos.Presentation.Forms.Mantenimientos
         private void UsuariosForm_Load(object sender, EventArgs e)
         {
             CargarBusqueda();
+			cargarCombos();
         }
 
         public override bool ValidateFields()
         {
             return Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar un nombre válido.") &&
-                   (Validator(claveTextBox, ValidationTypes.Text, "Clave no válida."));
+                   (Validator(claveTextBox, ValidationTypes.Text, "Clave no válida.")) &&
+				   (Validator(cboRoles, ValidationTypes.Text, "Rol no válido."))
+				   ;
         }
 
         private void claveTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -41,13 +44,15 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             {
                 if (!ValidateFields()) return;
                 usuarioBindingSource.EndEdit();
-                var selectedCurso = commB.SetEntity<Usuario>(usuarioBindingSource.Current);
-                if (selectedCurso != null) commB.UpdateEntity<Usuario>(selectedCurso);
+                var selectedUsuario = commB.SetEntity<Usuario>(usuarioBindingSource.Current);
+                if (selectedUsuario != null) commB.UpdateEntity<Usuario>(selectedUsuario);
+				commB.SaveBitacora("Usuario guardado: "+ selectedUsuario.IdUsuario, false, Tools.UserCredentials.UserId);
                 usuarioBindingSource.ResetBindings(true);
+				lblInfoMessage.Text = "Usuario guardado satisfactoriamente";
             }
             catch (Exception ex)
             {
-                CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -63,13 +68,14 @@ namespace Cursos.Presentation.Forms.Mantenimientos
         {
             try
              {
+				
                 if (!ValidateFields()) return;
                 usuarioBindingSource.EndEdit();
                 var selectedUsuario = commB.SetEntity<Usuario>(usuarioBindingSource.Current);
                 if (selectedUsuario != null)
                 {
                     var p = commB.FindCursoEstudianteByIdUsuario(selectedUsuario.IdUsuario);
-                    var b = commB.FindBitacoraByIdUsuario(selectedUsuario.IdUsuario);
+                    //var b = commB.FindBitacoraByIdUsuario(selectedUsuario.IdUsuario);
                     if (p != null)
                     {
                         MessageBox.Show("No se pueden borrar usuarios que están relacionados en la tabla de CursosEstudiantes", "Borrar", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -79,14 +85,16 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                     }
                     else
                     {
-                        if (b != null)
-                        {
-                            MessageBox.Show("No se pueden borrar usuarios que están relacionados en la tabla de Bitacora", "Borrar", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                        }
-                        else
-                        {
+                        //if (b != null)
+                        //{
+                        //    MessageBox.Show("No se pueden borrar usuarios que están relacionados en la tabla de Bitacora", "Borrar", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        //}
+                        //else
+                        //{
                             commB.DeleteEntity<Usuario>(selectedUsuario);
-                        }                        
+							commB.SaveBitacora("Usuario borrado: "+selectedUsuario.IdUsuario, false, Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Usuario borrado satisfactoriamente";
+                        //}                        
                         //horarioBindingSource.RemoveCurrent();
                     }
                 }
@@ -94,13 +102,13 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
             catch (Exception ex)
             {
-                CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            CargarBusqueda();
+            //CargarBusqueda();
             if (CursosBusiness.BusinessHelpers.LocalData.searchUsuariosList != null &&
                 CursosBusiness.BusinessHelpers.LocalData.searchUsuariosList.Count > 0)
             {
@@ -113,19 +121,22 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
         }
 
+		private void cargarCombos()
+		{
+			//// combo de roles
+				var roleListBind = commB.GetBindList<Role>();
+				roleBindingSource.DataSource = roleListBind;
+				// si lo hago visual entoces llego hasta aquí, si no continúo con las siguientes 4 líneas
+				cboRoles.DataSource = roleListBind;
+				cboRoles.DisplayMember = "Descripcion";
+				cboRoles.ValueMember = "IdRole";
+				cboRoles.DataBindings.Add(new Binding("SelectedValue", this.usuarioBindingSource, "IdRole", true));
+		}
         private void CargarBusqueda()
         {
             try
             {
-				//// combo de roles
-				var roleListBind = commB.GetBindList<Role>();
-				roleBindingSource.DataSource = roleListBind;
-				// si lo hago visual entoces llego hasta aquí, si no continúo con las siguientes 4 líneas
-				cboFiltros.DataSource = roleListBind;
-				cboFiltros.DisplayMember = "Descripcion";
-				cboFiltros.ValueMember = "IdRole";
-				cboFiltros.DataBindings.Add(new Binding("SelectedValue", this.usuarioBindingSource, "IdRole", true));
-
+				
 				// usuario
                 var userListBind = commB.GetBindList<Usuario>();//.ToList();
 
@@ -145,7 +156,7 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
             catch (Exception ex)
             {
-                CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 

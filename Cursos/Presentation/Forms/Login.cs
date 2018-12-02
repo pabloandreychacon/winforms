@@ -66,7 +66,7 @@ namespace Cursos.Presentation.Forms
                 }
                 catch (Exception ex)
                 {
-                    CursosBusiness.BusinessHelpers.General.DoError(ex, "Cursos", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Cursos", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
             else

@@ -12,13 +12,13 @@ namespace CursosBusiness.BusinessHelpers
     {
         static CommonB genB = new CommonB();
 
-        public static void DoError(Exception ex, string caption, MessageBoxButtons buttons,
+        public static void LogInfo(Exception ex, string caption, MessageBoxButtons buttons,
                 MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
         {
-            DoErrorExtra(ex, "", caption, buttons, icon, defaultButton);
+            LogInfoExtra(ex, "", caption, buttons, icon, defaultButton);
         }
 
-        public static void DoErrorExtra(Exception ex, string extra, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
+        public static void LogInfoExtra(Exception ex, string extra, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
         {
             var message = "";
             try

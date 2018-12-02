@@ -38,7 +38,7 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
             catch (Exception ex)
             {
-                CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             } 
         }
 
@@ -67,7 +67,7 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
             catch (Exception ex)
             {
-                CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             
         }
@@ -108,7 +108,7 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
             catch (Exception ex)
             {
-                CursosBusiness.BusinessHelpers.General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 

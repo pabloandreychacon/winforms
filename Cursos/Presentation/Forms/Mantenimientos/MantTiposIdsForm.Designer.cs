@@ -35,6 +35,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantTiposIdsForm));
 			this.tipoIdBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
 			this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+			this.tipoIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
 			this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
 			this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -49,7 +50,6 @@
 			this.descripcionTextBox = new System.Windows.Forms.TextBox();
 			this.idTipoIdTextBox = new System.Windows.Forms.TextBox();
 			this.maskTextBox = new System.Windows.Forms.TextBox();
-			this.tipoIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			descripcionLabel = new System.Windows.Forms.Label();
 			idTipoIdLabel = new System.Windows.Forms.Label();
 			maskLabel = new System.Windows.Forms.Label();
@@ -90,9 +90,9 @@
 			maskLabel.AutoSize = true;
 			maskLabel.Location = new System.Drawing.Point(41, 118);
 			maskLabel.Name = "maskLabel";
-			maskLabel.Size = new System.Drawing.Size(59, 24);
+			maskLabel.Size = new System.Drawing.Size(86, 24);
 			maskLabel.TabIndex = 8;
-			maskLabel.Text = "Mask:";
+			maskLabel.Text = "Máscara:";
 			// 
 			// tipoIdBindingNavigator
 			// 
@@ -133,6 +133,10 @@
 			this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
 			this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 24);
 			this.bindingNavigatorAddNewItem.Text = "Add new";
+			// 
+			// tipoIdBindingSource
+			// 
+			this.tipoIdBindingSource.DataSource = typeof(CursosEntities.Entities.TipoId);
 			// 
 			// bindingNavigatorCountItem
 			// 
@@ -242,10 +246,6 @@
 			this.maskTextBox.Name = "maskTextBox";
 			this.maskTextBox.Size = new System.Drawing.Size(189, 28);
 			this.maskTextBox.TabIndex = 9;
-			// 
-			// tipoIdBindingSource
-			// 
-			this.tipoIdBindingSource.DataSource = typeof(CursosEntities.Entities.TipoId);
 			// 
 			// MantTiposIdsForm
 			// 

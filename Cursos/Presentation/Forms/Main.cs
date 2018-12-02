@@ -115,18 +115,31 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Forms.Mantenimientos.MantTiposIdsForm { MdiParent = this };
             formToShow.Show();
 		}
+		private void usuariosToolStripMenuItem1_Click_1(object sender, EventArgs e)
+		{
+			if (Tools.FormManager.FindAndOpenForm("MantUsuariosForm")) return;
+            var formToShow = new Forms.Mantenimientos.MantUsuariosForm { MdiParent = this };
+            formToShow.Show();
+		}
         #endregion        
 
         #region seguridad
-        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void crearRespaldoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Tools.FormManager.FindAndOpenForm("MantUsuariosForm")) return;
-            var formToShow = new Forms.Mantenimientos.MantUsuariosForm { MdiParent = this };
+            var conn = commB.GetConnection();
+            if (Tools.FormManager.FindAndOpenForm("SeguRespaldosForm")) return;
+            var formToShow = new Forms.Seguridad.SeguRespaldosForm { MdiParent = this };
+            formToShow.txtConexion.Text = conn;
             formToShow.Show();
         }
-        private void respaldosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void restaurarRespaldoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            var conn = commB.GetConnection();
+            if (Tools.FormManager.FindAndOpenForm("SeguRestauraForm")) return;
+            var formToShow = new Forms.Seguridad.SeguRestauraForm { MdiParent = this };
+            formToShow.txtConexion.Text = conn;
+            formToShow.Show();
         }
         #endregion
 
@@ -272,7 +285,7 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Presentation.Forms.Procesos.ProcEstudiantesCursosForm { MdiParent = this };
             formToShow.Show();
         }
-        #endregion
+        
                
         private void asignarAusenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -280,6 +293,7 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Presentation.Forms.Procesos.ProcAusenciasForm { MdiParent = this };
             formToShow.Show();
         }
+		
 
         private void removerAusenciasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -287,29 +301,9 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Presentation.Forms.Procesos.ProcRemoverAusenciasForm { MdiParent = this };
             formToShow.Show();
         }
+		#endregion
 
-        private void restaurarBaseDatosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void crearRespaldoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var conn = commB.GetConnection();
-            if (Tools.FormManager.FindAndOpenForm("SeguRespaldosForm")) return;
-            var formToShow = new Forms.Seguridad.SeguRespaldosForm { MdiParent = this };
-            formToShow.txtConexion.Text = conn;
-            formToShow.Show();
-        }
-
-        private void restaurarRespaldoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var conn = commB.GetConnection();
-            if (Tools.FormManager.FindAndOpenForm("SeguRestauraForm")) return;
-            var formToShow = new Forms.Seguridad.SeguRestauraForm { MdiParent = this };
-            formToShow.txtConexion.Text = conn;
-            formToShow.Show();
-        }
+        
 
 		
 	}

@@ -78,7 +78,7 @@ namespace Cursos.Presentation.Forms.Procesos
             }
             catch (Exception ex)
             {
-                General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
         public void CargarEstudiantes()
@@ -132,7 +132,7 @@ namespace Cursos.Presentation.Forms.Procesos
                             }
                             catch (Exception ex)
                             {
-                                General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                                General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                             }
                         }
                     }

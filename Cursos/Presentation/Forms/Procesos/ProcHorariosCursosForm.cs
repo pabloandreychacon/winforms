@@ -85,7 +85,7 @@ namespace Cursos.Presentation.Forms.Procesos
             }
             catch (Exception ex)
             {
-                General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -128,10 +128,11 @@ namespace Cursos.Presentation.Forms.Procesos
                     try
                     {
                         commB.SaveCursoHorario(Convert.ToInt32(txtIdCurso.Text), Convert.ToInt32(txtIdHorario.Text));
+						commB.SaveBitacora("Horarrio "+txtHorario.Text+" asignado al curso "+ txtIdCurso.Text, false, Tools.UserCredentials.UserId);
                     }
                     catch (Exception ex)
                     {
-                        General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                        General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                     }                    
                 }
                 CargarHorarios();
@@ -148,13 +149,14 @@ namespace Cursos.Presentation.Forms.Procesos
                     var ch = commB.FindCursohorarioByIdCursoAndIdhorario(Convert.ToInt32(txtIdCurso.Text),
                         Convert.ToInt32(curCode));
                     if (ch != null) commB.DeleteEntity<CursosHorario>(ch);
-                    CargarHorarios();
+					commB.SaveBitacora("Horarrio "+txtHorario.Text+" borrado del curso "+ txtIdCurso.Text, false, Tools.UserCredentials.UserId);
+                    CargarHorarios(); 
                     this.btnBuscaCurso.Focus(); // hace que se valide el position text                    
                 }
             }
             catch (Exception ex)
             {
-                General.DoError(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
     }

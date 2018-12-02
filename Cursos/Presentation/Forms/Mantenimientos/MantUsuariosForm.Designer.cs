@@ -62,7 +62,7 @@
 			this.procesosCheckBox = new System.Windows.Forms.CheckBox();
 			this.seguridadCheckBox = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.cboFiltros = new BaseControls.Derived.ComboBasic();
+			this.cboRoles = new BaseControls.Derived.ComboBasic();
 			this.roleBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboBasic1 = new BaseControls.Derived.ComboBasic();
@@ -91,6 +91,11 @@
 			// 
 			this.btnFind.Location = new System.Drawing.Point(552, 47);
 			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+			// 
+			// lblInfoMessage
+			// 
+			this.lblInfoMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblInfoMessage.Location = new System.Drawing.Point(62, 424);
 			// 
 			// activoLabel
 			// 
@@ -396,14 +401,14 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Menu";
 			// 
-			// cboFiltros
+			// cboRoles
 			// 
-			this.cboFiltros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboFiltros.FormattingEnabled = true;
-			this.cboFiltros.Location = new System.Drawing.Point(212, 178);
-			this.cboFiltros.Name = "cboFiltros";
-			this.cboFiltros.Size = new System.Drawing.Size(177, 30);
-			this.cboFiltros.TabIndex = 24;
+			this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboRoles.FormattingEnabled = true;
+			this.cboRoles.Location = new System.Drawing.Point(212, 178);
+			this.cboRoles.Name = "cboRoles";
+			this.cboRoles.Size = new System.Drawing.Size(177, 30);
+			this.cboRoles.TabIndex = 24;
 			// 
 			// roleBindingSource
 			// 
@@ -448,11 +453,11 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(679, 454);
+			this.ClientSize = new System.Drawing.Size(679, 499);
 			this.Controls.Add(this.comboBasic2);
 			this.Controls.Add(this.comboBasic1);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.cboFiltros);
+			this.Controls.Add(this.cboRoles);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(activoLabel);
 			this.Controls.Add(this.activoCheckBox);
@@ -481,10 +486,11 @@
 			this.Controls.SetChildIndex(this.btnFind, 0);
 			this.Controls.SetChildIndex(this.errorContainer1, 0);
 			this.Controls.SetChildIndex(this.groupBox1, 0);
-			this.Controls.SetChildIndex(this.cboFiltros, 0);
+			this.Controls.SetChildIndex(this.cboRoles, 0);
 			this.Controls.SetChildIndex(this.label1, 0);
 			this.Controls.SetChildIndex(this.comboBasic1, 0);
 			this.Controls.SetChildIndex(this.comboBasic2, 0);
+			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			((System.ComponentModel.ISupportInitialize)(this.usuarioBindingNavigator)).EndInit();
 			this.usuarioBindingNavigator.ResumeLayout(false);
 			this.usuarioBindingNavigator.PerformLayout();
@@ -522,7 +528,7 @@
         private System.Windows.Forms.CheckBox procesosCheckBox;
         private System.Windows.Forms.CheckBox seguridadCheckBox;
         private System.Windows.Forms.GroupBox groupBox1;
-		private BaseControls.Derived.ComboBasic cboFiltros;
+		private BaseControls.Derived.ComboBasic cboRoles;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.BindingSource roleBindingSource;
 		private BaseControls.Derived.ComboBasic comboBasic1;

@@ -54,3 +54,10 @@ Para actualizar los DataSources (arrastrar y soltar en los forms), primero debo 
 Nuevos forms heredan from Maintnance
 
 LOs bindingSource objects necesitan ser cargados en el load de cada formulario
+
+Distritos: http://www.editorialox.com/sanjose.htm#cantondesanjose > 
+	Excel columns: 
+		INSERT INTO [dbo].[Distritos] ([Nombre] ,[IdCanton]) VALUES (	,1)	INSERT INTO [dbo].[Distritos] ([Nombre] ,[IdCanton]) VALUES ('Cangrejal',1)
+		=CONCATENAR(B1,"'",A1,"'",C1)
+		
+DASHBOARD
