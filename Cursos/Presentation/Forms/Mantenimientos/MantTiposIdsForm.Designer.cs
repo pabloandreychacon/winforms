@@ -99,7 +99,7 @@
 			this.tipoIdBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
 			this.tipoIdBindingNavigator.BindingSource = this.tipoIdBindingSource;
 			this.tipoIdBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-			this.tipoIdBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+			this.tipoIdBindingNavigator.DeleteItem = null;
 			this.tipoIdBindingNavigator.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.tipoIdBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
@@ -260,6 +260,7 @@
 			this.Controls.Add(this.tipoIdBindingNavigator);
 			this.Name = "MantTiposIdsForm";
 			this.Load += new System.EventHandler(this.MantTiposIdsForm_Load);
+			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			this.Controls.SetChildIndex(this.closeButton1, 0);
 			this.Controls.SetChildIndex(this.btnFind, 0);
 			this.Controls.SetChildIndex(this.errorContainer1, 0);

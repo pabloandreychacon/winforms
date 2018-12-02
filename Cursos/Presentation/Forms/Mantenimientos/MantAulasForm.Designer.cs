@@ -78,6 +78,7 @@
 			// btnFind
 			// 
 			this.btnFind.Location = new System.Drawing.Point(655, 47);
+			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
 			// 
 			// lblInfoMessage
 			// 
@@ -155,7 +156,7 @@
 			this.aulaBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
 			this.aulaBindingNavigator.BindingSource = this.aulaBindingSource;
 			this.aulaBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-			this.aulaBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+			this.aulaBindingNavigator.DeleteItem = null;
 			this.aulaBindingNavigator.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.aulaBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
@@ -189,6 +190,7 @@
 			this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
 			this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 24);
 			this.bindingNavigatorAddNewItem.Text = "Add new";
+			this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click_1);
 			// 
 			// bindingNavigatorCountItem
 			// 
@@ -205,6 +207,7 @@
 			this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
 			this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 24);
 			this.bindingNavigatorDeleteItem.Text = "Delete";
+			this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click_1);
 			// 
 			// bindingNavigatorMoveFirstItem
 			// 
@@ -273,6 +276,7 @@
 			this.aulaBindingNavigatorSaveItem.Name = "aulaBindingNavigatorSaveItem";
 			this.aulaBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 24);
 			this.aulaBindingNavigatorSaveItem.Text = "Save Data";
+			this.aulaBindingNavigatorSaveItem.Click += new System.EventHandler(this.aulaBindingNavigatorSaveItem_Click);
 			// 
 			// accesibilidadCheckBox
 			// 
@@ -356,7 +360,7 @@
 			this.Controls.Add(this.ubicacionTextBox);
 			this.Controls.Add(this.aulaBindingNavigator);
 			this.Name = "MantAulasForm";
-			this.Text = "MantAulasForm";
+			this.Text = "Aulas";
 			this.Load += new System.EventHandler(this.MantAulasForm_Load);
 			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			this.Controls.SetChildIndex(this.closeButton1, 0);

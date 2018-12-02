@@ -209,6 +209,10 @@ namespace CursosBusiness.Business
         {
             return commonR.GetCursosHorariosSearchDtos();
         }
+		public Curso FindCursoByIdAula(int idaul)
+        {
+            return commonR.FindCursoByIdAula(idaul);
+        }
         #endregion
 
         #region estudiantes
@@ -363,6 +367,7 @@ namespace CursosBusiness.Business
         {
             return commonR.FindAusenciaCursoByIdAusencia(idau);
         }
+
         #endregion
 
         #region reportes

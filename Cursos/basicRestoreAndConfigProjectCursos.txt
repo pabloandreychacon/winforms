@@ -55,6 +55,8 @@ Nuevos forms heredan from Maintnance
 
 LOs bindingSource objects necesitan ser cargados en el load de cada formulario
 
+LOs bindingNavigator deleteITem is set to none para no borrar doble
+
 Distritos: http://www.editorialox.com/sanjose.htm#cantondesanjose > 
 	Excel columns: 
 		INSERT INTO [dbo].[Distritos] ([Nombre] ,[IdCanton]) VALUES (	,1)	INSERT INTO [dbo].[Distritos] ([Nombre] ,[IdCanton]) VALUES ('Cangrejal',1)

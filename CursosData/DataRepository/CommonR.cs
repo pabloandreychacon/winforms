@@ -59,6 +59,7 @@ namespace CursosData.DataRepository
             return localList;
         }
 		#endregion
+
 		#region bitacora
 		public void SaveBitacora(string descripcion, bool isError, int userId)
         {
@@ -187,6 +188,10 @@ namespace CursosData.DataRepository
         public Curso FindCursoById(int idCurso)
         {
             return dbCtx.Cursos.FirstOrDefault(p => p.IdCurso == idCurso);
+        }
+		public Curso FindCursoByIdAula(int idaul)
+        {
+            return dbCtx.Cursos.FirstOrDefault(p => p.IdAula == idaul);
         }
         #endregion
 
