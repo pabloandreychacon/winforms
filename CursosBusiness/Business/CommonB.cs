@@ -138,6 +138,17 @@ namespace CursosBusiness.Business
         }
         #endregion
 
+		#region aulas
+        //public IEnumerable<Aula> GetAulaById(int id)
+        //{
+        //    return commonR.GetUsuarioById(id);
+        //}
+        public List<CursosDtos.AulasListSearch> GetAulasSearchDtos(List<Aula> aulList)
+        {
+            return commonR.GetAulasSearchDtos(aulList);
+        }
+        #endregion
+
         #region bitacora
         public void SaveBitacora(string descripcion, bool isError, int userId)
         {

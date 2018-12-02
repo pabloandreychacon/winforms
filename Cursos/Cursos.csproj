@@ -165,6 +165,12 @@
     <Compile Include="Presentation\Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\MantAulasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Mantenimientos\MantAulasForm.Designer.cs">
+      <DependentUpon>MantAulasForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Forms\Mantenimientos\MantTiposIdsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Mantenimientos\MantAulasForm.resx">
+      <DependentUpon>MantAulasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Mantenimientos\MantCursosForm.resx">
       <DependentUpon>MantCursosForm.cs</DependentUpon>

@@ -41,6 +41,7 @@
 			this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.profesoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aulasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tiposIdentificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
 			this.usuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +83,7 @@
 			// 
 			// menuStrip1
 			// 
+			this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -144,6 +146,7 @@
             this.estudiantesToolStripMenuItem,
             this.profesoresToolStripMenuItem,
             this.parametrosToolStripMenuItem,
+            this.aulasToolStripMenuItem,
             this.tiposIdentificacionesToolStripMenuItem,
             this.toolStripMenuItem8,
             this.usuariosToolStripMenuItem1});
@@ -186,6 +189,13 @@
 			this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(277, 32);
 			this.parametrosToolStripMenuItem.Text = "Parámetros";
 			this.parametrosToolStripMenuItem.Click += new System.EventHandler(this.parametrosToolStripMenuItem_Click);
+			// 
+			// aulasToolStripMenuItem
+			// 
+			this.aulasToolStripMenuItem.Name = "aulasToolStripMenuItem";
+			this.aulasToolStripMenuItem.Size = new System.Drawing.Size(277, 32);
+			this.aulasToolStripMenuItem.Text = "Aulas";
+			this.aulasToolStripMenuItem.Click += new System.EventHandler(this.aulasToolStripMenuItem_Click);
 			// 
 			// tiposIdentificacionesToolStripMenuItem
 			// 
@@ -467,6 +477,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.HotTrack;
 			this.ClientSize = new System.Drawing.Size(1006, 723);
 			this.Controls.Add(this.menuStrip1);
 			this.Location = new System.Drawing.Point(0, 0);
@@ -533,5 +544,6 @@
 		private System.Windows.Forms.ToolStripMenuItem tiposIdentificacionesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
+		private System.Windows.Forms.ToolStripMenuItem aulasToolStripMenuItem;
 	}
 }

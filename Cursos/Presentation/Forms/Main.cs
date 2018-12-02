@@ -121,6 +121,12 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Forms.Mantenimientos.MantUsuariosForm { MdiParent = this };
             formToShow.Show();
 		}
+		private void aulasToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Tools.FormManager.FindAndOpenForm("MantAulasForm")) return;
+            var formToShow = new Forms.Mantenimientos.MantAulasForm { MdiParent = this };
+            formToShow.Show();
+		}
         #endregion        
 
         #region seguridad
@@ -301,9 +307,10 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Presentation.Forms.Procesos.ProcRemoverAusenciasForm { MdiParent = this };
             formToShow.Show();
         }
-		#endregion
 
-        
+
+
+		#endregion
 
 		
 	}

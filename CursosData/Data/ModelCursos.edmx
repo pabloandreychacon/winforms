@@ -15,6 +15,7 @@
           <Property Name="Capacidad" Type="int" Nullable="false" />
           <Property Name="Ubicacion" Type="nvarchar" MaxLength="50" />
           <Property Name="Accesibilidad" Type="bit" Nullable="false" />
+          <Property Name="Disponible" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Ausencias">
           <Key>
@@ -243,18 +244,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CursosEstudiantes_CursosEstudiantes">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="CursosEstudiantes" Type="Self.CursosEstudiantes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="IdUsuario" />
-            </Principal>
-            <Dependent Role="CursosEstudiantes">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK_CursosEstudiantes_CursosHorarios" />-->
@@ -267,6 +256,18 @@ warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns
             </Principal>
             <Dependent Role="CursosEstudiantes">
               <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosEstudiantes_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="CursosEstudiantes" Type="Self.CursosEstudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="CursosEstudiantes">
+              <PropertyRef Name="IdUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -430,12 +431,12 @@ warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns
             <End Role="Aulas" EntitySet="Aulas" />
             <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
-          <AssociationSet Name="FK_CursosEstudiantes_CursosEstudiantes" Association="Self.FK_CursosEstudiantes_CursosEstudiantes">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="CursosEstudiantes" EntitySet="CursosEstudiantes" />
-          </AssociationSet>
           <AssociationSet Name="FK_CursosEstudiantes_Estudiantes" Association="Self.FK_CursosEstudiantes_Estudiantes">
             <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="CursosEstudiantes" EntitySet="CursosEstudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosEstudiantes_Usuarios" Association="Self.FK_CursosEstudiantes_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="CursosEstudiantes" EntitySet="CursosEstudiantes" />
           </AssociationSet>
           <AssociationSet Name="FK_CursosHorarios_Cursos" Association="Self.FK_CursosHorarios_Cursos">
@@ -912,6 +913,7 @@ warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns
           <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Accesibilidad" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Cursos" Relationship="CursosModel.FK_Cursos_Cursos" FromRole="Aula" ToRole="Curso" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cursos_Cursos">
           <End Type="CursosModel.Aula" Role="Aula" Multiplicity="1" />
@@ -1176,6 +1178,7 @@ warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns
           <EntitySetMapping Name="Aulas">
             <EntityTypeMapping TypeName="CursosModel.Aula">
               <MappingFragment StoreEntitySet="Aulas">
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
                 <ScalarProperty Name="Accesibilidad" ColumnName="Accesibilidad" />
                 <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
                 <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />

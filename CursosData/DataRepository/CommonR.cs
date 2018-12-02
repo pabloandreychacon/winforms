@@ -42,10 +42,25 @@ namespace CursosData.DataRepository
             }
             return localList;
         }
-        #endregion
+		#endregion
 
-        #region bitacora
-        public void SaveBitacora(string descripcion, bool isError, int userId)
+		#region aulas
+		public List<CursosDtos.AulasListSearch> GetAulasSearchDtos(List<Aula> aulasList)
+        {
+            var localList = new List<CursosDtos.AulasListSearch>();
+            for (int i = 0; i < aulasList.Count; i++)
+            {
+                localList.Add(new CursosDtos.AulasListSearch
+                {
+                    Id = i + 1,                    
+                    Nombre = aulasList[i].Descripcion
+                });
+            }
+            return localList;
+        }
+		#endregion
+		#region bitacora
+		public void SaveBitacora(string descripcion, bool isError, int userId)
         {
             var NewBitacoraRecord = new Bitacora
             {

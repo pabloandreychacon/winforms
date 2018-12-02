@@ -12,21 +12,16 @@ namespace CursosEntities.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Aula
+    public partial class Provincia
     {
-        public Aula()
+        public Provincia()
         {
-            this.Cursos = new HashSet<Curso>();
+            this.Cantones = new HashSet<Cantone>();
         }
     
-        public int IdAula { get; set; }
-        public string Descripcion { get; set; }
-        public string Codigo { get; set; }
-        public int Capacidad { get; set; }
-        public string Ubicacion { get; set; }
-        public bool Accesibilidad { get; set; }
-        public bool Disponible { get; set; }
+        public int IdProvincia { get; set; }
+        public string Nombre { get; set; }
     
-        public virtual ICollection<Curso> Cursos { get; set; }
+        public virtual ICollection<Cantone> Cantones { get; set; }
     }
 }

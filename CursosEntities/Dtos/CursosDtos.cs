@@ -60,6 +60,11 @@ namespace CursosEntities.Dtos
             public int Id { get; set; }
             public string Nombre { get; set; }
         }
+		public class AulasListSearch
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
         public class CursosProfesorList
         {
             public int IdCurso { get; set; }

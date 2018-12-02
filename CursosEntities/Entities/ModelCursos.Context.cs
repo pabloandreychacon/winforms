@@ -41,6 +41,9 @@ namespace CursosEntities.Entities
         public virtual DbSet<Curso> Cursos { get; set; }
         public virtual DbSet<TipoId> TipoIds { get; set; }
         public virtual DbSet<Aula> Aulas { get; set; }
+        public virtual DbSet<Cantone> Cantones { get; set; }
+        public virtual DbSet<Distrito> Distritos { get; set; }
+        public virtual DbSet<Provincia> Provincias { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
