@@ -43,5 +43,37 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             }
 
         }
+
+		private void tipoIdBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+		{
+			try
+            {
+                if (!ValidateFields()) return;
+                tipoIdBindingSource.EndEdit();
+                var selectedTipoId = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
+                if (selectedTipoId != null) commB.UpdateEntity<TipoId>(selectedTipoId);
+                tipoIdBindingSource.ResetBindings(true);
+            }
+            catch (Exception ex)
+            {
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+		}
+
+		private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+		{
+			try
+            {
+                if (!ValidateFields()) return;
+                tipoIdBindingSource.EndEdit();
+                var selectedTipoId = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
+                commB.DeleteEntity<TipoId>(selectedTipoId);
+                tipoIdBindingSource.ResetBindings(true);
+            }
+            catch (Exception ex)
+            {
+                CursosBusiness.BusinessHelpers.General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+		}
 	}
 }

@@ -44,6 +44,9 @@
 			System.Windows.Forms.Label edadLabel1;
 			System.Windows.Forms.Label tipoIdLabel;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantEstudiantesForm));
+			System.Windows.Forms.Label label1;
+			System.Windows.Forms.Label label2;
+			System.Windows.Forms.Label label3;
 			this.estudianteBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
 			this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
 			this.estudianteBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -75,6 +78,9 @@
 			this.tipoIdBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tipoIdComboBasic = new BaseControls.Derived.ComboBasic();
 			this.identificacionMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+			this.comboBasic1 = new BaseControls.Derived.ComboBasic();
+			this.comboBasic2 = new BaseControls.Derived.ComboBasic();
+			this.comboBasic3 = new BaseControls.Derived.ComboBasic();
 			correoLabel = new System.Windows.Forms.Label();
 			fechaIngresoLabel = new System.Windows.Forms.Label();
 			identificacionLabel = new System.Windows.Forms.Label();
@@ -89,6 +95,9 @@
 			celularLabel2 = new System.Windows.Forms.Label();
 			edadLabel1 = new System.Windows.Forms.Label();
 			tipoIdLabel = new System.Windows.Forms.Label();
+			label1 = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
+			label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.estudianteBindingNavigator)).BeginInit();
 			this.estudianteBindingNavigator.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.estudianteBindingSource)).BeginInit();
@@ -110,6 +119,10 @@
 			// errorContainer1
 			// 
 			this.errorContainer1.Location = new System.Drawing.Point(0, 196);
+			// 
+			// lblInfoMessage
+			// 
+			this.lblInfoMessage.Location = new System.Drawing.Point(48, 589);
 			// 
 			// correoLabel
 			// 
@@ -186,7 +199,7 @@
 			// direccionLabel
 			// 
 			direccionLabel.AutoSize = true;
-			direccionLabel.Location = new System.Drawing.Point(44, 440);
+			direccionLabel.Location = new System.Drawing.Point(44, 450);
 			direccionLabel.Name = "direccionLabel";
 			direccionLabel.Size = new System.Drawing.Size(95, 24);
 			direccionLabel.TabIndex = 13;
@@ -281,6 +294,7 @@
 			// estudianteBindingSource
 			// 
 			this.estudianteBindingSource.DataSource = typeof(CursosEntities.Entities.Estudiante);
+			this.estudianteBindingSource.BindingComplete += new System.Windows.Forms.BindingCompleteEventHandler(this.estudianteBindingSource_BindingComplete);
 			// 
 			// bindingNavigatorCountItem
 			// 
@@ -422,7 +436,7 @@
 			// direccionTextBox
 			// 
 			this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Direccion", true));
-			this.direccionTextBox.Location = new System.Drawing.Point(215, 450);
+			this.direccionTextBox.Location = new System.Drawing.Point(215, 514);
 			this.direccionTextBox.Multiline = true;
 			this.direccionTextBox.Name = "direccionTextBox";
 			this.direccionTextBox.Size = new System.Drawing.Size(504, 71);
@@ -472,9 +486,9 @@
 			// 
 			this.celularMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Celular", true));
 			this.celularMaskedTextBox.Location = new System.Drawing.Point(215, 343);
-			this.celularMaskedTextBox.Mask = "00000000";
+			this.celularMaskedTextBox.Mask = "0000-0000";
 			this.celularMaskedTextBox.Name = "celularMaskedTextBox";
-			this.celularMaskedTextBox.Size = new System.Drawing.Size(100, 28);
+			this.celularMaskedTextBox.Size = new System.Drawing.Size(183, 28);
 			this.celularMaskedTextBox.TabIndex = 10;
 			// 
 			// edadNumericUpDown
@@ -489,9 +503,9 @@
 			// 
 			this.telefonoMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Telefono", true));
 			this.telefonoMaskedTextBox.Location = new System.Drawing.Point(215, 311);
-			this.telefonoMaskedTextBox.Mask = "00000000";
+			this.telefonoMaskedTextBox.Mask = "0000-0000";
 			this.telefonoMaskedTextBox.Name = "telefonoMaskedTextBox";
-			this.telefonoMaskedTextBox.Size = new System.Drawing.Size(100, 28);
+			this.telefonoMaskedTextBox.Size = new System.Drawing.Size(183, 28);
 			this.telefonoMaskedTextBox.TabIndex = 9;
 			// 
 			// tipoIdBindingSource
@@ -517,15 +531,89 @@
 			// 
 			this.identificacionMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Identificacion", true));
 			this.identificacionMaskedTextBox.Location = new System.Drawing.Point(525, 244);
-			this.identificacionMaskedTextBox.Mask = "0000000000";
 			this.identificacionMaskedTextBox.Name = "identificacionMaskedTextBox";
 			this.identificacionMaskedTextBox.Size = new System.Drawing.Size(255, 28);
 			this.identificacionMaskedTextBox.TabIndex = 7;
 			// 
+			// comboBasic1
+			// 
+			this.comboBasic1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "TipoId", true));
+			this.comboBasic1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.estudianteBindingSource, "IdTipoId", true));
+			this.comboBasic1.DataSource = this.tipoIdBindingSource;
+			this.comboBasic1.DisplayMember = "Descripcion";
+			this.comboBasic1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBasic1.FormattingEnabled = true;
+			this.comboBasic1.Location = new System.Drawing.Point(215, 475);
+			this.comboBasic1.Name = "comboBasic1";
+			this.comboBasic1.Size = new System.Drawing.Size(121, 30);
+			this.comboBasic1.TabIndex = 41;
+			this.comboBasic1.ValueMember = "IdTipoId";
+			// 
+			// comboBasic2
+			// 
+			this.comboBasic2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "TipoId", true));
+			this.comboBasic2.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.estudianteBindingSource, "IdTipoId", true));
+			this.comboBasic2.DataSource = this.tipoIdBindingSource;
+			this.comboBasic2.DisplayMember = "Descripcion";
+			this.comboBasic2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBasic2.FormattingEnabled = true;
+			this.comboBasic2.Location = new System.Drawing.Point(469, 475);
+			this.comboBasic2.Name = "comboBasic2";
+			this.comboBasic2.Size = new System.Drawing.Size(121, 30);
+			this.comboBasic2.TabIndex = 42;
+			this.comboBasic2.ValueMember = "IdTipoId";
+			// 
+			// comboBasic3
+			// 
+			this.comboBasic3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "TipoId", true));
+			this.comboBasic3.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.estudianteBindingSource, "IdTipoId", true));
+			this.comboBasic3.DataSource = this.tipoIdBindingSource;
+			this.comboBasic3.DisplayMember = "Descripcion";
+			this.comboBasic3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBasic3.FormattingEnabled = true;
+			this.comboBasic3.Location = new System.Drawing.Point(342, 475);
+			this.comboBasic3.Name = "comboBasic3";
+			this.comboBasic3.Size = new System.Drawing.Size(121, 30);
+			this.comboBasic3.TabIndex = 43;
+			this.comboBasic3.ValueMember = "IdTipoId";
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new System.Drawing.Point(211, 448);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(92, 24);
+			label1.TabIndex = 44;
+			label1.Text = "Provincia:";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Location = new System.Drawing.Point(338, 448);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(75, 24);
+			label2.TabIndex = 45;
+			label2.Text = "Cantón:";
+			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.Location = new System.Drawing.Point(465, 448);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(70, 24);
+			label3.TabIndex = 46;
+			label3.Text = "Distrito:";
+			// 
 			// MantEstudiantesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
-			this.ClientSize = new System.Drawing.Size(1154, 541);
+			this.ClientSize = new System.Drawing.Size(1154, 641);
+			this.Controls.Add(label3);
+			this.Controls.Add(label2);
+			this.Controls.Add(label1);
+			this.Controls.Add(this.comboBasic3);
+			this.Controls.Add(this.comboBasic2);
+			this.Controls.Add(this.comboBasic1);
 			this.Controls.Add(this.identificacionMaskedTextBox);
 			this.Controls.Add(tipoIdLabel);
 			this.Controls.Add(this.tipoIdComboBasic);
@@ -561,6 +649,7 @@
 			this.OrderKeys = "Nombre, Identific";
 			this.Text = "Estudiantes";
 			this.Load += new System.EventHandler(this.EstudiantesForm_Load);
+			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			this.Controls.SetChildIndex(this.estudianteBindingNavigator, 0);
 			this.Controls.SetChildIndex(telefonoLabel, 0);
 			this.Controls.SetChildIndex(this.nombreTextBox, 0);
@@ -595,6 +684,12 @@
 			this.Controls.SetChildIndex(this.tipoIdComboBasic, 0);
 			this.Controls.SetChildIndex(tipoIdLabel, 0);
 			this.Controls.SetChildIndex(this.identificacionMaskedTextBox, 0);
+			this.Controls.SetChildIndex(this.comboBasic1, 0);
+			this.Controls.SetChildIndex(this.comboBasic2, 0);
+			this.Controls.SetChildIndex(this.comboBasic3, 0);
+			this.Controls.SetChildIndex(label1, 0);
+			this.Controls.SetChildIndex(label2, 0);
+			this.Controls.SetChildIndex(label3, 0);
 			((System.ComponentModel.ISupportInitialize)(this.estudianteBindingNavigator)).EndInit();
 			this.estudianteBindingNavigator.ResumeLayout(false);
 			this.estudianteBindingNavigator.PerformLayout();
@@ -639,5 +734,8 @@
 		private System.Windows.Forms.BindingSource tipoIdBindingSource;
 		private BaseControls.Derived.ComboBasic tipoIdComboBasic;
 		private System.Windows.Forms.MaskedTextBox identificacionMaskedTextBox;
+		private BaseControls.Derived.ComboBasic comboBasic1;
+		private BaseControls.Derived.ComboBasic comboBasic2;
+		private BaseControls.Derived.ComboBasic comboBasic3;
 	}
 }

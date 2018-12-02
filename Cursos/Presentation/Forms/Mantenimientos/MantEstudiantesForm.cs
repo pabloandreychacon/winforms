@@ -19,17 +19,24 @@ namespace Cursos.Presentation.Forms.Mantenimientos
         private void EstudiantesForm_Load(object sender, EventArgs e)
         {
             CargarBusqueda();
+			CargarCombos();
         }
 
-        public override bool ValidateFields()
+		private void CargarCombos()
+		{
+			var idsListBind = commB.GetBindList<TipoId>();//.ToList();
+			tipoIdBindingSource.DataSource = idsListBind;
+		}
+
+		public override bool ValidateFields()
         {
             return (Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar un nombre válida.")
 				&& Validator(apellidoTextBox, ValidationTypes.Text, "Debe digitar un apellido válido.")
 				&& Validator(correoTextBox, ValidationTypes.Email, "Debe digitar un correo válido.")
-				&& Validator(telefonoMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar un teléfono válido.")
-				&& Validator(celularMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar un celular válido.")
+				//&& Validator(telefonoMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar un teléfono válido.")
+				//&& Validator(celularMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar un celular válido.")
 				&& Validator(edadNumericUpDown, ValidationTypes.PositiveNumeric, "Debe digitar una edad válida.")
-				&& Validator(identificacionMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar una identificación válida.")
+				//&& Validator(identificacionMaskedTextBox, ValidationTypes.PositiveNumeric, "Debe digitar una identificación válida.")
 				);
         }
 
@@ -83,11 +90,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 {
                     btnFind.Enabled = false;
                 }
-
-				var idsListBind = commB.GetBindList<TipoId>();//.ToList();
-
-				tipoIdBindingSource.DataSource = idsListBind;
-             
+				var currTipo = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
+				if (currTipo != null) identificacionMaskedTextBox.Mask = currTipo.Mask;
             }
             catch (Exception ex)
             {
@@ -157,8 +161,18 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 
 		private void tipoIdComboBasic_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			setIdMask();			
+		}
+
+		private void setIdMask()
+		{
 			var currTipo = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
 			if (currTipo != null) identificacionMaskedTextBox.Mask = currTipo.Mask;
+		}
+
+		private void estudianteBindingSource_BindingComplete(object sender, BindingCompleteEventArgs e)
+		{
+			setIdMask();
 		}
 	}
 }
