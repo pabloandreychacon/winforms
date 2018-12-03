@@ -35,6 +35,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 var selectedHorario = commB.SetEntity<Horario>(horarioBindingSource.Current);
                 if (selectedHorario != null) commB.UpdateEntity<Horario>(selectedHorario);
                 horarioBindingSource.ResetBindings(true); 
+				btnFind.Enabled = true;
+				commB.SaveBitacora(this.Name + " Guardado horario: "+  selectedHorario.IdHorario, false, Tools.UserCredentials.UserId);
+				lblInfoMessage.Text = "Horario guardado satisfactoriamente";
             }
             catch (Exception ex)
             {

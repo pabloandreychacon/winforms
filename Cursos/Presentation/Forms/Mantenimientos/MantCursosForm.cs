@@ -75,6 +75,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 var selectedCurso = commB.SetEntity<Curso>(cursoBindingSource.Current);
                 if (selectedCurso != null) commB.UpdateEntity<Curso>(selectedCurso);
                 cursoBindingSource.ResetBindings(true);
+				btnFind.Enabled = true;
+				commB.SaveBitacora(this.Name + " Guardado curso: "+  selectedCurso.IdCurso, false, Tools.UserCredentials.UserId);
+				lblInfoMessage.Text = "Curso guardado satisfactoriamente";
             }
             catch (Exception ex)
             {

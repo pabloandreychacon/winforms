@@ -1,4 +1,5 @@
 ﻿using BaseForms.Forms;
+using BaseHelpers.Helpers;
 using CursosBusiness.Business;
 using CursosEntities.Entities;
 using System;
@@ -58,6 +59,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 var selectedParameter = commB.SetEntity<Parametro>(parametrosGeneralBindingSource.Current);
                 if (selectedParameter != null) commB.UpdateEntity<Parametro>(selectedParameter);
                 parametrosGeneralBindingSource.ResetBindings(true); 
+				//btnFind.Enabled = true;
+				commB.SaveBitacora(this.Name + " Guardado parametro: "+  selectedParameter.IdParametro, false, Tools.UserCredentials.UserId);
+				lblInfoMessage.Text = "Parametro guardado satisfactoriamente";
             }
             catch (Exception ex)
             {

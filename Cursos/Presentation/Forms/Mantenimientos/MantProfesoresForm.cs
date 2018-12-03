@@ -32,9 +32,11 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             {
                 if (!ValidateFields()) return;
                 profesoreBindingSource.EndEdit();
-                var selectedCurso = commB.SetEntity<Profesore>(profesoreBindingSource.Current);
-                if (selectedCurso != null) commB.UpdateEntity<Profesore>(selectedCurso);
+                var selectedProfesor = commB.SetEntity<Profesore>(profesoreBindingSource.Current);
+                if (selectedProfesor != null) commB.UpdateEntity<Profesore>(selectedProfesor);
                 profesoreBindingSource.ResetBindings(true);
+				commB.SaveBitacora(this.Name + " Guardado profesor: "+  selectedProfesor.IdProfesor, false, Tools.UserCredentials.UserId);
+				lblInfoMessage.Text = "Profesor guardado satisfactoriamente";
             }
             catch (Exception ex)
             {

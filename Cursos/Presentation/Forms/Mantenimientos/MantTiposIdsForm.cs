@@ -1,4 +1,5 @@
 ﻿using BaseForms.Forms;
+using BaseHelpers.Helpers;
 using CursosBusiness.Business;
 using CursosEntities.Entities;
 using System;
@@ -53,6 +54,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 var selectedTipoId = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
                 if (selectedTipoId != null) commB.UpdateEntity<TipoId>(selectedTipoId);
                 tipoIdBindingSource.ResetBindings(true);
+				commB.SaveBitacora(this.Name + " Guardado tipo Id: "+  selectedTipoId.IdTipoId, false, Tools.UserCredentials.UserId);
+				lblInfoMessage.Text = "Tipo Id guardado satisfactoriamente";
             }
             catch (Exception ex)
             {

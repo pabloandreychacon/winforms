@@ -57,10 +57,10 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 				if (!ValidateFields()) return;
 				aulaBindingSource.EndEdit();
 				var selectedAula = commB.SetEntity<Aula>(aulaBindingSource.Current);
-				if (selectedAula != null) commB.UpdateEntity<Aula>(selectedAula);
-				//commB.SaveBitacora(" guardado: "+ selectedAula.IdUsuario, false, Tools.UserCredentials.UserId);
+				if (selectedAula != null) commB.UpdateEntity<Aula>(selectedAula);				
 				aulaBindingSource.ResetBindings(true);
 				btnFind.Enabled = true;
+				commB.SaveBitacora(this.Name + " Guardada aula: "+ selectedAula.IdAula, false, Tools.UserCredentials.UserId);
 				lblInfoMessage.Text = "Aula guardada satisfactoriamente";
 			}
 			catch (Exception ex)

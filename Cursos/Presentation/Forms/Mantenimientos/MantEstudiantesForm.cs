@@ -55,9 +55,12 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             {
                 if (!ValidateFields()) return;
                 estudianteBindingSource.EndEdit();
-                var selectedCurso = commB.SetEntity<Estudiante>(estudianteBindingSource.Current);
-                if (selectedCurso != null) commB.UpdateEntity<Estudiante>(selectedCurso);
+                var selectedEstudiante = commB.SetEntity<Estudiante>(estudianteBindingSource.Current);
+                if (selectedEstudiante != null) commB.UpdateEntity<Estudiante>(selectedEstudiante);
                 estudianteBindingSource.ResetBindings(true);
+				btnFind.Enabled = true;
+				commB.SaveBitacora(this.Name + " Guardado estudiante: "+ selectedEstudiante.IdEstudiante, false, Tools.UserCredentials.UserId);
+				lblInfoMessage.Text = "Estudiante guardado satisfactoriamente";
             }
             catch (Exception ex)
             {
