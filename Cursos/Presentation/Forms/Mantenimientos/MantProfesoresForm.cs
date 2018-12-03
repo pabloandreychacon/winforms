@@ -112,6 +112,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                     else
                     {
                         commB.DeleteEntity<Profesore>(selectedProfe);
+						commB.SaveBitacora(this.Name+"Profesor borrado: "+selectedProfe.IdProfesor, false, Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Profesor borrado satisfactoriamente";
                         //horarioBindingSource.RemoveCurrent();
                     }
                 }

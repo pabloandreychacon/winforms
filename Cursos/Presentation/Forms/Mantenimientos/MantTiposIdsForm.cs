@@ -72,6 +72,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 var selectedTipoId = commB.SetEntity<TipoId>(tipoIdBindingSource.Current);
                 commB.DeleteEntity<TipoId>(selectedTipoId);
                 tipoIdBindingSource.ResetBindings(true);
+				commB.SaveBitacora(this.Name+"Tipo Id borrado: "+selectedTipoId.IdTipoId, false, Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Tipo Id borrado satisfactoriamente";
             }
             catch (Exception ex)
             {

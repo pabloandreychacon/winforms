@@ -92,7 +92,7 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                         //else
                         //{
                             commB.DeleteEntity<Usuario>(selectedUsuario);
-							commB.SaveBitacora("Usuario borrado: "+selectedUsuario.IdUsuario, false, Tools.UserCredentials.UserId);
+							commB.SaveBitacora(this.Name+"Usuario borrado: "+selectedUsuario.IdUsuario, false, Tools.UserCredentials.UserId);
 						lblInfoMessage.Text = "Usuario borrado satisfactoriamente";
                         //}                        
                         //horarioBindingSource.RemoveCurrent();

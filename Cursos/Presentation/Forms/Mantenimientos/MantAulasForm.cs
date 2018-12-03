@@ -59,7 +59,6 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 				var selectedAula = commB.SetEntity<Aula>(aulaBindingSource.Current);
 				if (selectedAula != null) commB.UpdateEntity<Aula>(selectedAula);				
 				aulaBindingSource.ResetBindings(true);
-				btnFind.Enabled = true;
 				commB.SaveBitacora(this.Name + " Guardada aula: "+ selectedAula.IdAula, false, Tools.UserCredentials.UserId);
 				lblInfoMessage.Text = "Aula guardada satisfactoriamente";
 			}
@@ -109,9 +108,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 					}
 					else
 					{
-						commB.DeleteEntity<Aula>(selectedAula);
+						commB.DeleteEntity<Aula>(selectedAula);												
+						commB.SaveBitacora(this.Name+"Usuario borrado: "+selectedAula.IdAula, false, Tools.UserCredentials.UserId);
 						lblInfoMessage.Text = "Aula borrada satisfactoriamente";
-						btnFind.Enabled = true;
 					}
 				}
 				aulaBindingSource.ResetBindings(true);
@@ -130,7 +129,6 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 			selectedAula.Capacidad = 1;
 			capacidadNumericUpDown.Value = 1;
             descripcionTextBox.Focus();			
-			btnFind.Enabled = false;
 		}
 	}
 }

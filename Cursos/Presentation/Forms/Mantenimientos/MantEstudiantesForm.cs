@@ -58,7 +58,6 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                 var selectedEstudiante = commB.SetEntity<Estudiante>(estudianteBindingSource.Current);
                 if (selectedEstudiante != null) commB.UpdateEntity<Estudiante>(selectedEstudiante);
                 estudianteBindingSource.ResetBindings(true);
-				btnFind.Enabled = true;
 				commB.SaveBitacora(this.Name + " Guardado estudiante: "+ selectedEstudiante.IdEstudiante, false, Tools.UserCredentials.UserId);
 				lblInfoMessage.Text = "Estudiante guardado satisfactoriamente";
             }
@@ -139,6 +138,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
                     else
                     {
                         commB.DeleteEntity<Estudiante>(selectedEst);
+						commB.SaveBitacora(this.Name+"Estudiante borrado: "+selectedEst.IdEstudiante, false, Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Estudiante borrado satisfactoriamente";
                         //horarioBindingSource.RemoveCurrent();
                     }
                 }
