@@ -27,7 +27,7 @@ namespace CursosEntities.Entities
         public int IdCursosHorarios { get; set; }
     
         public virtual ICollection<Ausencia> Ausencias { get; set; }
-        public virtual Estudiante Estudiante { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual Estudiante Estudiante { get; set; }
     }
 }

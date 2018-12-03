@@ -17,11 +17,13 @@ namespace CursosEntities.Entities
         public Provincia()
         {
             this.Cantones = new HashSet<Cantone>();
+            this.Estudiantes = new HashSet<Estudiante>();
         }
     
         public int IdProvincia { get; set; }
         public string Nombre { get; set; }
     
         public virtual ICollection<Cantone> Cantones { get; set; }
+        public virtual ICollection<Estudiante> Estudiantes { get; set; }
     }
 }

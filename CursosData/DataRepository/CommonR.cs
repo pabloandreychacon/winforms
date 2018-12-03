@@ -193,10 +193,17 @@ namespace CursosData.DataRepository
         {
             return dbCtx.Cursos.FirstOrDefault(p => p.IdAula == idaul);
         }
-        #endregion
+		#endregion
 
-        #region estudiantes
-        public List<CursosDtos.EstudiantesListSearch> GetEstudiantesSearchDtos(List<Estudiante> cursosList)
+		#region provincias, cantones, distritos
+		public IEnumerable<Cantone> FindCantonByIdProvincia(int idprov)
+        {
+            return dbCtx.Cantones.Where(p => p.IdProvincia == idprov).ToList();
+        }
+		#endregion
+
+		#region estudiantes
+		public List<CursosDtos.EstudiantesListSearch> GetEstudiantesSearchDtos(List<Estudiante> cursosList)
         {
             var localList = new List<CursosDtos.EstudiantesListSearch>();
             for (int i = 0; i < cursosList.Count; i++)

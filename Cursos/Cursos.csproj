@@ -413,16 +413,19 @@
     <None Include="Properties\DataSources\CursosEntities.Entities.Aula.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Ausencia.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Bitacora.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.Cantone.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Curso.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.CursosEntity.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.CursosEstudiante.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.CursosHorario.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.CursosProfesor.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.Distrito.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Estudiante.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Horario.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Parametro.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.ParametrosGeneral.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Profesore.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Entities.Provincia.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Role.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.sp_helpdiagramdefinition_Result.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.sp_helpdiagrams_Result.datasource" />
@@ -470,7 +473,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="basicRestoreAndConfigProjectCursos.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -213,10 +213,17 @@ namespace CursosBusiness.Business
         {
             return commonR.FindCursoByIdAula(idaul);
         }
-        #endregion
+		#endregion
 
-        #region estudiantes
-        public List<CursosDtos.EstudiantesListSearch> GetEstudiantesSearchDtos(List<Estudiante> estudList)
+		#region provincias, cantones, distritos
+		public IEnumerable<Cantone> FindCantonByIdProvincia(int idprov)
+        {
+            return commonR.FindCantonByIdProvincia(idprov);
+        }
+		#endregion
+
+		#region estudiantes
+		public List<CursosDtos.EstudiantesListSearch> GetEstudiantesSearchDtos(List<Estudiante> estudList)
         {
             return commonR.GetEstudiantesSearchDtos(estudList);
         }

@@ -14,10 +14,16 @@ namespace CursosEntities.Entities
     
     public partial class Distrito
     {
+        public Distrito()
+        {
+            this.Estudiantes = new HashSet<Estudiante>();
+        }
+    
         public int IdDistrito { get; set; }
         public string Nombre { get; set; }
         public int IdCanton { get; set; }
     
         public virtual Cantone Cantone { get; set; }
+        public virtual ICollection<Estudiante> Estudiantes { get; set; }
     }
 }

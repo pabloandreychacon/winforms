@@ -26,6 +26,15 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 		{
 			var idsListBind = commB.GetBindList<TipoId>();//.ToList();
 			tipoIdBindingSource.DataSource = idsListBind;
+
+			var provinciasListBind = commB.GetBindList<Provincia>();//.ToList();
+			provinciasBindingSource.DataSource = provinciasListBind;
+
+			var cantonesListBind = commB.GetBindList<Cantone>();//.ToList();
+			cantonesBindingSource.DataSource = cantonesListBind;
+
+			var distritosListBind = commB.GetBindList<Distrito>();//.ToList();
+			distritosBindingSource.DataSource = distritosListBind;
 		}
 
 		public override bool ValidateFields()
@@ -173,6 +182,20 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 		private void estudianteBindingSource_BindingComplete(object sender, BindingCompleteEventArgs e)
 		{
 			setIdMask();
+		}
+
+		private void provinciaComboBasic_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			lblInfoMessage.Text = "Set canton";
+			var selectedCantones = commB.FindCantonByIdProvincia(Convert.ToInt32(provinciaComboBasic.SelectedValue));
+			cantonesBindingSource.DataSource = selectedCantones;
+		}
+
+		private void cantonComboBasic_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			lblInfoMessage.Text = "Set distrito";
+			//commB.FindDistritoByIdCanton(provinciaComboBasic.Text);
+			//commB.FindCantonByIdProvincia(cantonComboBasic.Text);
 		}
 	}
 }
