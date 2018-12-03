@@ -95,6 +95,10 @@
 			this.btnFind.TabIndex = 12;
 			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
 			// 
+			// lblInfoMessage
+			// 
+			this.lblInfoMessage.Location = new System.Drawing.Point(48, 512);
+			// 
 			// activoLabel
 			// 
 			activoLabel.AutoSize = true;
@@ -474,6 +478,7 @@
 			this.OrderKeys = "Nombre, Identific";
 			this.Text = "Profesores";
 			this.Load += new System.EventHandler(this.ProfesoresForm_Load);
+			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			this.Controls.SetChildIndex(this.closeButton1, 0);
 			this.Controls.SetChildIndex(this.btnFind, 0);
 			this.Controls.SetChildIndex(this.errorContainer1, 0);

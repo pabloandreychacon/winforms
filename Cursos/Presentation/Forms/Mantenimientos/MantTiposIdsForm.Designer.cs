@@ -66,6 +66,10 @@
 			// 
 			this.btnFind.Location = new System.Drawing.Point(384, 47);
 			// 
+			// lblInfoMessage
+			// 
+			this.lblInfoMessage.Location = new System.Drawing.Point(45, 166);
+			// 
 			// descripcionLabel
 			// 
 			descripcionLabel.AutoSize = true;
@@ -252,7 +256,7 @@
 			// MantTiposIdsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
-			this.ClientSize = new System.Drawing.Size(511, 183);
+			this.ClientSize = new System.Drawing.Size(511, 222);
 			this.Controls.Add(descripcionLabel);
 			this.Controls.Add(this.descripcionTextBox);
 			this.Controls.Add(idTipoIdLabel);

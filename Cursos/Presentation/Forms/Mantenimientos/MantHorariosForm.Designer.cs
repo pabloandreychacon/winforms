@@ -66,6 +66,10 @@
 			this.btnFind.Location = new System.Drawing.Point(503, 47);
 			this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
 			// 
+			// lblInfoMessage
+			// 
+			this.lblInfoMessage.Location = new System.Drawing.Point(68, 185);
+			// 
 			// descripcionLabel
 			// 
 			descripcionLabel.AutoSize = true;
@@ -235,7 +239,7 @@
 			// creaCursoBtn
 			// 
 			this.creaCursoBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.creaCursoBtn.Location = new System.Drawing.Point(68, 208);
+			this.creaCursoBtn.Location = new System.Drawing.Point(68, 285);
 			this.creaCursoBtn.Name = "creaCursoBtn";
 			this.creaCursoBtn.Size = new System.Drawing.Size(203, 40);
 			this.creaCursoBtn.TabIndex = 16;
@@ -247,7 +251,7 @@
 			// asignaCursoBtn
 			// 
 			this.asignaCursoBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.asignaCursoBtn.Location = new System.Drawing.Point(68, 169);
+			this.asignaCursoBtn.Location = new System.Drawing.Point(68, 239);
 			this.asignaCursoBtn.Name = "asignaCursoBtn";
 			this.asignaCursoBtn.Size = new System.Drawing.Size(203, 40);
 			this.asignaCursoBtn.TabIndex = 15;
@@ -260,7 +264,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(630, 256);
+			this.ClientSize = new System.Drawing.Size(630, 356);
 			this.Controls.Add(this.creaCursoBtn);
 			this.Controls.Add(this.asignaCursoBtn);
 			this.Controls.Add(descripcionLabel);
@@ -271,6 +275,7 @@
 			this.Name = "MantHorariosForm";
 			this.Text = "Horarios";
 			this.Load += new System.EventHandler(this.HorariosForm_Load);
+			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			this.Controls.SetChildIndex(this.closeButton1, 0);
 			this.Controls.SetChildIndex(this.btnFind, 0);
 			this.Controls.SetChildIndex(this.errorContainer1, 0);
