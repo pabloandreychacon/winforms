@@ -171,6 +171,8 @@ namespace Cursos.Presentation.Forms.Procesos
                         commB.SaveCursoProfesor(Convert.ToInt32(txtIdCursoHorario.Text),
                             Convert.ToInt32(txtIdProfesor.Text), chkActivo.Checked, dtFechaInicio.Value,
                             dtFechaFinal.Value, Convert.ToInt32(txtAusencias.Text));
+						commB.SaveBitacora(this.Name + " Curso asignado: "+ txtIdCursoHorario.Text+" Profesor: "+txtIdProfesor.Text, false, Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Curso asignado satisfactoriamente";
                     }
                     catch (Exception ex)
                     {
@@ -198,6 +200,8 @@ namespace Cursos.Presentation.Forms.Procesos
                     var curCodeProfesor = gvCursosAsignados.CurrentRow.Cells["IdProfesor"].Value;
                     var cp = commB.FindCursoProfesorByIdCursoProfesor(Convert.ToInt32(curCodeCursoHorario), Convert.ToInt32(curCodeProfesor));
                     if (cp != null) commB.DeleteEntity<CursosProfesor>(cp);
+					commB.SaveBitacora(this.Name + " Curso eliminado: "+ curCodeCursoHorario.ToString()+" Profesor: "+txtIdProfesor.Text, false, Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Curso eliminado satisfactoriamente";
                     CargarCursos();
                     this.btnBuscaCurso.Focus(); // hace que se valide el position text                    
                 }

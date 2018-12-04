@@ -120,6 +120,7 @@ namespace Cursos.Presentation.Forms.Procesos
                         {
                             var au = commB.FindAusenciaCursoByIdAusencia(item.IdAusencia);
                             commB.DeleteEntity<Ausencia>(au);
+							commB.SaveBitacora(this.Name + " Ausencia eliminada: "+au.IdAusencia, false,		Tools.UserCredentials.UserId);						
                         }
                         catch (Exception ex)
                         {
@@ -129,8 +130,9 @@ namespace Cursos.Presentation.Forms.Procesos
                 }
                 //ClearData();
                 CargarAusentes();
-                MessageBox.Show("Proceso terminado", "Ausencias",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+				lblInfoMessage.Text = "Proceso terminado";	
+                //MessageBox.Show("Proceso terminado", "Ausencias",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {

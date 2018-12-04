@@ -174,6 +174,7 @@ namespace Cursos.Presentation.Forms.Procesos
                             //var curHor = commB.GetCursosHorariosByIdCurso(Convert.ToInt32(txtIdCursoDestino.Text));
                             commB.SaveCursoEstudiante(Convert.ToInt32(txtIdCursoDestino.Text.Trim()),
                                 item.IdEstudiante, Convert.ToInt32(txtCursoHorarrioDestino.Text.Trim()));
+							commB.SaveBitacora(this.Name + " Estudiante trasnferido: "+item.IdEstudiante, false,		Tools.UserCredentials.UserId);							
                         }
                         catch (Exception ex)
                         {
@@ -183,6 +184,7 @@ namespace Cursos.Presentation.Forms.Procesos
                 }
                 CargarCursos(true, txtIdCursoHorarioOrigen.Text);
                 CargarCursos(false, txtCursoHorarrioDestino.Text);
+				lblInfoMessage.Text = "Proceso terminado";	
             }
             else
             {

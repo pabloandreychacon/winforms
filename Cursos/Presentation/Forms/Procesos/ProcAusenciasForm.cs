@@ -129,6 +129,7 @@ namespace Cursos.Presentation.Forms.Procesos
                             try
                             {
                                 commB.SaveAusencia(item.Id, true, dtFecha.Value.Date);
+								commB.SaveBitacora(this.Name + " Ausencia guardada: "+item.Id, false, Tools.UserCredentials.UserId);							
                             }
                             catch (Exception ex)
                             {
@@ -138,8 +139,9 @@ namespace Cursos.Presentation.Forms.Procesos
                     }
                 }
                 CargarEstudiantes();
-                MessageBox.Show("Proceso terminado", "Ausencias",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+				lblInfoMessage.Text = "Proceso terminado";
+                //MessageBox.Show("Proceso terminado", "Ausencias",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {

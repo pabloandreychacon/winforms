@@ -141,6 +141,8 @@ namespace Cursos.Presentation.Forms.Procesos
                         //var curHor = commB.GetCursosHorariosByIdCurso(Convert.ToInt32(txtIdCurso.Text));
                         commB.SaveCursoEstudiante(Convert.ToInt32(txtIdCurso.Text), Convert.ToInt32(txtIdEstudiante.Text),
                             Convert.ToInt32(txtIdCursoHorario.Text));
+						commB.SaveBitacora(this.Name + " Estudiante asignado: "+txtEstudiante.Text, false,		Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Proceso terminado";	
                     }
                     catch (Exception ex)
                     {
@@ -161,6 +163,8 @@ namespace Cursos.Presentation.Forms.Procesos
                     var ce = commB.FindCursoEstudianteByIdCursoAndIdEstudiante(Convert.ToInt32(txtIdCursoHorario.Text), 
                         Convert.ToInt32(curCode));
                     if (ce != null) commB.DeleteEntity<CursosEstudiante>(ce);
+					commB.SaveBitacora(this.Name + " Estudiante eliminado: "+curCode.ToString(), false,		Tools.UserCredentials.UserId);
+					lblInfoMessage.Text = "Estudiante eliminado";	
                     CargarEstudiantes();
                     this.btnBuscarEstudiante.Focus(); // hace que se valide el position text                    
                 }

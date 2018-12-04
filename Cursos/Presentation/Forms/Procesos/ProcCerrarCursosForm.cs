@@ -104,6 +104,7 @@ namespace Cursos.Presentation.Forms.Procesos
                                     Convert.ToInt32(txtIdProfesor.Text));
                                 curp.Activo = false;
                                 commB.UpdateEntity<CursosProfesor>(curp);
+								commB.SaveBitacora(this.Name + " Curso cerrado: "+item.Id, false,		Tools.UserCredentials.UserId);
                             }
                             catch (Exception ex)
                             {
@@ -112,8 +113,9 @@ namespace Cursos.Presentation.Forms.Procesos
                         }                    
                 }
                 CargarCursos();
-                MessageBox.Show("Proceso terminado", "Cerrar Cursos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+				lblInfoMessage.Text = "Proceso terminado";				
+                //MessageBox.Show("Proceso terminado", "Cerrar Cursos",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             else
             {

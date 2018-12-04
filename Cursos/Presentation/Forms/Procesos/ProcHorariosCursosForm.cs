@@ -128,7 +128,8 @@ namespace Cursos.Presentation.Forms.Procesos
                     try
                     {
                         commB.SaveCursoHorario(Convert.ToInt32(txtIdCurso.Text), Convert.ToInt32(txtIdHorario.Text));
-						commB.SaveBitacora("Horarrio "+txtHorario.Text+" asignado al curso "+ txtIdCurso.Text, false, Tools.UserCredentials.UserId);
+						commB.SaveBitacora(this.Name + " Curso asignado: "+txtIdCurso.Text, false,		Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Curso asignado";	
                     }
                     catch (Exception ex)
                     {
@@ -148,8 +149,9 @@ namespace Cursos.Presentation.Forms.Procesos
                     var curCode = gvHorariosAsignados.CurrentRow.Cells["Id"].Value;
                     var ch = commB.FindCursohorarioByIdCursoAndIdhorario(Convert.ToInt32(txtIdCurso.Text),
                         Convert.ToInt32(curCode));
-                    if (ch != null) commB.DeleteEntity<CursosHorario>(ch);
-					commB.SaveBitacora("Horarrio "+txtHorario.Text+" borrado del curso "+ txtIdCurso.Text, false, Tools.UserCredentials.UserId);
+                    if (ch != null) commB.DeleteEntity<CursosHorario>(ch);					
+					commB.SaveBitacora(this.Name + " Curso borrado: "+txtIdCurso.Text, false,		Tools.UserCredentials.UserId);
+						lblInfoMessage.Text = "Curso borrado";	
                     CargarHorarios(); 
                     this.btnBuscaCurso.Focus(); // hace que se valide el position text                    
                 }
