@@ -200,6 +200,10 @@ namespace CursosData.DataRepository
         {
             return dbCtx.Cantones.Where(p => p.IdProvincia == idprov).ToList();
         }
+		public IEnumerable<Distrito> FindDistritoByIdCanton(int idcant)
+        {
+            return dbCtx.Distritos.Where(p => p.IdCanton == idcant).ToList();
+        }
 		#endregion
 
 		#region estudiantes

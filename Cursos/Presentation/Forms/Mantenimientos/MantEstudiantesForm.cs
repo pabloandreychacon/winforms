@@ -18,6 +18,23 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 
         private void EstudiantesForm_Load(object sender, EventArgs e)
         {
+			foreach (Control c in this.Controls)
+			{
+				if (c is BindingNavigator)
+				{
+					this.bindingNavigatorAddNewItem.Text = "Nuevo";
+					this.bindingNavigatorCountItem.Text = "de {0}";
+					this.bindingNavigatorCountItem.ToolTipText = "Total de items";
+					this.bindingNavigatorMoveFirstItem.Text = "Primero";
+					this.bindingNavigatorMovePreviousItem.Text = "Anterior";
+					this.bindingNavigatorPositionItem.ToolTipText = "Actual";
+					this.bindingNavigatorMoveNextItem.Text = "Siguiente";
+					this.bindingNavigatorMoveLastItem.Text = "Ultimo";
+					this.bindingNavigatorDeleteItem.Text = "Borrar";
+					this.estudianteBindingNavigatorSaveItem.Text = "Guardar";
+					break;
+				}
+			}
             CargarBusqueda();
 			CargarCombos();
         }
@@ -190,14 +207,16 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 
 		private void provinciaComboBasic_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			lblInfoMessage.Text = "Set canton";
+			//lblInfoMessage.Text = "Set canton";
 			var selectedCantones = commB.FindCantonByIdProvincia(Convert.ToInt32(provinciaComboBasic.SelectedValue));
 			cantonesBindingSource.DataSource = selectedCantones;
 		}
 
 		private void cantonComboBasic_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			lblInfoMessage.Text = "Set distrito";
+			//lblInfoMessage.Text = "Set distrito";
+			var selectedDistritos = commB.FindDistritoByIdCanton(Convert.ToInt32(cantonComboBasic.SelectedValue));
+			distritosBindingSource.DataSource = selectedDistritos;
 			//commB.FindDistritoByIdCanton(provinciaComboBasic.Text);
 			//commB.FindCantonByIdProvincia(cantonComboBasic.Text);
 		}

@@ -220,6 +220,11 @@ namespace CursosBusiness.Business
         {
             return commonR.FindCantonByIdProvincia(idprov);
         }
+
+		public IEnumerable<Distrito> FindDistritoByIdCanton(int idcant)
+        {
+            return commonR.FindDistritoByIdCanton(idcant);
+        }
 		#endregion
 
 		#region estudiantes

@@ -20,6 +20,23 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 
         private void UsuariosForm_Load(object sender, EventArgs e)
         {
+			foreach (Control c in this.Controls)
+			{
+				if (c is BindingNavigator)
+				{
+					this.bindingNavigatorAddNewItem.Text = "Nuevo";
+					this.bindingNavigatorCountItem.Text = "de {0}";
+					this.bindingNavigatorCountItem.ToolTipText = "Total de items";
+					this.bindingNavigatorMoveFirstItem.Text = "Primero";
+					this.bindingNavigatorMovePreviousItem.Text = "Anterior";
+					this.bindingNavigatorPositionItem.ToolTipText = "Actual";
+					this.bindingNavigatorMoveNextItem.Text = "Siguiente";
+					this.bindingNavigatorMoveLastItem.Text = "Ultimo";
+					this.bindingNavigatorDeleteItem.Text = "Borrar";
+					this.usuarioBindingNavigatorSaveItem.Text = "Guardar";
+					break;
+				}
+			}
             CargarBusqueda();
 			cargarCombos();
         }
