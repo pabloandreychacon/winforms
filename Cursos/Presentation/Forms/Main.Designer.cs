@@ -282,7 +282,6 @@
 			this.estudiantesYCursosToolStripMenuItem1.Name = "estudiantesYCursosToolStripMenuItem1";
 			this.estudiantesYCursosToolStripMenuItem1.Size = new System.Drawing.Size(299, 32);
 			this.estudiantesYCursosToolStripMenuItem1.Text = "Estudiantes y Cursos";
-			this.estudiantesYCursosToolStripMenuItem1.Visible = false;
 			// 
 			// asignacionEstudiantesCursosToolStripMenuItem
 			// 
@@ -311,7 +310,6 @@
 			this.ausenciasToolStripMenuItem2.Name = "ausenciasToolStripMenuItem2";
 			this.ausenciasToolStripMenuItem2.Size = new System.Drawing.Size(299, 32);
 			this.ausenciasToolStripMenuItem2.Text = "Ausencias";
-			this.ausenciasToolStripMenuItem2.Visible = false;
 			// 
 			// asignarAusenciasToolStripMenuItem
 			// 
@@ -337,7 +335,6 @@
 			this.cerrarCursosToolStripMenuItem.Name = "cerrarCursosToolStripMenuItem";
 			this.cerrarCursosToolStripMenuItem.Size = new System.Drawing.Size(299, 32);
 			this.cerrarCursosToolStripMenuItem.Text = "Cerrar Cursos";
-			this.cerrarCursosToolStripMenuItem.Visible = false;
 			this.cerrarCursosToolStripMenuItem.Click += new System.EventHandler(this.cerrarCursosToolStripMenuItem_Click);
 			// 
 			// consultasToolStripMenuItem
@@ -348,7 +345,6 @@
             this.toolStripMenuItem7,
             this.cursosToolStripMenuItem1,
             this.ausenciasToolStripMenuItem1});
-			this.consultasToolStripMenuItem.Enabled = false;
 			this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
 			this.consultasToolStripMenuItem.Size = new System.Drawing.Size(108, 32);
 			this.consultasToolStripMenuItem.Text = "Consultas";
@@ -356,33 +352,33 @@
 			// estudiantesToolStripMenuItem1
 			// 
 			this.estudiantesToolStripMenuItem1.Name = "estudiantesToolStripMenuItem1";
-			this.estudiantesToolStripMenuItem1.Size = new System.Drawing.Size(189, 32);
+			this.estudiantesToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
 			this.estudiantesToolStripMenuItem1.Text = "Estudiantes";
 			this.estudiantesToolStripMenuItem1.Click += new System.EventHandler(this.estudiantesToolStripMenuItem1_Click);
 			// 
 			// profesoresToolStripMenuItem1
 			// 
 			this.profesoresToolStripMenuItem1.Name = "profesoresToolStripMenuItem1";
-			this.profesoresToolStripMenuItem1.Size = new System.Drawing.Size(189, 32);
+			this.profesoresToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
 			this.profesoresToolStripMenuItem1.Text = "Profesores";
 			this.profesoresToolStripMenuItem1.Click += new System.EventHandler(this.profesoresToolStripMenuItem1_Click);
 			// 
 			// toolStripMenuItem7
 			// 
 			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-			this.toolStripMenuItem7.Size = new System.Drawing.Size(186, 6);
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(213, 6);
 			// 
 			// cursosToolStripMenuItem1
 			// 
 			this.cursosToolStripMenuItem1.Name = "cursosToolStripMenuItem1";
-			this.cursosToolStripMenuItem1.Size = new System.Drawing.Size(189, 32);
+			this.cursosToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
 			this.cursosToolStripMenuItem1.Text = "Cursos";
 			this.cursosToolStripMenuItem1.Click += new System.EventHandler(this.cursosToolStripMenuItem1_Click);
 			// 
 			// ausenciasToolStripMenuItem1
 			// 
 			this.ausenciasToolStripMenuItem1.Name = "ausenciasToolStripMenuItem1";
-			this.ausenciasToolStripMenuItem1.Size = new System.Drawing.Size(189, 32);
+			this.ausenciasToolStripMenuItem1.Size = new System.Drawing.Size(216, 32);
 			this.ausenciasToolStripMenuItem1.Text = "Ausencias";
 			this.ausenciasToolStripMenuItem1.Click += new System.EventHandler(this.ausenciasToolStripMenuItem1_Click);
 			// 
@@ -401,7 +397,7 @@
             this.crearRespaldoToolStripMenuItem,
             this.restaurarRespaldoToolStripMenuItem1});
 			this.respaldosToolStripMenuItem.Name = "respaldosToolStripMenuItem";
-			this.respaldosToolStripMenuItem.Size = new System.Drawing.Size(178, 32);
+			this.respaldosToolStripMenuItem.Size = new System.Drawing.Size(216, 32);
 			this.respaldosToolStripMenuItem.Text = "Respaldos";
 			// 
 			// crearRespaldoToolStripMenuItem
