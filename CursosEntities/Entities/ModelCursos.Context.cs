@@ -28,7 +28,6 @@ namespace CursosEntities.Entities
         }
     
         public virtual DbSet<CursosEstudiante> CursosEstudiantes { get; set; }
-        public virtual DbSet<Horario> Horarios { get; set; }
         public virtual DbSet<Ausencia> Ausencias { get; set; }
         public virtual DbSet<CursosHorario> CursosHorarios { get; set; }
         public virtual DbSet<CursosProfesor> CursosProfesors { get; set; }
@@ -44,6 +43,7 @@ namespace CursosEntities.Entities
         public virtual DbSet<Distrito> Distritos { get; set; }
         public virtual DbSet<Provincia> Provincias { get; set; }
         public virtual DbSet<Estudiante> Estudiantes { get; set; }
+        public virtual DbSet<Horario> Horarios { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

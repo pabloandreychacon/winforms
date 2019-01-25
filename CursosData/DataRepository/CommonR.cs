@@ -45,6 +45,11 @@ namespace CursosData.DataRepository
 		#endregion
 
 		#region aulas
+		public string GetAulaNameFromId(int id)
+		{
+			var results = dbCtx.Aulas.Where(p => p.IdAula == id).FirstOrDefault();
+			return results.Descripcion;
+		}
 		public List<CursosDtos.AulasListSearch> GetAulasSearchDtos(List<Aula> aulasList)
         {
             var localList = new List<CursosDtos.AulasListSearch>();
@@ -53,10 +58,18 @@ namespace CursosData.DataRepository
                 localList.Add(new CursosDtos.AulasListSearch
                 {
                     Id = i + 1,                    
-                    Nombre = aulasList[i].Descripcion
+                    Descripcion = aulasList[i].Descripcion,
+					Codigo = aulasList[i].Codigo,
+					Capacidad = aulasList[i].Capacidad,
+					Disponible = aulasList[i].Disponible,
+					Key = aulasList[i].IdAula
                 });
             }
             return localList;
+        }
+		public Aula FindAulaById(int idaula)
+        {
+            return dbCtx.Aulas.FirstOrDefault(p => p.IdAula == idaula);
         }
 		#endregion
 
@@ -95,6 +108,20 @@ namespace CursosData.DataRepository
         {
             return dbCtx.CursosHorarios.Where(p => p.IdHorario == idHorario).ToList();
         }
+		public IEnumerable<CursosDtos.DiasHorariosList> GetDiasHorariosList()
+		{
+			return new List<CursosDtos.DiasHorariosList>
+			{
+				new CursosDtos.DiasHorariosList{Id = 7, Descrip = ""},
+				new CursosDtos.DiasHorariosList{Id = 0, Descrip = "Domingo"},
+				new CursosDtos.DiasHorariosList{Id = 1, Descrip = "Lunes"},
+				new CursosDtos.DiasHorariosList{Id = 2, Descrip = "Martes"},
+				new CursosDtos.DiasHorariosList{Id = 3, Descrip = "Miércoles"},
+				new CursosDtos.DiasHorariosList{Id = 4, Descrip = "Jueves"},
+				new CursosDtos.DiasHorariosList{Id = 5, Descrip = "Viernes"},
+				new CursosDtos.DiasHorariosList{Id = 6, Descrip = "Sábado"}			
+			};;
+		}
         public IEnumerable<CursosHorario> GetCursosHorariosByIdCursoList(int idCurso)
         {
             return dbCtx.CursosHorarios.Where(p => p.IdCurso == idCurso).ToList();
@@ -108,6 +135,16 @@ namespace CursosData.DataRepository
         {
             var curest = from ce in dbCtx.CursosHorarios
                          where ce.IdCurso == idcurso && ce.IdHorario == idhorario
+                         select ce;
+            return curest.FirstOrDefault();
+        }
+		public CursosHorario FindCursoHorarioByIdCursoAndIdhorarioAndIdAulaAndIdDia(int idcurso, int idhorario, int idaula, int iddia)
+        {
+            var curest = from ce in dbCtx.CursosHorarios
+                         where ce.IdCurso == idcurso 
+						 && ce.IdHorario == idhorario
+						 && ce.Dia == iddia
+						 && ce.Aula == idaula
                          select ce;
             return curest.FirstOrDefault();
         }
@@ -135,6 +172,27 @@ namespace CursosData.DataRepository
             {
                 ReloadEntity(NewCursoHorarioRecord);
                 throw;
+            }
+        }
+		public void SaveCursoHorarioAulaDia(int idcurso, int idhorario, int idaula, int iddia)
+        {
+            var NewCursoHorarioRecord = new CursosHorario
+            {
+                IdCurso = idcurso,
+                IdHorario = idhorario,
+                Fecha = DateTime.Now,
+				Aula = idaula,
+				Dia = iddia
+            };
+            try
+            {
+                dbCtx.CursosHorarios.Add(NewCursoHorarioRecord);
+                dbCtx.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                ReloadEntity(NewCursoHorarioRecord);
+                throw e;
             }
         }
         #endregion
@@ -289,7 +347,9 @@ namespace CursosData.DataRepository
                             {
                                 Id = h.IdHorario,
                                 Descrip = h.Descripcion,
-                                Key = ch.IdCursosHorarios
+                                Key = ch.IdCursosHorarios,
+								Aula = ch.Aula,
+								Dia = ch.Dia
                             };
             return queryJoin.ToList();
             //return dbCtx.CursosProfesors.Where(p => p.IdProfesor == idProfe).ToList();

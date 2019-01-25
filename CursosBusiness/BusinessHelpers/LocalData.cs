@@ -16,6 +16,9 @@ namespace CursosBusiness.BusinessHelpers
         public static List<CursosDtos.HorariosListSearch> searchHorariosList;
         public static List<CursosDtos.UsuariosListSearch> searchUsuariosList;
 		public static List<CursosDtos.AulasListSearch> searchAulasList;
+		// listas sencillas para usar en UI
+		public static List<CursosDtos.DiasHorariosList> diasHorariosList;
+		public static List<CursosDtos.CursosHorariosList> cursosHorariosList;
     }
 
 }

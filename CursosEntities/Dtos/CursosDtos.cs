@@ -15,6 +15,14 @@ namespace CursosEntities.Dtos
             public bool Activo { get; set; }
             public int Key { get; set; }
         }
+		public class AulasListSearch {
+            public int Id { get; set; }
+            public string Descripcion { get; set; }
+            public string Codigo { get; set; }
+            public int Capacidad { get; set; }
+			public bool Disponible { get; set; }
+			public int Key { get; set; }
+        }
         public class CorreoListSearch
         {
             public int Port { get; set; }
@@ -54,17 +62,31 @@ namespace CursosEntities.Dtos
             public int Id { get; set; }
             public string Descrip { get; set; }
             public int Key { get; set; }
+			public int Aula { get; set; }
+			public int Dia { get; set; }
+		}
+		public class CursosHorariosList
+        {
+            public int Id { get; set; }
+            public string Descrip { get; set; }            
+			public string Aula { get; set; }
+			public string Dia { get; set; }
+		}
+		public class DiasHorariosList
+        {
+            public int Id { get; set; }
+            public string Descrip { get; set; }            
         }
         public class UsuariosListSearch
         {
             public int Id { get; set; }
             public string Nombre { get; set; }
         }
-		public class AulasListSearch
-        {
-            public int Id { get; set; }
-            public string Nombre { get; set; }
-        }
+		//public class AulasListSearch
+  //      {
+  //          public int Id { get; set; }
+  //          public string Nombre { get; set; }
+  //      }
         public class CursosProfesorList
         {
             public int IdCurso { get; set; }

@@ -143,9 +143,17 @@ namespace CursosBusiness.Business
         //{
         //    return commonR.GetUsuarioById(id);
         //}
+		public String GetAulaNameFromId(int id)
+		{
+			return commonR.GetAulaNameFromId(id);
+		}
         public List<CursosDtos.AulasListSearch> GetAulasSearchDtos(List<Aula> aulList)
         {
             return commonR.GetAulasSearchDtos(aulList);
+        }
+		public Aula FindAulaById(int idAula)
+        {
+            return commonR.FindAulaById(idAula);
         }
         #endregion
 
@@ -170,9 +178,17 @@ namespace CursosBusiness.Business
         #endregion
 
         #region cursoshorarios
+		//public IEnumerable<CursosDtos.DiasHorariosList> getDayName(int intDay)
+  //      {
+  //          return commonR.GetCursosHorariosByIdHorarioList(idHorario);
+  //      }
         public IEnumerable<CursosHorario> GetCursosHorariosByIdHorarioList(int idHorario)
         {
             return commonR.GetCursosHorariosByIdHorarioList(idHorario);
+        }
+		public IEnumerable<CursosDtos.DiasHorariosList> GetDiasHorarios()
+        {
+            return commonR.GetDiasHorariosList();
         }
         public CursosHorario FindCursosHorariosByIdCurso(int idcurso)
         {
@@ -186,6 +202,11 @@ namespace CursosBusiness.Business
         {
             return commonR.FindCursoHorarioByIdCursoAndIdhorario(idcurso, idhorario);
         }
+		public CursosHorario FindCursoHorarioByIdCursoAndIdhorarioAndIdAulaAndIdDia(int idcurso, int idhorario, int 
+			idaula, int iddia)
+        {
+            return commonR.FindCursoHorarioByIdCursoAndIdhorarioAndIdAulaAndIdDia(idcurso, idhorario, idaula, iddia);
+        }
         public CursosHorario FindCursoHorarioByIdCursosHorarios(int idcursohorario)
         {
             return commonR.FindCursoHorarioByIdCursosHorarios(idcursohorario);
@@ -193,6 +214,10 @@ namespace CursosBusiness.Business
         public void SaveCursoHorario(int idcurso, int idhorario)
         {
             commonR.SaveCursoHorario(idcurso, idhorario);
+        }
+		public void SaveCursoHorarioAulaDia(int idcurso, int idhorario, int idaula, int iddia)
+        {
+            commonR.SaveCursoHorarioAulaDia(idcurso, idhorario, idaula, iddia);
         }
         #endregion cursoshorarios
 

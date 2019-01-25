@@ -36,7 +36,6 @@
 			System.Windows.Forms.Label nombreCursoLabel;
 			System.Windows.Forms.Label cantidadHorasLabel1;
 			System.Windows.Forms.Label cantidadEstudiantesLabel1;
-			System.Windows.Forms.Label idAulaLabel;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantCursosForm));
 			this.cursoBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
 			this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -67,7 +66,6 @@
 			this.cantidadHorasNumericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.cantidadEstudiantesNumericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.aulaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.tipoIdComboBasic = new BaseControls.Derived.ComboBasic();
 			activoLabel = new System.Windows.Forms.Label();
 			descripcionLabel = new System.Windows.Forms.Label();
 			idCursoLabel = new System.Windows.Forms.Label();
@@ -75,7 +73,6 @@
 			nombreCursoLabel = new System.Windows.Forms.Label();
 			cantidadHorasLabel1 = new System.Windows.Forms.Label();
 			cantidadEstudiantesLabel1 = new System.Windows.Forms.Label();
-			idAulaLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.cursoBindingNavigator)).BeginInit();
 			this.cursoBindingNavigator.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.cursoBindingSource)).BeginInit();
@@ -161,15 +158,6 @@
 			cantidadEstudiantesLabel1.Size = new System.Drawing.Size(191, 24);
 			cantidadEstudiantesLabel1.TabIndex = 27;
 			cantidadEstudiantesLabel1.Text = "Cantidad Estudiantes:";
-			// 
-			// idAulaLabel
-			// 
-			idAulaLabel.AutoSize = true;
-			idAulaLabel.Location = new System.Drawing.Point(99, 342);
-			idAulaLabel.Name = "idAulaLabel";
-			idAulaLabel.Size = new System.Drawing.Size(53, 24);
-			idAulaLabel.TabIndex = 28;
-			idAulaLabel.Text = "Aula:";
 			// 
 			// cursoBindingNavigator
 			// 
@@ -456,25 +444,10 @@
 			// 
 			this.aulaBindingSource.DataSource = typeof(CursosEntities.Entities.Aula);
 			// 
-			// tipoIdComboBasic
-			// 
-			this.tipoIdComboBasic.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cursoBindingSource, "IdAula", true));
-			this.tipoIdComboBasic.DataSource = this.aulaBindingSource;
-			this.tipoIdComboBasic.DisplayMember = "Descripcion";
-			this.tipoIdComboBasic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.tipoIdComboBasic.FormattingEnabled = true;
-			this.tipoIdComboBasic.Location = new System.Drawing.Point(363, 336);
-			this.tipoIdComboBasic.Name = "tipoIdComboBasic";
-			this.tipoIdComboBasic.Size = new System.Drawing.Size(208, 30);
-			this.tipoIdComboBasic.TabIndex = 29;
-			this.tipoIdComboBasic.ValueMember = "IdAula";
-			// 
 			// MantCursosForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
 			this.ClientSize = new System.Drawing.Size(973, 578);
-			this.Controls.Add(this.tipoIdComboBasic);
-			this.Controls.Add(idAulaLabel);
 			this.Controls.Add(cantidadEstudiantesLabel1);
 			this.Controls.Add(this.cantidadEstudiantesNumericUpDown);
 			this.Controls.Add(cantidadHorasLabel1);
@@ -527,8 +500,6 @@
 			this.Controls.SetChildIndex(cantidadHorasLabel1, 0);
 			this.Controls.SetChildIndex(this.cantidadEstudiantesNumericUpDown, 0);
 			this.Controls.SetChildIndex(cantidadEstudiantesLabel1, 0);
-			this.Controls.SetChildIndex(idAulaLabel, 0);
-			this.Controls.SetChildIndex(this.tipoIdComboBasic, 0);
 			((System.ComponentModel.ISupportInitialize)(this.cursoBindingNavigator)).EndInit();
 			this.cursoBindingNavigator.ResumeLayout(false);
 			this.cursoBindingNavigator.PerformLayout();
@@ -572,6 +543,5 @@
 		private System.Windows.Forms.NumericUpDown cantidadHorasNumericUpDown;
 		private System.Windows.Forms.NumericUpDown cantidadEstudiantesNumericUpDown;
 		private System.Windows.Forms.BindingSource aulaBindingSource;
-		private BaseControls.Derived.ComboBasic tipoIdComboBasic;
 	}
 }

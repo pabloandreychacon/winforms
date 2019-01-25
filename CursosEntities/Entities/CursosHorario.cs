@@ -23,9 +23,11 @@ namespace CursosEntities.Entities
         public int IdCurso { get; set; }
         public int IdHorario { get; set; }
         public System.DateTime Fecha { get; set; }
+        public int Dia { get; set; }
+        public int Aula { get; set; }
     
-        public virtual Horario Horario { get; set; }
         public virtual ICollection<CursosProfesor> CursosProfesors { get; set; }
         public virtual Curso Curso { get; set; }
+        public virtual Horario Horario { get; set; }
     }
 }

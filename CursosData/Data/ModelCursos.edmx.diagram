@@ -6,12 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="15f75b06c7cf473890f287ce4efd1147" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="CursosModel.CursosEstudiante" Width="1.5" PointX="3" PointY="3.125" />
-        <EntityTypeShape EntityType="CursosModel.Horario" Width="1.5" PointX="4.5" PointY="9.25" />
         <EntityTypeShape EntityType="CursosModel.Ausencia" Width="1.5" PointX="5" PointY="6.5" />
         <AssociationConnector Association="CursosModel.FK_Ausencias_CursosEstudiantes" />
         <EntityTypeShape EntityType="CursosModel.CursosHorario" Width="1.5" PointX="8" PointY="10.625" />
         <EntityTypeShape EntityType="CursosModel.CursosProfesor" Width="1.5" PointX="11.875" PointY="7.5" />
-        <AssociationConnector Association="CursosModel.FK_CursosHorarios_Horarios" />
         <AssociationConnector Association="CursosModel.FK_CursosProfesor_CursosHorarios" />
         <EntityTypeShape EntityType="CursosModel.Parametro" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="CursosModel.Role" Width="1.5" PointX="3.125" PointY="0.75" />
@@ -39,6 +37,8 @@
         <AssociationConnector Association="CursosModel.FK_Estudiantes_Cantones" />
         <AssociationConnector Association="CursosModel.FK_Estudiantes_Distritos" />
         <AssociationConnector Association="CursosModel.FK_Estudiantes_Provincias" />
+        <EntityTypeShape EntityType="CursosModel.Horario" Width="1.5" PointX="4.375" PointY="9.875" />
+        <AssociationConnector Association="CursosModel.FK_CursosHorarios_Horarios" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

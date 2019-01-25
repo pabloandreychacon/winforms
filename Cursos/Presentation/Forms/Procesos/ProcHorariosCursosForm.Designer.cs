@@ -43,7 +43,15 @@
 			this.txtIdCurso = new BaseControls.Derived.TextBasic();
 			this.txtCurso = new BaseControls.Derived.TextBasic();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.txtIdAula = new BaseControls.Derived.TextBasic();
+			this.cboDayOfWeek = new BaseControls.Derived.ComboBasic();
+			this.label4 = new System.Windows.Forms.Label();
+			this.btnBuscaAula = new BaseControls.Derived.OkButton();
+			this.txtAula = new BaseControls.Derived.TextBasic();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.gvHorariosAsignados)).BeginInit();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lblInfoMessage
@@ -54,7 +62,7 @@
 			// 
 			this.txtIdHorario.Enabled = false;
 			this.txtIdHorario.FormatoTexto = null;
-			this.txtIdHorario.Location = new System.Drawing.Point(138, 537);
+			this.txtIdHorario.Location = new System.Drawing.Point(105, 27);
 			this.txtIdHorario.Name = "txtIdHorario";
 			this.txtIdHorario.RangoInferior = new decimal(new int[] {
             0,
@@ -73,17 +81,17 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(47, 541);
+			this.label6.Location = new System.Drawing.Point(19, 73);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(77, 24);
+			this.label6.Size = new System.Drawing.Size(53, 24);
 			this.label6.TabIndex = 43;
-			this.label6.Text = "Horario:";
+			this.label6.Text = "Aula:";
 			// 
 			// txtHorario
 			// 
 			this.txtHorario.Enabled = false;
 			this.txtHorario.FormatoTexto = null;
-			this.txtHorario.Location = new System.Drawing.Point(296, 537);
+			this.txtHorario.Location = new System.Drawing.Point(263, 27);
 			this.txtHorario.Name = "txtHorario";
 			this.txtHorario.RangoInferior = new decimal(new int[] {
             0,
@@ -108,7 +116,7 @@
 			this.gvHorariosAsignados.Name = "gvHorariosAsignados";
 			this.gvHorariosAsignados.ReadOnly = true;
 			this.gvHorariosAsignados.RowTemplate.Height = 24;
-			this.gvHorariosAsignados.Size = new System.Drawing.Size(850, 392);
+			this.gvHorariosAsignados.Size = new System.Drawing.Size(850, 377);
 			this.gvHorariosAsignados.TabIndex = 26;
 			// 
 			// label2
@@ -124,7 +132,7 @@
 			// 
 			this.btnBuscaHorario.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnBuscaHorario.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaHorario.Image")));
-			this.btnBuscaHorario.Location = new System.Drawing.Point(826, 531);
+			this.btnBuscaHorario.Location = new System.Drawing.Point(793, 21);
 			this.btnBuscaHorario.Name = "btnBuscaHorario";
 			this.btnBuscaHorario.Size = new System.Drawing.Size(75, 40);
 			this.btnBuscaHorario.TabIndex = 27;
@@ -226,12 +234,110 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Location = new System.Drawing.Point(30, 495);
+			this.groupBox1.Controls.Add(this.txtIdAula);
+			this.groupBox1.Controls.Add(this.cboDayOfWeek);
+			this.groupBox1.Controls.Add(this.label4);
+			this.groupBox1.Controls.Add(this.btnBuscaAula);
+			this.groupBox1.Controls.Add(this.txtAula);
+			this.groupBox1.Controls.Add(this.label3);
+			this.groupBox1.Controls.Add(this.label6);
+			this.groupBox1.Controls.Add(this.label7);
+			this.groupBox1.Controls.Add(this.txtHorario);
+			this.groupBox1.Controls.Add(this.btnBuscaHorario);
+			this.groupBox1.Controls.Add(this.txtIdHorario);
+			this.groupBox1.Location = new System.Drawing.Point(30, 478);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(886, 216);
+			this.groupBox1.Size = new System.Drawing.Size(886, 233);
 			this.groupBox1.TabIndex = 50;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Asignar";
+			// 
+			// txtIdAula
+			// 
+			this.txtIdAula.Enabled = false;
+			this.txtIdAula.FormatoTexto = null;
+			this.txtIdAula.Location = new System.Drawing.Point(105, 73);
+			this.txtIdAula.Name = "txtIdAula";
+			this.txtIdAula.RangoInferior = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+			this.txtIdAula.RangoSuperior = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+			this.txtIdAula.ReadOnly = true;
+			this.txtIdAula.Size = new System.Drawing.Size(152, 28);
+			this.txtIdAula.TabIndex = 58;
+			// 
+			// cboDayOfWeek
+			// 
+			this.cboDayOfWeek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboDayOfWeek.FormattingEnabled = true;
+			this.cboDayOfWeek.Location = new System.Drawing.Point(105, 118);
+			this.cboDayOfWeek.Name = "cboDayOfWeek";
+			this.cboDayOfWeek.Size = new System.Drawing.Size(152, 30);
+			this.cboDayOfWeek.TabIndex = 52;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(448, -88);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(51, 24);
+			this.label4.TabIndex = 52;
+			this.label4.Text = "Días:";
+			// 
+			// btnBuscaAula
+			// 
+			this.btnBuscaAula.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnBuscaAula.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaAula.Image")));
+			this.btnBuscaAula.Location = new System.Drawing.Point(793, 67);
+			this.btnBuscaAula.Name = "btnBuscaAula";
+			this.btnBuscaAula.Size = new System.Drawing.Size(75, 40);
+			this.btnBuscaAula.TabIndex = 55;
+			this.btnBuscaAula.UseVisualStyleBackColor = true;
+			this.btnBuscaAula.Click += new System.EventHandler(this.btnBuscaAula_Click);
+			// 
+			// txtAula
+			// 
+			this.txtAula.Enabled = false;
+			this.txtAula.FormatoTexto = null;
+			this.txtAula.Location = new System.Drawing.Point(263, 73);
+			this.txtAula.Name = "txtAula";
+			this.txtAula.RangoInferior = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+			this.txtAula.RangoSuperior = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+			this.txtAula.ReadOnly = true;
+			this.txtAula.Size = new System.Drawing.Size(524, 28);
+			this.txtAula.TabIndex = 56;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(19, 121);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(42, 24);
+			this.label3.TabIndex = 51;
+			this.label3.Text = "Día:";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(19, 31);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(77, 24);
+			this.label7.TabIndex = 57;
+			this.label7.Text = "Horario:";
 			// 
 			// ProcHorariosCursosForm
 			// 
@@ -244,10 +350,6 @@
 			this.Controls.Add(this.txtCurso);
 			this.Controls.Add(this.btnBuscaCurso);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.txtIdHorario);
-			this.Controls.Add(this.btnBuscaHorario);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.txtHorario);
 			this.Controls.Add(this.gvHorariosAsignados);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.btnAsignar);
@@ -256,6 +358,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "ProcHorariosCursosForm";
 			this.Text = "Horarios Cursos";
+			this.Load += new System.EventHandler(this.ProcHorariosCursosForm_Load);
 			this.Controls.SetChildIndex(this.lblInfoMessage, 0);
 			this.Controls.SetChildIndex(this.groupBox1, 0);
 			this.Controls.SetChildIndex(this.btnEliminar, 0);
@@ -263,16 +366,14 @@
 			this.Controls.SetChildIndex(this.btnAsignar, 0);
 			this.Controls.SetChildIndex(this.label2, 0);
 			this.Controls.SetChildIndex(this.gvHorariosAsignados, 0);
-			this.Controls.SetChildIndex(this.txtHorario, 0);
-			this.Controls.SetChildIndex(this.label6, 0);
-			this.Controls.SetChildIndex(this.btnBuscaHorario, 0);
-			this.Controls.SetChildIndex(this.txtIdHorario, 0);
 			this.Controls.SetChildIndex(this.label1, 0);
 			this.Controls.SetChildIndex(this.btnBuscaCurso, 0);
 			this.Controls.SetChildIndex(this.txtCurso, 0);
 			this.Controls.SetChildIndex(this.txtIdCurso, 0);
 			this.Controls.SetChildIndex(this.errorContainer1, 0);
 			((System.ComponentModel.ISupportInitialize)(this.gvHorariosAsignados)).EndInit();
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -294,5 +395,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public BaseControls.Derived.TextBasic txtIdHorario;
         public BaseControls.Derived.TextBasic txtHorario;
-    }
+		private System.Windows.Forms.Label label3;
+		private BaseControls.Derived.ComboBasic cboDayOfWeek;
+		private System.Windows.Forms.Label label4;
+		public BaseControls.Derived.TextBasic txtIdAula;
+		private BaseControls.Derived.OkButton btnBuscaAula;
+		private System.Windows.Forms.Label label7;
+		public BaseControls.Derived.TextBasic txtAula;
+	}
 }

@@ -143,19 +143,23 @@ namespace Cursos.Presentation.Forms.Consultas
         private void LoadCombos()
         {
             var horarList = commB.GetHorarioByIdCurso(Convert.ToInt32(txtIdCurso.Text.Trim()));
-            cboHorario.DataSource = horarList;
-            cboHorario.DisplayMember = "Descripcion";
-            cboHorario.ValueMember = "IdHorario";
-            cboHorario.Enabled = true;
+			if(horarList.Count> 0)
+			{
+				cboHorario.DataSource = horarList;
+				cboHorario.DisplayMember = "Descripcion";
+				cboHorario.ValueMember = "IdHorario";
+				cboHorario.Enabled = true;
 
-            var profeList = commB.GetProfesorByIdCurso(Convert.ToInt32(txtIdCurso.Text.Trim()),
-                Convert.ToInt32(cboHorario.SelectedValue));
-            cboProfesor.DataSource = profeList;
-            cboProfesor.DisplayMember = "Nombre";
-            cboProfesor.ValueMember = "IdProfesor";
-            cboProfesor.Enabled = true;
+				var profeList = commB.GetProfesorByIdCurso(Convert.ToInt32(txtIdCurso.Text.Trim()),
+					Convert.ToInt32(cboHorario.SelectedValue));
+				cboProfesor.DataSource = profeList;
+				cboProfesor.DisplayMember = "Nombre";
+				cboProfesor.ValueMember = "IdProfesor";
+				cboProfesor.Enabled = true;
 
-            cboHorario.SelectedIndex = 0;
+				cboHorario.SelectedIndex = 0;
+			}
+            
         }
 
         private void CleanCombos()
