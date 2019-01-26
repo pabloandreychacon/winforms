@@ -237,21 +237,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cursos_Cursos">
-          <End Role="Aulas" Type="Self.Aulas" Multiplicity="1" />
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Aulas">
-              <PropertyRef Name="IdAula" />
-            </Principal>
-            <Dependent Role="Cursos">
-              <PropertyRef Name="IdAula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_CursosEstudiantes_CursosHorarios" />-->
         <Association Name="FK_CursosEstudiantes_Estudiantes">
           <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="1" />
           <End Role="CursosEstudiantes" Type="Self.CursosEstudiantes" Multiplicity="*" />
@@ -467,10 +452,6 @@ warning 6035: The relationship 'FK_CursosEstudiantes_CursosHorarios' has columns
           <AssociationSet Name="FK_Cantones_Provincias" Association="Self.FK_Cantones_Provincias">
             <End Role="Provincias" EntitySet="Provincias" />
             <End Role="Cantones" EntitySet="Cantones" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cursos_Cursos" Association="Self.FK_Cursos_Cursos">
-            <End Role="Aulas" EntitySet="Aulas" />
-            <End Role="Cursos" EntitySet="Cursos" />
           </AssociationSet>
           <AssociationSet Name="FK_CursosEstudiantes_Estudiantes" Association="Self.FK_CursosEstudiantes_Estudiantes">
             <End Role="Estudiantes" EntitySet="Estudiantes" />
