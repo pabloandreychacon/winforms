@@ -124,6 +124,47 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CursosEntities.Dtos.CursosDtos+AulasListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+AusenciasCursoList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+AusenciasEstudiantesList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CorreoListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CursosEstudiantesList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CursosHorarioListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CursosHorariosList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CursosListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CursosProfesorCerrarList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+CursosProfesorList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+DiasHorariosList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+EstudiantesListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+HorariosListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+InventarioDtos+ExistenciasCantidad.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+InventarioDtos+ProdListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+InventarioDtos.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+ProfesoresListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+ReporteAusenciasList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+ReporteCursosList.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos+UsuariosListSearch.datasource" />
+    <None Include="CursosEntities.Dtos.CursosDtos.datasource" />
+    <None Include="CursosEntities.Entities.Aula.datasource" />
+    <None Include="CursosEntities.Entities.Ausencia.datasource" />
+    <None Include="CursosEntities.Entities.Bitacora.datasource" />
+    <None Include="CursosEntities.Entities.Cantone.datasource" />
+    <None Include="CursosEntities.Entities.Curso.datasource" />
+    <None Include="CursosEntities.Entities.CursosEntity.datasource" />
+    <None Include="CursosEntities.Entities.CursosEstudiante.datasource" />
+    <None Include="CursosEntities.Entities.CursosHorario.datasource" />
+    <None Include="CursosEntities.Entities.CursosProfesor.datasource" />
+    <None Include="CursosEntities.Entities.Distrito.datasource" />
+    <None Include="CursosEntities.Entities.Estudiante.datasource" />
+    <None Include="CursosEntities.Entities.Horario.datasource" />
+    <None Include="CursosEntities.Entities.Parametro.datasource" />
+    <None Include="CursosEntities.Entities.Profesore.datasource" />
+    <None Include="CursosEntities.Entities.Provincia.datasource" />
+    <None Include="CursosEntities.Entities.Role.datasource" />
+    <None Include="CursosEntities.Entities.sp_helpdiagramdefinition_Result.datasource" />
+    <None Include="CursosEntities.Entities.sp_helpdiagrams_Result.datasource" />
+    <None Include="CursosEntities.Entities.TipoId.datasource" />
+    <None Include="CursosEntities.Entities.Usuario.datasource" />
     <None Include="Entities\ModelCursos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelCursos.Context.cs</LastGenOutput>

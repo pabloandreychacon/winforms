@@ -392,14 +392,17 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AulasListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AusenciasCursoList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+AusenciasEstudiantesList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CorreoListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosEstudiantesList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosHorarioListSearch.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosHorariosList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosProfesorCerrarList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+CursosProfesorList.datasource" />
+    <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+DiasHorariosList.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+EstudiantesListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+HorariosListSearch.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Dtos.CursosDtos+InventarioDtos+ExistenciasCantidad.datasource" />
@@ -423,7 +426,6 @@
     <None Include="Properties\DataSources\CursosEntities.Entities.Estudiante.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Horario.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Parametro.datasource" />
-    <None Include="Properties\DataSources\CursosEntities.Entities.ParametrosGeneral.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Profesore.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Provincia.datasource" />
     <None Include="Properties\DataSources\CursosEntities.Entities.Role.datasource" />

@@ -8,9 +8,7 @@
         <EntityTypeShape EntityType="CursosModel.CursosEstudiante" Width="1.5" PointX="3" PointY="3.125" />
         <EntityTypeShape EntityType="CursosModel.Ausencia" Width="1.5" PointX="5" PointY="6.5" />
         <AssociationConnector Association="CursosModel.FK_Ausencias_CursosEstudiantes" />
-        <EntityTypeShape EntityType="CursosModel.CursosHorario" Width="1.5" PointX="8" PointY="10.625" />
-        <EntityTypeShape EntityType="CursosModel.CursosProfesor" Width="1.5" PointX="11.875" PointY="7.5" />
-        <AssociationConnector Association="CursosModel.FK_CursosProfesor_CursosHorarios" />
+        <EntityTypeShape EntityType="CursosModel.CursosProfesor" Width="1.5" PointX="10.25" PointY="7.5" />
         <EntityTypeShape EntityType="CursosModel.Parametro" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="CursosModel.Role" Width="1.5" PointX="3.125" PointY="0.75" />
         <EntityTypeShape EntityType="CursosModel.Profesore" Width="1.5" PointX="7.75" PointY="6" />
@@ -20,12 +18,9 @@
         <AssociationConnector Association="CursosModel.FK_Usuarios_Roles" />
         <EntityTypeShape EntityType="CursosModel.Bitacora" Width="1.5" PointX="7.625" PointY="2.375" />
         <AssociationConnector Association="CursosModel.FK_Bitacora_Usuarios" />
-        <EntityTypeShape EntityType="CursosModel.Curso" Width="1.5" PointX="5.75" PointY="12.5" />
-        <AssociationConnector Association="CursosModel.FK_CursosHorarios_Cursos" />
         <EntityTypeShape EntityType="CursosModel.TipoId" Width="1.5" PointX="1.5" PointY="7.125" />
         <AssociationConnector Association="CursosModel.FK_Profesores_TipoIds" />
         <EntityTypeShape EntityType="CursosModel.Aula" Width="1.5" PointX="10.25" PointY="12.625" />
-        <AssociationConnector Association="CursosModel.FK_Cursos_Cursos" />
         <EntityTypeShape EntityType="CursosModel.Cantone" Width="1.5" PointX="0.5" PointY="12.625" />
         <EntityTypeShape EntityType="CursosModel.Distrito" Width="1.5" PointX="2.75" PointY="12.75" />
         <EntityTypeShape EntityType="CursosModel.Provincia" Width="1.5" PointX="0.625" PointY="9.75" />
@@ -38,7 +33,14 @@
         <AssociationConnector Association="CursosModel.FK_Estudiantes_Distritos" />
         <AssociationConnector Association="CursosModel.FK_Estudiantes_Provincias" />
         <EntityTypeShape EntityType="CursosModel.Horario" Width="1.5" PointX="4.375" PointY="9.875" />
+        <EntityTypeShape EntityType="CursosModel.Curso" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="CursosModel.CursosHorario" Width="1.5" PointX="8" PointY="11.25" />
+        <AssociationConnector Association="CursosModel.FK_CursosHorarios_Cursos" />
         <AssociationConnector Association="CursosModel.FK_CursosHorarios_Horarios" />
+        <AssociationConnector Association="CursosModel.FK_CursosProfesor_CursosHorarios" />
+        <AssociationConnector Association="CursosModel.FK_Profesores_Cantones" />
+        <AssociationConnector Association="CursosModel.FK_Profesores_Distritos" />
+        <AssociationConnector Association="CursosModel.FK_Profesores_Provincias" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

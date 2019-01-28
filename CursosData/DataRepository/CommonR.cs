@@ -18,7 +18,13 @@ namespace CursosData.DataRepository
         public CommonR(CursosEntity passedCtx) : base(passedCtx)
         {
         }
-
+        #region tipos id
+        public String GetTipoIdMaskByTipoId(int idtipo)
+        {
+            var result = dbCtx.TipoIds.Where(t => t.IdTipoId == idtipo).FirstOrDefault();
+            return result.Mask;
+        }
+        #endregion
         #region usuarios
         public IEnumerable<Usuario> GetUsuario(string name, string pass)
         {
@@ -143,8 +149,8 @@ namespace CursosData.DataRepository
             var curest = from ce in dbCtx.CursosHorarios
                          where ce.IdCurso == idcurso 
 						 && ce.IdHorario == idhorario
-						 && ce.Dia == iddia
-						 && ce.Aula == idaula
+						 && ce.IdDia == iddia
+						 && ce.IdAula == idaula
                          select ce;
             return curest.FirstOrDefault();
         }
@@ -181,8 +187,8 @@ namespace CursosData.DataRepository
                 IdCurso = idcurso,
                 IdHorario = idhorario,
                 Fecha = DateTime.Now,
-				Aula = idaula,
-				Dia = iddia
+				IdAula = idaula,
+				IdDia = iddia
             };
             try
             {
@@ -194,6 +200,10 @@ namespace CursosData.DataRepository
                 ReloadEntity(NewCursoHorarioRecord);
                 throw e;
             }
+        }
+        public CursosHorario FindCursoHorarioByIdAula(int idaul)
+        {
+            return dbCtx.CursosHorarios.FirstOrDefault(p => p.IdAula == idaul);
         }
         #endregion
 
@@ -247,14 +257,10 @@ namespace CursosData.DataRepository
         {
             return dbCtx.Cursos.FirstOrDefault(p => p.IdCurso == idCurso);
         }
-		public Curso FindCursoByIdAula(int idaul)
-        {
-            return dbCtx.Cursos.FirstOrDefault(p => p.IdAula == idaul);
-        }
-		#endregion
+        #endregion
 
-		#region provincias, cantones, distritos
-		public IEnumerable<Cantone> FindCantonByIdProvincia(int idprov)
+        #region provincias, cantones, distritos
+        public IEnumerable<Cantone> FindCantonByIdProvincia(int idprov)
         {
             return dbCtx.Cantones.Where(p => p.IdProvincia == idprov).ToList();
         }
@@ -348,8 +354,8 @@ namespace CursosData.DataRepository
                                 Id = h.IdHorario,
                                 Descrip = h.Descripcion,
                                 Key = ch.IdCursosHorarios,
-								Aula = ch.Aula,
-								Dia = ch.Dia
+								Aula = ch.IdAula,
+								Dia = ch.IdDia
                             };
             return queryJoin.ToList();
             //return dbCtx.CursosProfesors.Where(p => p.IdProfesor == idProfe).ToList();

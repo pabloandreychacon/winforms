@@ -118,8 +118,8 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 				var selectedAula = commB.SetEntity<Aula>(aulaBindingSource.Current);
 				if (selectedAula != null)
 				{
-					var p = commB.FindCursoByIdAula(selectedAula.IdAula);
-					if (p != null)
+                    var p = commB.FindCursoHorarioByIdAula(selectedAula.IdAula);
+                    if (p != null)
 					{
 						MessageBox.Show("No se pueden borrar aulas que están relacionados en la tabla de Cursos", "Borrar", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
 						return;

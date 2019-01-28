@@ -21,7 +21,7 @@ namespace CursosEntities.Entities
         public Nullable<System.DateTime> FechaFinal { get; set; }
         public int LimiteAusencias { get; set; }
     
-        public virtual CursosHorario CursosHorario { get; set; }
         public virtual Profesore Profesore { get; set; }
+        public virtual CursosHorario CursosHorario { get; set; }
     }
 }

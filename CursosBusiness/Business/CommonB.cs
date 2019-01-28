@@ -103,6 +103,12 @@ namespace CursosBusiness.Business
             return commonR.GetBindList<E>();
         }
 
+        #region tipos id
+        public String GetTipoIdMaskByTipoId(int idtipo)
+        {
+            return commonR.GetTipoIdMaskByTipoId(idtipo);
+        }
+        #endregion
         #region usuarios
         public IEnumerable<Usuario> GetUsuario(string name, string pass)
         {
@@ -219,6 +225,10 @@ namespace CursosBusiness.Business
         {
             commonR.SaveCursoHorarioAulaDia(idcurso, idhorario, idaula, iddia);
         }
+        public CursosHorario FindCursoHorarioByIdAula(int idaul)
+        {
+            return commonR.FindCursoHorarioByIdAula(idaul);
+        }
         #endregion cursoshorarios
 
         #region cursos
@@ -234,14 +244,10 @@ namespace CursosBusiness.Business
         {
             return commonR.GetCursosHorariosSearchDtos();
         }
-		public Curso FindCursoByIdAula(int idaul)
-        {
-            return commonR.FindCursoByIdAula(idaul);
-        }
-		#endregion
+        #endregion
 
-		#region provincias, cantones, distritos
-		public IEnumerable<Cantone> FindCantonByIdProvincia(int idprov)
+        #region provincias, cantones, distritos
+        public IEnumerable<Cantone> FindCantonByIdProvincia(int idprov)
         {
             return commonR.FindCantonByIdProvincia(idprov);
         }

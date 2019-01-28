@@ -14,11 +14,6 @@ namespace CursosEntities.Entities
     
     public partial class Aula
     {
-        public Aula()
-        {
-            this.Cursos = new HashSet<Curso>();
-        }
-    
         public int IdAula { get; set; }
         public string Descripcion { get; set; }
         public string Codigo { get; set; }
@@ -26,7 +21,5 @@ namespace CursosEntities.Entities
         public string Ubicacion { get; set; }
         public bool Accesibilidad { get; set; }
         public bool Disponible { get; set; }
-    
-        public virtual ICollection<Curso> Cursos { get; set; }
     }
 }

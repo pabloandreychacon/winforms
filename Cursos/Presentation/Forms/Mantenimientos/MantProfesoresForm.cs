@@ -36,7 +36,51 @@ namespace Cursos.Presentation.Forms.Mantenimientos
 				}
 			}
             CargarBusqueda();
+            CargarCombos();
         }
+
+        private void CargarCombos()
+        {
+            var idsListBind = commB.GetBindList<TipoId>();//.ToList();
+            tipoIdBindingSource.DataSource = idsListBind;
+
+            var distListBind = commB.GetBindList<Distrito>();
+            distritosBindingSource.DataSource = distListBind;
+            cboDistritos.DataSource = distritosBindingSource;
+            cboDistritos.DisplayMember = "Nombre";
+            cboDistritos.ValueMember = "IdDistrito";
+            cboDistritos.DataBindings.Add(new Binding("SelectedValue", this.profesoreBindingSource, "IdDistrito", true));
+
+            var cantonesListBind = commB.GetBindList<Cantone>();
+            cantonesBindingSource.DataSource = cantonesListBind;
+            cboCantones.DataSource = cantonesBindingSource;
+            cboCantones.DisplayMember = "Nombre";
+            cboCantones.ValueMember = "IdCanton";
+            cboCantones.DataBindings.Add(new Binding("SelectedValue", this.profesoreBindingSource, "IdCanton", true));
+
+            var provListBind = commB.GetBindList<Provincia>();
+            provinciasBindingSource.DataSource = provListBind;
+            cboProvincias.DataSource = provinciasBindingSource;
+            cboProvincias.DisplayMember = "Nombre";
+            cboProvincias.ValueMember = "IdProvincia";
+            cboProvincias.DataBindings.Add(new Binding("SelectedValue", this.profesoreBindingSource, "IdProvincia", true));
+
+            var dist2ListBind = commB.GetBindList<Distrito>();
+            cboListaDistritos.DataSource = dist2ListBind;
+            cboListaDistritos.DisplayMember = "Nombre";
+            cboListaDistritos.ValueMember = "IdDistrito";
+
+            var cant2ListBind = commB.GetBindList<Cantone>();
+            cboListaCantones.DataSource = cant2ListBind;
+            cboListaCantones.DisplayMember = "Nombre";
+            cboListaCantones.ValueMember = "IdCanton";
+
+            var prov2ListBind = commB.GetBindList<Provincia>();
+            cboListaProvincias.DataSource = prov2ListBind;
+            cboListaProvincias.DisplayMember = "Nombre";
+            cboListaProvincias.ValueMember = "IdProvincia";
+        }
+
         public override bool ValidateFields()
         {
             return (Validator(nombreTextBox, ValidationTypes.Text, "Debe digitar un nombre válida.")
@@ -47,6 +91,9 @@ namespace Cursos.Presentation.Forms.Mantenimientos
         {
             try
             {
+                cboCantones.SelectedValue = cboListaCantones.SelectedValue;
+                cboProvincias.SelectedValue = cboListaProvincias.SelectedValue;
+                cboDistritos.SelectedValue = cboListaDistritos.SelectedValue;
                 if (!ValidateFields()) return;
                 profesoreBindingSource.EndEdit();
                 var selectedProfesor = commB.SetEntity<Profesore>(profesoreBindingSource.Current);
@@ -162,6 +209,51 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             this.closeButton1.PerformClick();
             formToShow.Show();
             formToShow.bindingNavigatorAddNewItem.PerformClick();        
+        }
+
+        private void setIdMask()
+        {
+            var selectedTipo = cboTiposIds.SelectedValue;
+            if (selectedTipo == null) return;
+            selectedTipo.ToString();
+            var selectedMask = commB.GetTipoIdMaskByTipoId(Convert.ToInt32(selectedTipo));
+            if (selectedMask != null)
+            {
+                identificacionMaskedTextBox.Mask = selectedMask;
+                identificacionMaskedTextBox.Focus();
+            }
+        }
+
+        private void cboTiposIds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setIdMask();
+        }
+
+        private void profesoreBindingSource_PositionChanged(object sender, EventArgs e)
+        {
+            setIdMask();
+            if (cboProvincias.SelectedValue != null)
+                cboListaProvincias.SelectedValue = cboProvincias.SelectedValue;
+
+            if (cboCantones.SelectedValue != null)
+                cboListaCantones.SelectedValue = cboCantones.SelectedValue;
+
+            if (cboDistritos.SelectedValue != null)
+                cboListaDistritos.SelectedValue = cboDistritos.SelectedValue;
+        }
+
+        private void cboListaProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboListaProvincias.SelectedValue == null || cboListaProvincias.SelectedValue.GetType() != typeof(int)) return;
+            var selectedCantones = commB.FindCantonByIdProvincia(Convert.ToInt32(cboListaProvincias.SelectedValue.ToString()));
+            cboListaCantones.DataSource = selectedCantones;
+        }
+
+        private void cboListaCantones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboListaCantones.SelectedValue == null || cboListaCantones.SelectedValue.GetType() != typeof(int)) return;
+            var selectedDistritos = commB.FindDistritoByIdCanton(Convert.ToInt32(cboListaCantones.SelectedValue.ToString()));
+            cboListaDistritos.DataSource = selectedDistritos;
         }
     }
 }

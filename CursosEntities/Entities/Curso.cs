@@ -26,9 +26,7 @@ namespace CursosEntities.Entities
         public decimal CantidadHoras { get; set; }
         public int CantidadEstudiantes { get; set; }
         public string NombreCurso { get; set; }
-        public int IdAula { get; set; }
     
         public virtual ICollection<CursosHorario> CursosHorarios { get; set; }
-        public virtual Aula Aula { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace CursosEntities.Entities
         {
             this.Distritos = new HashSet<Distrito>();
             this.Estudiantes = new HashSet<Estudiante>();
+            this.Profesores = new HashSet<Profesore>();
         }
     
         public int IdCanton { get; set; }
@@ -27,5 +28,6 @@ namespace CursosEntities.Entities
         public virtual Provincia Provincia { get; set; }
         public virtual ICollection<Distrito> Distritos { get; set; }
         public virtual ICollection<Estudiante> Estudiantes { get; set; }
+        public virtual ICollection<Profesore> Profesores { get; set; }
     }
 }

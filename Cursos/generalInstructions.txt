@@ -8,7 +8,7 @@ cursos> same level as base project
 	
 	https://docs.microsoft.com/en-us/azure/devops/repos/tfvc/share-your-code-in-tfvc-vs?toc=%2Fvisualstudio%2Fversion-control%2Ftoc.json&bc=%2Fazure%2Fdevops%2Frepos%2Fgit%2Fbreadcrumb%2Fvc%2Ftoc.json&view=vsts
 	
-	copy data bak to c: data
+	copy data bak to c: data (se coloca en la raiz de c: porque el restaurador de SQLServer no puede ir dentro de las carpetas)
 	restore on ms sql management studio
 	delete local user
 	create login global on cursos db, data reader data writer, id cursos password cursos
