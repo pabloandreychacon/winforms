@@ -116,9 +116,9 @@
           <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ApellidoFinal" Type="nvarchar" MaxLength="50" />
           <Property Name="IdTipoId" Type="int" Nullable="false" />
-          <Property Name="IdProvincia" Type="int" />
-          <Property Name="IdCanton" Type="int" />
-          <Property Name="IdDistrito" Type="int" />
+          <Property Name="IdProvincia" Type="int" Nullable="false" />
+          <Property Name="IdCanton" Type="int" Nullable="false" />
+          <Property Name="IdDistrito" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Horarios">
           <Key>
@@ -324,7 +324,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Estudiantes_Cantones">
-          <End Role="Cantones" Type="Self.Cantones" Multiplicity="0..1" />
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="1" />
           <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cantones">
@@ -336,7 +336,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Estudiantes_Distritos">
-          <End Role="Distritos" Type="Self.Distritos" Multiplicity="0..1" />
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="1" />
           <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Distritos">
@@ -348,7 +348,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Estudiantes_Provincias">
-          <End Role="Provincias" Type="Self.Provincias" Multiplicity="0..1" />
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
           <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Provincias">
@@ -561,14 +561,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CursosEntity" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CursosEstudiantes" EntityType="CursosModel.CursosEstudiante" />
-          <EntitySet Name="Ausencias" EntityType="CursosModel.Ausencia" />
-          <AssociationSet Name="FK_Ausencias_CursosEstudiantes" Association="CursosModel.FK_Ausencias_CursosEstudiantes">
-            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
-            <End Role="Ausencia" EntitySet="Ausencias" />
-          </AssociationSet>
-          <EntitySet Name="CursosProfesors" EntityType="CursosModel.CursosProfesor" />
-          <EntitySet Name="Parametros" EntityType="CursosModel.Parametro" />
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -598,35 +590,31 @@
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Roles" EntityType="CursosModel.Role" />
-          <EntitySet Name="Profesores" EntityType="CursosModel.Profesore" />
-          <AssociationSet Name="FK_CursosProfesor_Profesores" Association="CursosModel.FK_CursosProfesor_Profesores">
-            <End Role="Profesore" EntitySet="Profesores" />
-            <End Role="CursosProfesor" EntitySet="CursosProfesors" />
-          </AssociationSet>
-          <EntitySet Name="Usuarios" EntityType="CursosModel.Usuario" />
-          <AssociationSet Name="FK_CursosEstudiantes_CursosEstudiantes" Association="CursosModel.FK_CursosEstudiantes_CursosEstudiantes">
-            <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuarios_Roles" Association="CursosModel.FK_Usuarios_Roles">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Usuario" EntitySet="Usuarios" />
-          </AssociationSet>
+          <EntitySet Name="Aulas" EntityType="CursosModel.Aula" />
+          <EntitySet Name="Ausencias" EntityType="CursosModel.Ausencia" />
           <EntitySet Name="Bitacoras" EntityType="CursosModel.Bitacora" />
+          <EntitySet Name="Cantones" EntityType="CursosModel.Cantone" />
+          <EntitySet Name="Cursos" EntityType="CursosModel.Curso" />
+          <EntitySet Name="CursosEstudiantes" EntityType="CursosModel.CursosEstudiante" />
+          <EntitySet Name="CursosHorarios" EntityType="CursosModel.CursosHorario" />
+          <EntitySet Name="CursosProfesors" EntityType="CursosModel.CursosProfesor" />
+          <EntitySet Name="Distritos" EntityType="CursosModel.Distrito" />
+          <EntitySet Name="Estudiantes" EntityType="CursosModel.Estudiante" />
+          <EntitySet Name="Horarios" EntityType="CursosModel.Horario" />
+          <EntitySet Name="Parametros" EntityType="CursosModel.Parametro" />
+          <EntitySet Name="Profesores" EntityType="CursosModel.Profesore" />
+          <EntitySet Name="Provincias" EntityType="CursosModel.Provincia" />
+          <EntitySet Name="Roles" EntityType="CursosModel.Role" />
+          <EntitySet Name="TipoIds" EntityType="CursosModel.TipoId" />
+          <EntitySet Name="Usuarios" EntityType="CursosModel.Usuario" />
+          <AssociationSet Name="FK_Ausencias_CursosEstudiantes" Association="CursosModel.FK_Ausencias_CursosEstudiantes">
+            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
+            <End Role="Ausencia" EntitySet="Ausencias" />
+          </AssociationSet>
           <AssociationSet Name="FK_Bitacora_Usuarios" Association="CursosModel.FK_Bitacora_Usuarios">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Bitacora" EntitySet="Bitacoras" />
           </AssociationSet>
-          <EntitySet Name="TipoIds" EntityType="CursosModel.TipoId" />
-          <AssociationSet Name="FK_Profesores_TipoIds" Association="CursosModel.FK_Profesores_TipoIds">
-            <End Role="TipoId" EntitySet="TipoIds" />
-            <End Role="Profesore" EntitySet="Profesores" />
-          </AssociationSet>
-          <EntitySet Name="Aulas" EntityType="CursosModel.Aula" />
-          <EntitySet Name="Cantones" EntityType="CursosModel.Cantone" />
-          <EntitySet Name="Distritos" EntityType="CursosModel.Distrito" />
-          <EntitySet Name="Provincias" EntityType="CursosModel.Provincia" />
           <AssociationSet Name="FK_Cantones_Provincias" Association="CursosModel.FK_Cantones_Provincias">
             <End Role="Provincia" EntitySet="Provincias" />
             <End Role="Cantone" EntitySet="Cantones" />
@@ -635,33 +623,25 @@
             <End Role="Cantone" EntitySet="Cantones" />
             <End Role="Distrito" EntitySet="Distritos" />
           </AssociationSet>
-          <EntitySet Name="Estudiantes" EntityType="CursosModel.Estudiante" />
-          <AssociationSet Name="FK_CursosEstudiantes_Estudiantes" Association="CursosModel.FK_CursosEstudiantes_Estudiantes">
-            <End Role="Estudiante" EntitySet="Estudiantes" />
-            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Estudiantes_TipoIds" Association="CursosModel.FK_Estudiantes_TipoIds">
-            <End Role="TipoId" EntitySet="TipoIds" />
-            <End Role="Estudiante" EntitySet="Estudiantes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Estudiantes_Cantones" Association="CursosModel.FK_Estudiantes_Cantones">
             <End Role="Cantone" EntitySet="Cantones" />
             <End Role="Estudiante" EntitySet="Estudiantes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Estudiantes_Distritos" Association="CursosModel.FK_Estudiantes_Distritos">
-            <End Role="Distrito" EntitySet="Distritos" />
-            <End Role="Estudiante" EntitySet="Estudiantes" />
+          <AssociationSet Name="FK_Profesores_Cantones" Association="CursosModel.FK_Profesores_Cantones">
+            <End Role="Cantone" EntitySet="Cantones" />
+            <End Role="Profesore" EntitySet="Profesores" />
           </AssociationSet>
-          <AssociationSet Name="FK_Estudiantes_Provincias" Association="CursosModel.FK_Estudiantes_Provincias">
-            <End Role="Provincia" EntitySet="Provincias" />
-            <End Role="Estudiante" EntitySet="Estudiantes" />
-          </AssociationSet>
-          <EntitySet Name="Horarios" EntityType="CursosModel.Horario" />
-          <EntitySet Name="Cursos" EntityType="CursosModel.Curso" />
-          <EntitySet Name="CursosHorarios" EntityType="CursosModel.CursosHorario" />
           <AssociationSet Name="FK_CursosHorarios_Cursos" Association="CursosModel.FK_CursosHorarios_Cursos">
             <End Role="Curso" EntitySet="Cursos" />
             <End Role="CursosHorario" EntitySet="CursosHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosEstudiantes_Estudiantes" Association="CursosModel.FK_CursosEstudiantes_Estudiantes">
+            <End Role="Estudiante" EntitySet="Estudiantes" />
+            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursosEstudiantes_Usuarios" Association="CursosModel.FK_CursosEstudiantes_Usuarios">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="CursosEstudiante" EntitySet="CursosEstudiantes" />
           </AssociationSet>
           <AssociationSet Name="FK_CursosHorarios_Horarios" Association="CursosModel.FK_CursosHorarios_Horarios">
             <End Role="Horario" EntitySet="Horarios" />
@@ -671,32 +651,61 @@
             <End Role="CursosHorario" EntitySet="CursosHorarios" />
             <End Role="CursosProfesor" EntitySet="CursosProfesors" />
           </AssociationSet>
-          <AssociationSet Name="FK_Profesores_Cantones" Association="CursosModel.FK_Profesores_Cantones">
-            <End Role="Cantone" EntitySet="Cantones" />
+          <AssociationSet Name="FK_CursosProfesor_Profesores" Association="CursosModel.FK_CursosProfesor_Profesores">
             <End Role="Profesore" EntitySet="Profesores" />
+            <End Role="CursosProfesor" EntitySet="CursosProfesors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Distritos" Association="CursosModel.FK_Estudiantes_Distritos">
+            <End Role="Distrito" EntitySet="Distritos" />
+            <End Role="Estudiante" EntitySet="Estudiantes" />
           </AssociationSet>
           <AssociationSet Name="FK_Profesores_Distritos" Association="CursosModel.FK_Profesores_Distritos">
             <End Role="Distrito" EntitySet="Distritos" />
             <End Role="Profesore" EntitySet="Profesores" />
           </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Provincias" Association="CursosModel.FK_Estudiantes_Provincias">
+            <End Role="Provincia" EntitySet="Provincias" />
+            <End Role="Estudiante" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_TipoIds" Association="CursosModel.FK_Estudiantes_TipoIds">
+            <End Role="TipoId" EntitySet="TipoIds" />
+            <End Role="Estudiante" EntitySet="Estudiantes" />
+          </AssociationSet>
           <AssociationSet Name="FK_Profesores_Provincias" Association="CursosModel.FK_Profesores_Provincias">
             <End Role="Provincia" EntitySet="Provincias" />
             <End Role="Profesore" EntitySet="Profesores" />
           </AssociationSet>
+          <AssociationSet Name="FK_Profesores_TipoIds" Association="CursosModel.FK_Profesores_TipoIds">
+            <End Role="TipoId" EntitySet="TipoIds" />
+            <End Role="Profesore" EntitySet="Profesores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="CursosModel.FK_Usuarios_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="CursosEstudiante">
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Aula">
           <Key>
-            <PropertyRef Name="IdCursosEstudiantes" />
+            <PropertyRef Name="IdAula" />
           </Key>
-          <Property Name="IdCursosEstudiantes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCurso" Type="Int32" Nullable="false" />
-          <Property Name="IdEstudiante" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Ausencias" Relationship="CursosModel.FK_Ausencias_CursosEstudiantes" FromRole="CursosEstudiante" ToRole="Ausencia" />
-          <NavigationProperty Name="Usuario" Relationship="CursosModel.FK_CursosEstudiantes_CursosEstudiantes" FromRole="CursosEstudiante" ToRole="Usuario" />
-          <NavigationProperty Name="Estudiante" Relationship="CursosModel.FK_CursosEstudiantes_Estudiantes" FromRole="CursosEstudiante" ToRole="Estudiante" />
+          <Property Name="IdAula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Capacidad" Type="Int32" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Accesibilidad" Type="Boolean" Nullable="false" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Ausencia">
           <Key>
@@ -708,18 +717,70 @@
           <Property Name="IdCursosEstudiantes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CursosEstudiante" Relationship="CursosModel.FK_Ausencias_CursosEstudiantes" FromRole="Ausencia" ToRole="CursosEstudiante" />
         </EntityType>
-        <Association Name="FK_Ausencias_CursosEstudiantes">
-          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="1" />
-          <End Type="CursosModel.Ausencia" Role="Ausencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CursosEstudiante">
-              <PropertyRef Name="IdCursosEstudiantes" />
-            </Principal>
-            <Dependent Role="Ausencia">
-              <PropertyRef Name="IdCursosEstudiantes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="IdBitacora" />
+          </Key>
+          <Property Name="IdBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Error" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="CursosModel.FK_Bitacora_Usuarios" FromRole="Bitacora" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Cantone">
+          <Key>
+            <PropertyRef Name="IdCanton" />
+          </Key>
+          <Property Name="IdCanton" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provincia" Relationship="CursosModel.FK_Cantones_Provincias" FromRole="Cantone" ToRole="Provincia" />
+          <NavigationProperty Name="Distritos" Relationship="CursosModel.FK_Distritos_Cantones" FromRole="Cantone" ToRole="Distrito" />
+          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_Cantones" FromRole="Cantone" ToRole="Estudiante" />
+          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_Cantones" FromRole="Cantone" ToRole="Profesore" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CantidadHoras" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CantidadEstudiantes" Type="Int32" Nullable="false" />
+          <Property Name="NombreCurso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Cursos" FromRole="Curso" ToRole="CursosHorario" />
+        </EntityType>
+        <EntityType Name="CursosEstudiante">
+          <Key>
+            <PropertyRef Name="IdCursosEstudiantes" />
+          </Key>
+          <Property Name="IdCursosEstudiantes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <Property Name="IdEstudiante" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ausencias" Relationship="CursosModel.FK_Ausencias_CursosEstudiantes" FromRole="CursosEstudiante" ToRole="Ausencia" />
+          <NavigationProperty Name="Estudiante" Relationship="CursosModel.FK_CursosEstudiantes_Estudiantes" FromRole="CursosEstudiante" ToRole="Estudiante" />
+          <NavigationProperty Name="Usuario" Relationship="CursosModel.FK_CursosEstudiantes_Usuarios" FromRole="CursosEstudiante" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="CursosHorario">
+          <Key>
+            <PropertyRef Name="IdCursosHorarios" />
+          </Key>
+          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCurso" Type="Int32" Nullable="false" />
+          <Property Name="IdHorario" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IdDia" Type="Int32" Nullable="false" />
+          <Property Name="IdAula" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Curso" Relationship="CursosModel.FK_CursosHorarios_Cursos" FromRole="CursosHorario" ToRole="Curso" />
+          <NavigationProperty Name="Horario" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="CursosHorario" ToRole="Horario" />
+          <NavigationProperty Name="CursosProfesors" Relationship="CursosModel.FK_CursosProfesor_CursosHorarios" FromRole="CursosHorario" ToRole="CursosProfesor" />
+        </EntityType>
         <EntityType Name="CursosProfesor">
           <Key>
             <PropertyRef Name="IdCursosHorarios" />
@@ -731,8 +792,54 @@
           <Property Name="FechaInicio" Type="DateTime" Precision="7" />
           <Property Name="FechaFinal" Type="DateTime" Precision="7" />
           <Property Name="LimiteAusencias" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Profesore" Relationship="CursosModel.FK_CursosProfesor_Profesores" FromRole="CursosProfesor" ToRole="Profesore" />
           <NavigationProperty Name="CursosHorario" Relationship="CursosModel.FK_CursosProfesor_CursosHorarios" FromRole="CursosProfesor" ToRole="CursosHorario" />
+          <NavigationProperty Name="Profesore" Relationship="CursosModel.FK_CursosProfesor_Profesores" FromRole="CursosProfesor" ToRole="Profesore" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="IdDistrito" />
+          </Key>
+          <Property Name="IdDistrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdCanton" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cantone" Relationship="CursosModel.FK_Distritos_Cantones" FromRole="Distrito" ToRole="Cantone" />
+          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_Distritos" FromRole="Distrito" ToRole="Estudiante" />
+          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_Distritos" FromRole="Distrito" ToRole="Profesore" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoId" Type="Int32" Nullable="false" />
+          <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+          <Property Name="IdCanton" Type="Int32" Nullable="false" />
+          <Property Name="IdDistrito" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cantone" Relationship="CursosModel.FK_Estudiantes_Cantones" FromRole="Estudiante" ToRole="Cantone" />
+          <NavigationProperty Name="CursosEstudiantes" Relationship="CursosModel.FK_CursosEstudiantes_Estudiantes" FromRole="Estudiante" ToRole="CursosEstudiante" />
+          <NavigationProperty Name="Distrito" Relationship="CursosModel.FK_Estudiantes_Distritos" FromRole="Estudiante" ToRole="Distrito" />
+          <NavigationProperty Name="Provincia" Relationship="CursosModel.FK_Estudiantes_Provincias" FromRole="Estudiante" ToRole="Provincia" />
+          <NavigationProperty Name="TipoId" Relationship="CursosModel.FK_Estudiantes_TipoIds" FromRole="Estudiante" ToRole="TipoId" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="Horario" ToRole="CursosHorario" />
         </EntityType>
         <EntityType Name="Parametro">
           <Key>
@@ -753,26 +860,6 @@
           <Property Name="FromCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DisplayNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="IdRole" />
-          </Key>
-          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Usuarios" Relationship="CursosModel.FK_Usuarios_Roles" FromRole="Role" ToRole="Usuario" />
-        </EntityType>
         <EntityType Name="Profesore">
           <Key>
             <PropertyRef Name="IdProfesor" />
@@ -788,28 +875,45 @@
           <Property Name="Institucion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ApellidoFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CursosProfesors" Relationship="CursosModel.FK_CursosProfesor_Profesores" FromRole="Profesore" ToRole="CursosProfesor" />
           <Property Name="IdTipoId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TipoId" Relationship="CursosModel.FK_Profesores_TipoIds" FromRole="Profesore" ToRole="TipoId" />
           <Property Name="IdProvincia" Type="Int32" />
           <Property Name="IdCanton" Type="Int32" />
           <Property Name="IdDistrito" Type="Int32" />
           <NavigationProperty Name="Cantone" Relationship="CursosModel.FK_Profesores_Cantones" FromRole="Profesore" ToRole="Cantone" />
+          <NavigationProperty Name="CursosProfesors" Relationship="CursosModel.FK_CursosProfesor_Profesores" FromRole="Profesore" ToRole="CursosProfesor" />
           <NavigationProperty Name="Distrito" Relationship="CursosModel.FK_Profesores_Distritos" FromRole="Profesore" ToRole="Distrito" />
           <NavigationProperty Name="Provincia" Relationship="CursosModel.FK_Profesores_Provincias" FromRole="Profesore" ToRole="Provincia" />
+          <NavigationProperty Name="TipoId" Relationship="CursosModel.FK_Profesores_TipoIds" FromRole="Profesore" ToRole="TipoId" />
         </EntityType>
-        <Association Name="FK_CursosProfesor_Profesores">
-          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="1" />
-          <End Type="CursosModel.CursosProfesor" Role="CursosProfesor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Profesore">
-              <PropertyRef Name="IdProfesor" />
-            </Principal>
-            <Dependent Role="CursosProfesor">
-              <PropertyRef Name="IdProfesor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="IdProvincia" />
+          </Key>
+          <Property Name="IdProvincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cantones" Relationship="CursosModel.FK_Cantones_Provincias" FromRole="Provincia" ToRole="Cantone" />
+          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_Provincias" FromRole="Provincia" ToRole="Estudiante" />
+          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_Provincias" FromRole="Provincia" ToRole="Profesore" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="CursosModel.FK_Usuarios_Roles" FromRole="Role" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="TipoId">
+          <Key>
+            <PropertyRef Name="IdTipoId" />
+          </Key>
+          <Property Name="IdTipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mask" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_TipoIds" FromRole="TipoId" ToRole="Estudiante" />
+          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_TipoIds" FromRole="TipoId" ToRole="Profesore" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -823,45 +927,22 @@
           <Property Name="Procesos" Type="Boolean" Nullable="false" />
           <Property Name="Consultas" Type="Boolean" Nullable="false" />
           <Property Name="Seguridad" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="CursosEstudiantes" Relationship="CursosModel.FK_CursosEstudiantes_CursosEstudiantes" FromRole="Usuario" ToRole="CursosEstudiante" />
-          <NavigationProperty Name="Role" Relationship="CursosModel.FK_Usuarios_Roles" FromRole="Usuario" ToRole="Role" />
           <NavigationProperty Name="Bitacoras" Relationship="CursosModel.FK_Bitacora_Usuarios" FromRole="Usuario" ToRole="Bitacora" />
+          <NavigationProperty Name="CursosEstudiantes" Relationship="CursosModel.FK_CursosEstudiantes_Usuarios" FromRole="Usuario" ToRole="CursosEstudiante" />
+          <NavigationProperty Name="Role" Relationship="CursosModel.FK_Usuarios_Roles" FromRole="Usuario" ToRole="Role" />
         </EntityType>
-        <Association Name="FK_CursosEstudiantes_CursosEstudiantes">
-          <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="*" />
+        <Association Name="FK_Ausencias_CursosEstudiantes">
+          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="1" />
+          <End Type="CursosModel.Ausencia" Role="Ausencia" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="IdUsuario" />
+            <Principal Role="CursosEstudiante">
+              <PropertyRef Name="IdCursosEstudiantes" />
             </Principal>
-            <Dependent Role="CursosEstudiante">
-              <PropertyRef Name="IdUsuario" />
+            <Dependent Role="Ausencia">
+              <PropertyRef Name="IdCursosEstudiantes" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuarios_Roles">
-          <End Type="CursosModel.Role" Role="Role" Multiplicity="1" />
-          <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="IdRole" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="IdRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Bitacora">
-          <Key>
-            <PropertyRef Name="IdBitacora" />
-          </Key>
-          <Property Name="IdBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Error" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="CursosModel.FK_Bitacora_Usuarios" FromRole="Bitacora" ToRole="Usuario" />
-        </EntityType>
         <Association Name="FK_Bitacora_Usuarios">
           <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="CursosModel.Bitacora" Role="Bitacora" Multiplicity="*" />
@@ -874,73 +955,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TipoId">
-          <Key>
-            <PropertyRef Name="IdTipoId" />
-          </Key>
-          <Property Name="IdTipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mask" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_TipoIds" FromRole="TipoId" ToRole="Profesore" />
-          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_TipoIds" FromRole="TipoId" ToRole="Estudiante" />
-        </EntityType>
-        <Association Name="FK_Profesores_TipoIds">
-          <End Type="CursosModel.TipoId" Role="TipoId" Multiplicity="1" />
-          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoId">
-              <PropertyRef Name="IdTipoId" />
-            </Principal>
-            <Dependent Role="Profesore">
-              <PropertyRef Name="IdTipoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Aula">
-          <Key>
-            <PropertyRef Name="IdAula" />
-          </Key>
-          <Property Name="IdAula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Capacidad" Type="Int32" Nullable="false" />
-          <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Accesibilidad" Type="Boolean" Nullable="false" />
-          <Property Name="Disponible" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cantone">
-          <Key>
-            <PropertyRef Name="IdCanton" />
-          </Key>
-          <Property Name="IdCanton" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdProvincia" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Provincia" Relationship="CursosModel.FK_Cantones_Provincias" FromRole="Cantone" ToRole="Provincia" />
-          <NavigationProperty Name="Distritos" Relationship="CursosModel.FK_Distritos_Cantones" FromRole="Cantone" ToRole="Distrito" />
-          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_Cantones" FromRole="Cantone" ToRole="Estudiante" />
-          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_Cantones" FromRole="Cantone" ToRole="Profesore" />
-        </EntityType>
-        <EntityType Name="Distrito">
-          <Key>
-            <PropertyRef Name="IdDistrito" />
-          </Key>
-          <Property Name="IdDistrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdCanton" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cantone" Relationship="CursosModel.FK_Distritos_Cantones" FromRole="Distrito" ToRole="Cantone" />
-          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_Distritos" FromRole="Distrito" ToRole="Estudiante" />
-          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_Distritos" FromRole="Distrito" ToRole="Profesore" />
-        </EntityType>
-        <EntityType Name="Provincia">
-          <Key>
-            <PropertyRef Name="IdProvincia" />
-          </Key>
-          <Property Name="IdProvincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cantones" Relationship="CursosModel.FK_Cantones_Provincias" FromRole="Provincia" ToRole="Cantone" />
-          <NavigationProperty Name="Estudiantes" Relationship="CursosModel.FK_Estudiantes_Provincias" FromRole="Provincia" ToRole="Estudiante" />
-          <NavigationProperty Name="Profesores" Relationship="CursosModel.FK_Profesores_Provincias" FromRole="Provincia" ToRole="Profesore" />
-        </EntityType>
         <Association Name="FK_Cantones_Provincias">
           <End Type="CursosModel.Provincia" Role="Provincia" Multiplicity="1" />
           <End Type="CursosModel.Cantone" Role="Cantone" Multiplicity="*" />
@@ -965,33 +979,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Estudiante">
-          <Key>
-            <PropertyRef Name="IdEstudiante" />
-          </Key>
-          <Property Name="IdEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
-          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Edad" Type="Int32" Nullable="false" />
-          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ApellidoFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdTipoId" Type="Int32" Nullable="false" />
-          <Property Name="IdProvincia" Type="Int32" />
-          <Property Name="IdCanton" Type="Int32" />
-          <Property Name="IdDistrito" Type="Int32" />
-          <NavigationProperty Name="CursosEstudiantes" Relationship="CursosModel.FK_CursosEstudiantes_Estudiantes" FromRole="Estudiante" ToRole="CursosEstudiante" />
-          <NavigationProperty Name="TipoId" Relationship="CursosModel.FK_Estudiantes_TipoIds" FromRole="Estudiante" ToRole="TipoId" />
-          <NavigationProperty Name="Cantone" Relationship="CursosModel.FK_Estudiantes_Cantones" FromRole="Estudiante" ToRole="Cantone" />
-          <NavigationProperty Name="Distrito" Relationship="CursosModel.FK_Estudiantes_Distritos" FromRole="Estudiante" ToRole="Distrito" />
-          <NavigationProperty Name="Provincia" Relationship="CursosModel.FK_Estudiantes_Provincias" FromRole="Estudiante" ToRole="Provincia" />
-        </EntityType>
+        <Association Name="FK_Estudiantes_Cantones">
+          <End Type="CursosModel.Cantone" Role="Cantone" Multiplicity="1" />
+          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantone">
+              <PropertyRef Name="IdCanton" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="IdCanton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesores_Cantones">
+          <End Type="CursosModel.Cantone" Role="Cantone" Multiplicity="0..1" />
+          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantone">
+              <PropertyRef Name="IdCanton" />
+            </Principal>
+            <Dependent Role="Profesore">
+              <PropertyRef Name="IdCanton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursosHorarios_Cursos">
+          <End Type="CursosModel.Curso" Role="Curso" Multiplicity="1" />
+          <End Type="CursosModel.CursosHorario" Role="CursosHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="CursosHorario">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CursosEstudiantes_Estudiantes">
           <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="1" />
           <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="*" />
@@ -1004,98 +1027,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Estudiantes_TipoIds">
-          <End Type="CursosModel.TipoId" Role="TipoId" Multiplicity="1" />
-          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
+        <Association Name="FK_CursosEstudiantes_Usuarios">
+          <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="CursosModel.CursosEstudiante" Role="CursosEstudiante" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TipoId">
-              <PropertyRef Name="IdTipoId" />
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
             </Principal>
-            <Dependent Role="Estudiante">
-              <PropertyRef Name="IdTipoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Estudiantes_Cantones">
-          <End Type="CursosModel.Cantone" Role="Cantone" Multiplicity="0..1" />
-          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cantone">
-              <PropertyRef Name="IdCanton" />
-            </Principal>
-            <Dependent Role="Estudiante">
-              <PropertyRef Name="IdCanton" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Estudiantes_Distritos">
-          <End Type="CursosModel.Distrito" Role="Distrito" Multiplicity="0..1" />
-          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distrito">
-              <PropertyRef Name="IdDistrito" />
-            </Principal>
-            <Dependent Role="Estudiante">
-              <PropertyRef Name="IdDistrito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Estudiantes_Provincias">
-          <End Type="CursosModel.Provincia" Role="Provincia" Multiplicity="0..1" />
-          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provincia">
-              <PropertyRef Name="IdProvincia" />
-            </Principal>
-            <Dependent Role="Estudiante">
-              <PropertyRef Name="IdProvincia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Horario">
-          <Key>
-            <PropertyRef Name="IdHorario" />
-          </Key>
-          <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="Horario" ToRole="CursosHorario" />
-        </EntityType>
-        <EntityType Name="Curso">
-          <Key>
-            <PropertyRef Name="IdCurso" />
-          </Key>
-          <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CantidadHoras" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="CantidadEstudiantes" Type="Int32" Nullable="false" />
-          <Property Name="NombreCurso" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Cursos" FromRole="Curso" ToRole="CursosHorario" />
-        </EntityType>
-        <EntityType Name="CursosHorario">
-          <Key>
-            <PropertyRef Name="IdCursosHorarios" />
-          </Key>
-          <Property Name="IdCursosHorarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCurso" Type="Int32" Nullable="false" />
-          <Property Name="IdHorario" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="IdDia" Type="Int32" Nullable="false" />
-          <Property Name="IdAula" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Curso" Relationship="CursosModel.FK_CursosHorarios_Cursos" FromRole="CursosHorario" ToRole="Curso" />
-          <NavigationProperty Name="Horario" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="CursosHorario" ToRole="Horario" />
-          <NavigationProperty Name="CursosProfesors" Relationship="CursosModel.FK_CursosProfesor_CursosHorarios" FromRole="CursosHorario" ToRole="CursosProfesor" />
-        </EntityType>
-        <Association Name="FK_CursosHorarios_Cursos">
-          <End Type="CursosModel.Curso" Role="Curso" Multiplicity="1" />
-          <End Type="CursosModel.CursosHorario" Role="CursosHorario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Curso">
-              <PropertyRef Name="IdCurso" />
-            </Principal>
-            <Dependent Role="CursosHorario">
-              <PropertyRef Name="IdCurso" />
+            <Dependent Role="CursosEstudiante">
+              <PropertyRef Name="IdUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1123,15 +1063,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Profesores_Cantones">
-          <End Type="CursosModel.Cantone" Role="Cantone" Multiplicity="0..1" />
-          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="*" />
+        <Association Name="FK_CursosProfesor_Profesores">
+          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="1" />
+          <End Type="CursosModel.CursosProfesor" Role="CursosProfesor" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cantone">
-              <PropertyRef Name="IdCanton" />
+            <Principal Role="Profesore">
+              <PropertyRef Name="IdProfesor" />
             </Principal>
-            <Dependent Role="Profesore">
-              <PropertyRef Name="IdCanton" />
+            <Dependent Role="CursosProfesor">
+              <PropertyRef Name="IdProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Distritos">
+          <End Type="CursosModel.Distrito" Role="Distrito" Multiplicity="1" />
+          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="IdDistrito" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="IdDistrito" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1147,6 +1099,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Estudiantes_Provincias">
+          <End Type="CursosModel.Provincia" Role="Provincia" Multiplicity="1" />
+          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="IdProvincia" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="IdProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_TipoIds">
+          <End Type="CursosModel.TipoId" Role="TipoId" Multiplicity="1" />
+          <End Type="CursosModel.Estudiante" Role="Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoId">
+              <PropertyRef Name="IdTipoId" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="IdTipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Profesores_Provincias">
           <End Type="CursosModel.Provincia" Role="Provincia" Multiplicity="0..1" />
           <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="*" />
@@ -1159,66 +1135,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Profesores_TipoIds">
+          <End Type="CursosModel.TipoId" Role="TipoId" Multiplicity="1" />
+          <End Type="CursosModel.Profesore" Role="Profesore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoId">
+              <PropertyRef Name="IdTipoId" />
+            </Principal>
+            <Dependent Role="Profesore">
+              <PropertyRef Name="IdTipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Type="CursosModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="CursosModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CursosModelStoreContainer" CdmEntityContainer="CursosEntity">
-          <EntitySetMapping Name="CursosEstudiantes">
-            <EntityTypeMapping TypeName="CursosModel.CursosEstudiante">
-              <MappingFragment StoreEntitySet="CursosEstudiantes">
-                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
-                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
-                <ScalarProperty Name="IdCursosEstudiantes" ColumnName="IdCursosEstudiantes" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ausencias">
-            <EntityTypeMapping TypeName="CursosModel.Ausencia">
-              <MappingFragment StoreEntitySet="Ausencias">
-                <ScalarProperty Name="IdCursosEstudiantes" ColumnName="IdCursosEstudiantes" />
-                <ScalarProperty Name="Ausente" ColumnName="Ausente" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdAusencia" ColumnName="IdAusencia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CursosProfesors">
-            <EntityTypeMapping TypeName="CursosModel.CursosProfesor">
-              <MappingFragment StoreEntitySet="CursosProfesor">
-                <ScalarProperty Name="LimiteAusencias" ColumnName="LimiteAusencias" />
-                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
-                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
-                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Parametros">
-            <EntityTypeMapping TypeName="CursosModel.Parametro">
-              <MappingFragment StoreEntitySet="Parametros">
-                <ScalarProperty Name="DisplayNameCorreo" ColumnName="DisplayNameCorreo" />
-                <ScalarProperty Name="FromCorreo" ColumnName="FromCorreo" />
-                <ScalarProperty Name="PasswordCorreo" ColumnName="PasswordCorreo" />
-                <ScalarProperty Name="UserNameCorreo" ColumnName="UserNameCorreo" />
-                <ScalarProperty Name="TimeOutCorreo" ColumnName="TimeOutCorreo" />
-                <ScalarProperty Name="PortCorreo" ColumnName="PortCorreo" />
-                <ScalarProperty Name="HostCorreo" ColumnName="HostCorreo" />
-                <ScalarProperty Name="RutaSistema" ColumnName="RutaSistema" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="RutaLogo" ColumnName="RutaLogo" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CursosModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CursosModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CursosModel.Store.sp_dropdiagram" />
@@ -1242,48 +1188,26 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CursosModel.Store.sp_renamediagram" />
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="CursosModel.Role">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <EntitySetMapping Name="Aulas">
+            <EntityTypeMapping TypeName="CursosModel.Aula">
+              <MappingFragment StoreEntitySet="Aulas">
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="Accesibilidad" ColumnName="Accesibilidad" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="IdAula" ColumnName="IdAula" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Profesores">
-            <EntityTypeMapping TypeName="CursosModel.Profesore">
-              <MappingFragment StoreEntitySet="Profesores">
-                <ScalarProperty Name="IdDistrito" ColumnName="IdDistrito" />
-                <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
-                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
-                <ScalarProperty Name="IdTipoId" ColumnName="IdTipoId" />
-                <ScalarProperty Name="ApellidoFinal" ColumnName="ApellidoFinal" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Institucion" ColumnName="Institucion" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="CursosModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="Seguridad" ColumnName="Seguridad" />
-                <ScalarProperty Name="Consultas" ColumnName="Consultas" />
-                <ScalarProperty Name="Procesos" ColumnName="Procesos" />
-                <ScalarProperty Name="Mantenimientos" ColumnName="Mantenimientos" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="Clave" ColumnName="Clave" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <EntitySetMapping Name="Ausencias">
+            <EntityTypeMapping TypeName="CursosModel.Ausencia">
+              <MappingFragment StoreEntitySet="Ausencias">
+                <ScalarProperty Name="IdCursosEstudiantes" ColumnName="IdCursosEstudiantes" />
+                <ScalarProperty Name="Ausente" ColumnName="Ausente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdAusencia" ColumnName="IdAusencia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1298,28 +1222,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TipoIds">
-            <EntityTypeMapping TypeName="CursosModel.TipoId">
-              <MappingFragment StoreEntitySet="TipoIds">
-                <ScalarProperty Name="Mask" ColumnName="Mask" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdTipoId" ColumnName="IdTipoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Aulas">
-            <EntityTypeMapping TypeName="CursosModel.Aula">
-              <MappingFragment StoreEntitySet="Aulas">
-                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
-                <ScalarProperty Name="Accesibilidad" ColumnName="Accesibilidad" />
-                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdAula" ColumnName="IdAula" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cantones">
             <EntityTypeMapping TypeName="CursosModel.Cantone">
               <MappingFragment StoreEntitySet="Cantones">
@@ -1329,20 +1231,61 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="CursosModel.Curso">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
+                <ScalarProperty Name="CantidadEstudiantes" ColumnName="CantidadEstudiantes" />
+                <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosEstudiantes">
+            <EntityTypeMapping TypeName="CursosModel.CursosEstudiante">
+              <MappingFragment StoreEntitySet="CursosEstudiantes">
+                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdCursosEstudiantes" ColumnName="IdCursosEstudiantes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosHorarios">
+            <EntityTypeMapping TypeName="CursosModel.CursosHorario">
+              <MappingFragment StoreEntitySet="CursosHorarios">
+                <ScalarProperty Name="IdAula" ColumnName="IdAula" />
+                <ScalarProperty Name="IdDia" ColumnName="IdDia" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursosProfesors">
+            <EntityTypeMapping TypeName="CursosModel.CursosProfesor">
+              <MappingFragment StoreEntitySet="CursosProfesor">
+                <ScalarProperty Name="LimiteAusencias" ColumnName="LimiteAusencias" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Distritos">
             <EntityTypeMapping TypeName="CursosModel.Distrito">
               <MappingFragment StoreEntitySet="Distritos">
                 <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdDistrito" ColumnName="IdDistrito" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Provincias">
-            <EntityTypeMapping TypeName="CursosModel.Provincia">
-              <MappingFragment StoreEntitySet="Provincias">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1377,32 +1320,89 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Cursos">
-            <EntityTypeMapping TypeName="CursosModel.Curso">
-              <MappingFragment StoreEntitySet="Cursos">
-                <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
-                <ScalarProperty Name="CantidadEstudiantes" ColumnName="CantidadEstudiantes" />
-                <ScalarProperty Name="CantidadHoras" ColumnName="CantidadHoras" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="CursosModel.Parametro">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="DisplayNameCorreo" ColumnName="DisplayNameCorreo" />
+                <ScalarProperty Name="FromCorreo" ColumnName="FromCorreo" />
+                <ScalarProperty Name="PasswordCorreo" ColumnName="PasswordCorreo" />
+                <ScalarProperty Name="UserNameCorreo" ColumnName="UserNameCorreo" />
+                <ScalarProperty Name="TimeOutCorreo" ColumnName="TimeOutCorreo" />
+                <ScalarProperty Name="PortCorreo" ColumnName="PortCorreo" />
+                <ScalarProperty Name="HostCorreo" ColumnName="HostCorreo" />
+                <ScalarProperty Name="RutaSistema" ColumnName="RutaSistema" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RutaLogo" ColumnName="RutaLogo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesores">
+            <EntityTypeMapping TypeName="CursosModel.Profesore">
+              <MappingFragment StoreEntitySet="Profesores">
+                <ScalarProperty Name="IdDistrito" ColumnName="IdDistrito" />
+                <ScalarProperty Name="IdCanton" ColumnName="IdCanton" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="IdTipoId" ColumnName="IdTipoId" />
+                <ScalarProperty Name="ApellidoFinal" ColumnName="ApellidoFinal" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Institucion" ColumnName="Institucion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="CursosModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincias">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CursosModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CursosHorarios">
-            <EntityTypeMapping TypeName="CursosModel.CursosHorario">
-              <MappingFragment StoreEntitySet="CursosHorarios">
-                <ScalarProperty Name="IdAula" ColumnName="IdAula" />
-                <ScalarProperty Name="IdDia" ColumnName="IdDia" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
-                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
-                <ScalarProperty Name="IdCursosHorarios" ColumnName="IdCursosHorarios" />
+          <EntitySetMapping Name="TipoIds">
+            <EntityTypeMapping TypeName="CursosModel.TipoId">
+              <MappingFragment StoreEntitySet="TipoIds">
+                <ScalarProperty Name="Mask" ColumnName="Mask" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdTipoId" ColumnName="IdTipoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="CursosModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Seguridad" ColumnName="Seguridad" />
+                <ScalarProperty Name="Consultas" ColumnName="Consultas" />
+                <ScalarProperty Name="Procesos" ColumnName="Procesos" />
+                <ScalarProperty Name="Mantenimientos" ColumnName="Mantenimientos" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

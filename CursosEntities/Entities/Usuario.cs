@@ -16,8 +16,8 @@ namespace CursosEntities.Entities
     {
         public Usuario()
         {
-            this.CursosEstudiantes = new HashSet<CursosEstudiante>();
             this.Bitacoras = new HashSet<Bitacora>();
+            this.CursosEstudiantes = new HashSet<CursosEstudiante>();
         }
     
         public int IdUsuario { get; set; }
@@ -30,8 +30,8 @@ namespace CursosEntities.Entities
         public bool Consultas { get; set; }
         public bool Seguridad { get; set; }
     
+        public virtual ICollection<Bitacora> Bitacoras { get; set; }
         public virtual ICollection<CursosEstudiante> CursosEstudiantes { get; set; }
         public virtual Role Role { get; set; }
-        public virtual ICollection<Bitacora> Bitacoras { get; set; }
     }
 }

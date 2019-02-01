@@ -16,15 +16,15 @@ namespace CursosEntities.Entities
     {
         public TipoId()
         {
-            this.Profesores = new HashSet<Profesore>();
             this.Estudiantes = new HashSet<Estudiante>();
+            this.Profesores = new HashSet<Profesore>();
         }
     
         public int IdTipoId { get; set; }
         public string Descripcion { get; set; }
         public string Mask { get; set; }
     
-        public virtual ICollection<Profesore> Profesores { get; set; }
         public virtual ICollection<Estudiante> Estudiantes { get; set; }
+        public virtual ICollection<Profesore> Profesores { get; set; }
     }
 }

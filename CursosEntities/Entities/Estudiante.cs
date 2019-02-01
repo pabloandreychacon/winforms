@@ -33,14 +33,14 @@ namespace CursosEntities.Entities
         public string Apellido { get; set; }
         public string ApellidoFinal { get; set; }
         public int IdTipoId { get; set; }
-        public Nullable<int> IdProvincia { get; set; }
-        public Nullable<int> IdCanton { get; set; }
-        public Nullable<int> IdDistrito { get; set; }
+        public int IdProvincia { get; set; }
+        public int IdCanton { get; set; }
+        public int IdDistrito { get; set; }
     
-        public virtual ICollection<CursosEstudiante> CursosEstudiantes { get; set; }
-        public virtual TipoId TipoId { get; set; }
         public virtual Cantone Cantone { get; set; }
+        public virtual ICollection<CursosEstudiante> CursosEstudiantes { get; set; }
         public virtual Distrito Distrito { get; set; }
         public virtual Provincia Provincia { get; set; }
+        public virtual TipoId TipoId { get; set; }
     }
 }

@@ -119,194 +119,194 @@
             // 
             // closeButton1
             // 
-            this.closeButton1.Location = new System.Drawing.Point(889, 36);
-            this.closeButton1.Margin = new System.Windows.Forms.Padding(3);
+            this.closeButton1.Location = new System.Drawing.Point(1111, 47);
+            this.closeButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeButton1.TabIndex = 17;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(840, 36);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(3);
+            this.btnFind.Location = new System.Drawing.Point(1050, 47);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFind.TabIndex = 16;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // errorContainer1
             // 
-            this.errorContainer1.Location = new System.Drawing.Point(0, 151);
-            this.errorContainer1.Margin = new System.Windows.Forms.Padding(5);
+            this.errorContainer1.Location = new System.Drawing.Point(0, 195);
+            this.errorContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             // 
             // lblInfoMessage
             // 
-            this.lblInfoMessage.Location = new System.Drawing.Point(38, 461);
+            this.lblInfoMessage.Location = new System.Drawing.Point(48, 597);
             this.lblInfoMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             // 
             // correoLabel
             // 
             correoLabel.AutoSize = true;
-            correoLabel.Location = new System.Drawing.Point(35, 136);
+            correoLabel.Location = new System.Drawing.Point(44, 176);
             correoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             correoLabel.Name = "correoLabel";
-            correoLabel.Size = new System.Drawing.Size(59, 18);
+            correoLabel.Size = new System.Drawing.Size(73, 24);
             correoLabel.TabIndex = 6;
             correoLabel.Text = "Correo:";
             // 
             // fechaIngresoLabel
             // 
             fechaIngresoLabel.AutoSize = true;
-            fechaIngresoLabel.Location = new System.Drawing.Point(35, 161);
+            fechaIngresoLabel.Location = new System.Drawing.Point(44, 208);
             fechaIngresoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             fechaIngresoLabel.Name = "fechaIngresoLabel";
-            fechaIngresoLabel.Size = new System.Drawing.Size(106, 18);
+            fechaIngresoLabel.Size = new System.Drawing.Size(137, 24);
             fechaIngresoLabel.TabIndex = 8;
             fechaIngresoLabel.Text = "Fecha Ingreso:";
             // 
             // identificacionLabel
             // 
             identificacionLabel.AutoSize = true;
-            identificacionLabel.Location = new System.Drawing.Point(308, 192);
+            identificacionLabel.Location = new System.Drawing.Point(385, 248);
             identificacionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             identificacionLabel.Name = "identificacionLabel";
-            identificacionLabel.Size = new System.Drawing.Size(97, 18);
+            identificacionLabel.Size = new System.Drawing.Size(124, 24);
             identificacionLabel.TabIndex = 10;
             identificacionLabel.Text = "Identificación:";
             // 
             // idEstudianteLabel
             // 
             idEstudianteLabel.AutoSize = true;
-            idEstudianteLabel.Location = new System.Drawing.Point(35, 37);
+            idEstudianteLabel.Location = new System.Drawing.Point(44, 48);
             idEstudianteLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             idEstudianteLabel.Name = "idEstudianteLabel";
-            idEstudianteLabel.Size = new System.Drawing.Size(96, 18);
+            idEstudianteLabel.Size = new System.Drawing.Size(123, 24);
             idEstudianteLabel.TabIndex = 12;
             idEstudianteLabel.Text = "Id Estudiante:";
             // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
-            nombreLabel.Location = new System.Drawing.Point(35, 63);
+            nombreLabel.Location = new System.Drawing.Point(44, 82);
             nombreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(66, 18);
+            nombreLabel.Size = new System.Drawing.Size(84, 24);
             nombreLabel.TabIndex = 14;
             nombreLabel.Text = "Nombre:";
             // 
             // telefonoLabel
             // 
             telefonoLabel.AutoSize = true;
-            telefonoLabel.Location = new System.Drawing.Point(35, 238);
+            telefonoLabel.Location = new System.Drawing.Point(44, 308);
             telefonoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             telefonoLabel.Name = "telefonoLabel";
-            telefonoLabel.Size = new System.Drawing.Size(70, 18);
+            telefonoLabel.Size = new System.Drawing.Size(90, 24);
             telefonoLabel.TabIndex = 16;
             telefonoLabel.Text = "Teléfono:";
             // 
             // activoLabel
             // 
             activoLabel.AutoSize = true;
-            activoLabel.Location = new System.Drawing.Point(35, 289);
+            activoLabel.Location = new System.Drawing.Point(44, 374);
             activoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             activoLabel.Name = "activoLabel";
-            activoLabel.Size = new System.Drawing.Size(52, 18);
+            activoLabel.Size = new System.Drawing.Size(66, 24);
             activoLabel.TabIndex = 17;
             activoLabel.Text = "Activo:";
             // 
             // fechaNacimientoLabel
             // 
             fechaNacimientoLabel.AutoSize = true;
-            fechaNacimientoLabel.Location = new System.Drawing.Point(35, 314);
+            fechaNacimientoLabel.Location = new System.Drawing.Point(44, 406);
             fechaNacimientoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             fechaNacimientoLabel.Name = "fechaNacimientoLabel";
-            fechaNacimientoLabel.Size = new System.Drawing.Size(132, 18);
+            fechaNacimientoLabel.Size = new System.Drawing.Size(169, 24);
             fechaNacimientoLabel.TabIndex = 18;
             fechaNacimientoLabel.Text = "Fecha Nacimiento:";
             // 
             // direccionLabel
             // 
             direccionLabel.AutoSize = true;
-            direccionLabel.Location = new System.Drawing.Point(35, 348);
+            direccionLabel.Location = new System.Drawing.Point(44, 450);
             direccionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             direccionLabel.Name = "direccionLabel";
-            direccionLabel.Size = new System.Drawing.Size(75, 18);
+            direccionLabel.Size = new System.Drawing.Size(95, 24);
             direccionLabel.TabIndex = 13;
             direccionLabel.Text = "Dirección:";
             // 
             // apellidoLabel
             // 
             apellidoLabel.AutoSize = true;
-            apellidoLabel.Location = new System.Drawing.Point(35, 88);
+            apellidoLabel.Location = new System.Drawing.Point(44, 114);
             apellidoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             apellidoLabel.Name = "apellidoLabel";
-            apellidoLabel.Size = new System.Drawing.Size(63, 18);
+            apellidoLabel.Size = new System.Drawing.Size(84, 24);
             apellidoLabel.TabIndex = 28;
             apellidoLabel.Text = "Apellido:";
             // 
             // apellidoFinalLabel
             // 
             apellidoFinalLabel.AutoSize = true;
-            apellidoFinalLabel.Location = new System.Drawing.Point(35, 113);
+            apellidoFinalLabel.Location = new System.Drawing.Point(44, 146);
             apellidoFinalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             apellidoFinalLabel.Name = "apellidoFinalLabel";
-            apellidoFinalLabel.Size = new System.Drawing.Size(98, 18);
+            apellidoFinalLabel.Size = new System.Drawing.Size(130, 24);
             apellidoFinalLabel.TabIndex = 30;
             apellidoFinalLabel.Text = "Apellido Final:";
             // 
             // celularLabel2
             // 
             celularLabel2.AutoSize = true;
-            celularLabel2.Location = new System.Drawing.Point(35, 263);
+            celularLabel2.Location = new System.Drawing.Point(44, 340);
             celularLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             celularLabel2.Name = "celularLabel2";
-            celularLabel2.Size = new System.Drawing.Size(58, 18);
+            celularLabel2.Size = new System.Drawing.Size(74, 24);
             celularLabel2.TabIndex = 36;
             celularLabel2.Text = "Celular:";
             // 
             // edadLabel1
             // 
             edadLabel1.AutoSize = true;
-            edadLabel1.Location = new System.Drawing.Point(35, 214);
+            edadLabel1.Location = new System.Drawing.Point(44, 277);
             edadLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             edadLabel1.Name = "edadLabel1";
-            edadLabel1.Size = new System.Drawing.Size(46, 18);
+            edadLabel1.Size = new System.Drawing.Size(60, 24);
             edadLabel1.TabIndex = 37;
             edadLabel1.Text = "Edad:";
             // 
             // tipoIdLabel
             // 
             tipoIdLabel.AutoSize = true;
-            tipoIdLabel.Location = new System.Drawing.Point(36, 189);
+            tipoIdLabel.Location = new System.Drawing.Point(45, 245);
             tipoIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             tipoIdLabel.Name = "tipoIdLabel";
-            tipoIdLabel.Size = new System.Drawing.Size(56, 18);
+            tipoIdLabel.Size = new System.Drawing.Size(73, 24);
             tipoIdLabel.TabIndex = 40;
             tipoIdLabel.Text = "Tipo Id:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(169, 345);
+            label1.Location = new System.Drawing.Point(211, 446);
             label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(73, 18);
+            label1.Size = new System.Drawing.Size(92, 24);
             label1.TabIndex = 44;
             label1.Text = "Provincia:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(296, 345);
+            label2.Location = new System.Drawing.Point(370, 446);
             label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(60, 18);
+            label2.Size = new System.Drawing.Size(75, 24);
             label2.TabIndex = 45;
             label2.Text = "Cantón:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(423, 345);
+            label3.Location = new System.Drawing.Point(529, 446);
             label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(59, 18);
+            label3.Size = new System.Drawing.Size(70, 24);
             label3.TabIndex = 46;
             label3.Text = "Distrito:";
             // 
@@ -337,7 +337,7 @@
             this.estudianteBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.estudianteBindingNavigator.Name = "estudianteBindingNavigator";
             this.estudianteBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.estudianteBindingNavigator.Size = new System.Drawing.Size(941, 27);
+            this.estudianteBindingNavigator.Size = new System.Drawing.Size(1176, 27);
             this.estudianteBindingNavigator.TabIndex = 18;
             this.estudianteBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -359,7 +359,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -391,7 +391,7 @@
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(41, 23);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
@@ -445,77 +445,77 @@
             // correoTextBox
             // 
             this.correoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Correo", true));
-            this.correoTextBox.Location = new System.Drawing.Point(172, 134);
-            this.correoTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.correoTextBox.Location = new System.Drawing.Point(215, 173);
+            this.correoTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.correoTextBox.Name = "correoTextBox";
-            this.correoTextBox.Size = new System.Drawing.Size(242, 24);
+            this.correoTextBox.Size = new System.Drawing.Size(302, 28);
             this.correoTextBox.TabIndex = 4;
             // 
             // fechaIngresoDateTimePicker
             // 
             this.fechaIngresoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.estudianteBindingSource, "FechaIngreso", true));
-            this.fechaIngresoDateTimePicker.Location = new System.Drawing.Point(172, 161);
-            this.fechaIngresoDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.fechaIngresoDateTimePicker.Location = new System.Drawing.Point(215, 208);
+            this.fechaIngresoDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.fechaIngresoDateTimePicker.Name = "fechaIngresoDateTimePicker";
-            this.fechaIngresoDateTimePicker.Size = new System.Drawing.Size(161, 24);
+            this.fechaIngresoDateTimePicker.Size = new System.Drawing.Size(200, 28);
             this.fechaIngresoDateTimePicker.TabIndex = 5;
             // 
             // idEstudianteTextBox
             // 
             this.idEstudianteTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "IdEstudiante", true));
             this.idEstudianteTextBox.Enabled = false;
-            this.idEstudianteTextBox.Location = new System.Drawing.Point(172, 34);
-            this.idEstudianteTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.idEstudianteTextBox.Location = new System.Drawing.Point(215, 44);
+            this.idEstudianteTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.idEstudianteTextBox.Name = "idEstudianteTextBox";
             this.idEstudianteTextBox.ReadOnly = true;
-            this.idEstudianteTextBox.Size = new System.Drawing.Size(161, 24);
+            this.idEstudianteTextBox.Size = new System.Drawing.Size(200, 28);
             this.idEstudianteTextBox.TabIndex = 0;
             // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(172, 60);
-            this.nombreTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nombreTextBox.Location = new System.Drawing.Point(215, 78);
+            this.nombreTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(242, 24);
+            this.nombreTextBox.Size = new System.Drawing.Size(302, 28);
             this.nombreTextBox.TabIndex = 1;
             // 
             // activoCheckBox
             // 
             this.activoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.estudianteBindingSource, "Activo", true));
-            this.activoCheckBox.Location = new System.Drawing.Point(172, 298);
-            this.activoCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.activoCheckBox.Location = new System.Drawing.Point(215, 386);
+            this.activoCheckBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.activoCheckBox.Name = "activoCheckBox";
-            this.activoCheckBox.Size = new System.Drawing.Size(83, 19);
+            this.activoCheckBox.Size = new System.Drawing.Size(104, 25);
             this.activoCheckBox.TabIndex = 11;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
             // fechaNacimientoDateTimePicker
             // 
             this.fechaNacimientoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.estudianteBindingSource, "FechaNacimiento", true));
-            this.fechaNacimientoDateTimePicker.Location = new System.Drawing.Point(172, 321);
-            this.fechaNacimientoDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.fechaNacimientoDateTimePicker.Location = new System.Drawing.Point(215, 415);
+            this.fechaNacimientoDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.fechaNacimientoDateTimePicker.Name = "fechaNacimientoDateTimePicker";
-            this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(161, 24);
+            this.fechaNacimientoDateTimePicker.Size = new System.Drawing.Size(200, 28);
             this.fechaNacimientoDateTimePicker.TabIndex = 12;
             // 
             // direccionTextBox
             // 
             this.direccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Direccion", true));
-            this.direccionTextBox.Location = new System.Drawing.Point(172, 397);
-            this.direccionTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.direccionTextBox.Location = new System.Drawing.Point(215, 514);
+            this.direccionTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.direccionTextBox.Multiline = true;
             this.direccionTextBox.Name = "direccionTextBox";
-            this.direccionTextBox.Size = new System.Drawing.Size(453, 56);
+            this.direccionTextBox.Size = new System.Drawing.Size(565, 71);
             this.direccionTextBox.TabIndex = 13;
             // 
             // creaCursoBtn
             // 
             this.creaCursoBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.creaCursoBtn.Location = new System.Drawing.Point(462, 88);
-            this.creaCursoBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.creaCursoBtn.Location = new System.Drawing.Point(578, 114);
+            this.creaCursoBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.creaCursoBtn.Name = "creaCursoBtn";
-            this.creaCursoBtn.Size = new System.Drawing.Size(162, 31);
+            this.creaCursoBtn.Size = new System.Drawing.Size(202, 40);
             this.creaCursoBtn.TabIndex = 15;
             this.creaCursoBtn.Text = "Crear Curso...";
             this.creaCursoBtn.UseVisualStyleBackColor = true;
@@ -525,10 +525,10 @@
             // asignaCursoBtn
             // 
             this.asignaCursoBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.asignaCursoBtn.Location = new System.Drawing.Point(462, 58);
-            this.asignaCursoBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.asignaCursoBtn.Location = new System.Drawing.Point(578, 75);
+            this.asignaCursoBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.asignaCursoBtn.Name = "asignaCursoBtn";
-            this.asignaCursoBtn.Size = new System.Drawing.Size(162, 31);
+            this.asignaCursoBtn.Size = new System.Drawing.Size(202, 40);
             this.asignaCursoBtn.TabIndex = 14;
             this.asignaCursoBtn.Text = "Asignar Curso...";
             this.asignaCursoBtn.UseVisualStyleBackColor = true;
@@ -538,48 +538,48 @@
             // apellidoTextBox
             // 
             this.apellidoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Apellido", true));
-            this.apellidoTextBox.Location = new System.Drawing.Point(172, 85);
-            this.apellidoTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.apellidoTextBox.Location = new System.Drawing.Point(215, 110);
+            this.apellidoTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.apellidoTextBox.Name = "apellidoTextBox";
-            this.apellidoTextBox.Size = new System.Drawing.Size(242, 24);
+            this.apellidoTextBox.Size = new System.Drawing.Size(302, 28);
             this.apellidoTextBox.TabIndex = 2;
             // 
             // apellidoFinalTextBox
             // 
             this.apellidoFinalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "ApellidoFinal", true));
-            this.apellidoFinalTextBox.Location = new System.Drawing.Point(172, 110);
-            this.apellidoFinalTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.apellidoFinalTextBox.Location = new System.Drawing.Point(215, 142);
+            this.apellidoFinalTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.apellidoFinalTextBox.Name = "apellidoFinalTextBox";
-            this.apellidoFinalTextBox.Size = new System.Drawing.Size(242, 24);
+            this.apellidoFinalTextBox.Size = new System.Drawing.Size(302, 28);
             this.apellidoFinalTextBox.TabIndex = 3;
             // 
             // celularMaskedTextBox
             // 
             this.celularMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Celular", true));
-            this.celularMaskedTextBox.Location = new System.Drawing.Point(172, 265);
-            this.celularMaskedTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.celularMaskedTextBox.Location = new System.Drawing.Point(215, 343);
+            this.celularMaskedTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.celularMaskedTextBox.Mask = "0000-0000";
             this.celularMaskedTextBox.Name = "celularMaskedTextBox";
-            this.celularMaskedTextBox.Size = new System.Drawing.Size(147, 24);
+            this.celularMaskedTextBox.Size = new System.Drawing.Size(183, 28);
             this.celularMaskedTextBox.TabIndex = 10;
             // 
             // edadNumericUpDown
             // 
             this.edadNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.estudianteBindingSource, "Edad", true));
-            this.edadNumericUpDown.Location = new System.Drawing.Point(172, 214);
-            this.edadNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
+            this.edadNumericUpDown.Location = new System.Drawing.Point(215, 277);
+            this.edadNumericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.edadNumericUpDown.Name = "edadNumericUpDown";
-            this.edadNumericUpDown.Size = new System.Drawing.Size(96, 24);
+            this.edadNumericUpDown.Size = new System.Drawing.Size(120, 28);
             this.edadNumericUpDown.TabIndex = 8;
             // 
             // telefonoMaskedTextBox
             // 
             this.telefonoMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Telefono", true));
-            this.telefonoMaskedTextBox.Location = new System.Drawing.Point(172, 240);
-            this.telefonoMaskedTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.telefonoMaskedTextBox.Location = new System.Drawing.Point(215, 311);
+            this.telefonoMaskedTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.telefonoMaskedTextBox.Mask = "0000-0000";
             this.telefonoMaskedTextBox.Name = "telefonoMaskedTextBox";
-            this.telefonoMaskedTextBox.Size = new System.Drawing.Size(147, 24);
+            this.telefonoMaskedTextBox.Size = new System.Drawing.Size(183, 28);
             this.telefonoMaskedTextBox.TabIndex = 9;
             // 
             // tipoIdBindingSource
@@ -589,10 +589,10 @@
             // identificacionMaskedTextBox
             // 
             this.identificacionMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.estudianteBindingSource, "Identificacion", true));
-            this.identificacionMaskedTextBox.Location = new System.Drawing.Point(420, 189);
-            this.identificacionMaskedTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.identificacionMaskedTextBox.Location = new System.Drawing.Point(525, 245);
+            this.identificacionMaskedTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.identificacionMaskedTextBox.Name = "identificacionMaskedTextBox";
-            this.identificacionMaskedTextBox.Size = new System.Drawing.Size(205, 24);
+            this.identificacionMaskedTextBox.Size = new System.Drawing.Size(255, 28);
             this.identificacionMaskedTextBox.TabIndex = 7;
             // 
             // provinciasBindingSource
@@ -616,10 +616,12 @@
             this.cboTiposIds.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.estudianteBindingSource, "IdTipoId", true));
             this.cboTiposIds.DataSource = this.tipoIdBindingSource;
             this.cboTiposIds.DisplayMember = "Descripcion";
+            this.cboTiposIds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTiposIds.FormattingEnabled = true;
-            this.cboTiposIds.Location = new System.Drawing.Point(172, 187);
+            this.cboTiposIds.Location = new System.Drawing.Point(215, 242);
+            this.cboTiposIds.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboTiposIds.Name = "cboTiposIds";
-            this.cboTiposIds.Size = new System.Drawing.Size(121, 25);
+            this.cboTiposIds.Size = new System.Drawing.Size(150, 30);
             this.cboTiposIds.TabIndex = 54;
             this.cboTiposIds.ValueMember = "IdTipoId";
             this.cboTiposIds.SelectedIndexChanged += new System.EventHandler(this.cboTiposIds_SelectedIndexChanged);
@@ -634,9 +636,10 @@
             this.cboDistritos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cboDistritos.Enabled = false;
             this.cboDistritos.FormattingEnabled = true;
-            this.cboDistritos.Location = new System.Drawing.Point(426, 367);
+            this.cboDistritos.Location = new System.Drawing.Point(532, 475);
+            this.cboDistritos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboDistritos.Name = "cboDistritos";
-            this.cboDistritos.Size = new System.Drawing.Size(121, 25);
+            this.cboDistritos.Size = new System.Drawing.Size(150, 31);
             this.cboDistritos.TabIndex = 55;
             // 
             // cboCantones
@@ -644,9 +647,10 @@
             this.cboCantones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cboCantones.Enabled = false;
             this.cboCantones.FormattingEnabled = true;
-            this.cboCantones.Location = new System.Drawing.Point(299, 367);
+            this.cboCantones.Location = new System.Drawing.Point(374, 475);
+            this.cboCantones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboCantones.Name = "cboCantones";
-            this.cboCantones.Size = new System.Drawing.Size(121, 25);
+            this.cboCantones.Size = new System.Drawing.Size(150, 31);
             this.cboCantones.TabIndex = 56;
             // 
             // cboProvincias
@@ -654,41 +658,48 @@
             this.cboProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cboProvincias.Enabled = false;
             this.cboProvincias.FormattingEnabled = true;
-            this.cboProvincias.Location = new System.Drawing.Point(172, 367);
+            this.cboProvincias.Location = new System.Drawing.Point(215, 475);
+            this.cboProvincias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboProvincias.Name = "cboProvincias";
-            this.cboProvincias.Size = new System.Drawing.Size(121, 25);
+            this.cboProvincias.Size = new System.Drawing.Size(150, 31);
             this.cboProvincias.TabIndex = 57;
             // 
             // cboListaProvincias
             // 
+            this.cboListaProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboListaProvincias.FormattingEnabled = true;
-            this.cboListaProvincias.Location = new System.Drawing.Point(657, 367);
+            this.cboListaProvincias.Location = new System.Drawing.Point(821, 475);
+            this.cboListaProvincias.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboListaProvincias.Name = "cboListaProvincias";
-            this.cboListaProvincias.Size = new System.Drawing.Size(121, 25);
+            this.cboListaProvincias.Size = new System.Drawing.Size(150, 30);
             this.cboListaProvincias.TabIndex = 60;
             this.cboListaProvincias.SelectedIndexChanged += new System.EventHandler(this.cboListaProvincias_SelectedIndexChanged);
             // 
             // cboListaCantones
             // 
+            this.cboListaCantones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboListaCantones.FormattingEnabled = true;
-            this.cboListaCantones.Location = new System.Drawing.Point(657, 398);
+            this.cboListaCantones.Location = new System.Drawing.Point(821, 515);
+            this.cboListaCantones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboListaCantones.Name = "cboListaCantones";
-            this.cboListaCantones.Size = new System.Drawing.Size(121, 25);
+            this.cboListaCantones.Size = new System.Drawing.Size(150, 30);
             this.cboListaCantones.TabIndex = 59;
             this.cboListaCantones.SelectedIndexChanged += new System.EventHandler(this.cboListaCantones_SelectedIndexChanged);
             // 
             // cboListaDistritos
             // 
+            this.cboListaDistritos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboListaDistritos.FormattingEnabled = true;
-            this.cboListaDistritos.Location = new System.Drawing.Point(657, 428);
+            this.cboListaDistritos.Location = new System.Drawing.Point(821, 554);
+            this.cboListaDistritos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboListaDistritos.Name = "cboListaDistritos";
-            this.cboListaDistritos.Size = new System.Drawing.Size(121, 25);
+            this.cboListaDistritos.Size = new System.Drawing.Size(150, 30);
             this.cboListaDistritos.TabIndex = 58;
             // 
             // MantEstudiantesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
-            this.ClientSize = new System.Drawing.Size(941, 501);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.ClientSize = new System.Drawing.Size(1176, 648);
             this.Controls.Add(this.cboListaProvincias);
             this.Controls.Add(this.cboListaCantones);
             this.Controls.Add(this.cboListaDistritos);
@@ -729,7 +740,7 @@
             this.Controls.Add(this.nombreTextBox);
             this.Controls.Add(telefonoLabel);
             this.Controls.Add(this.estudianteBindingNavigator);
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "MantEstudiantesForm";
             this.OrderKeys = "Nombre, Identific";
             this.Text = "Estudiantes";
