@@ -63,3 +63,8 @@ Distritos: http://www.editorialox.com/sanjose.htm#cantondesanjose >
 		=CONCATENAR(B1,"'",A1,"'",C1)
 		
 DASHBOARD
+
+Enable SQL Server authentication
+In SQL Server Management Studio Express tool, right-click the instance of SQL Express to configure; then select Properties.
+Select the Security section on the left.
+Change the Server Authentication to SQL Server and Windows Authentication mode.
