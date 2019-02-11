@@ -20,7 +20,18 @@ cursos> same level as base project
 			<package id="EntityFramework" version="6.2.0" targetFramework="net45" />
 			<package id="Microsoft.ReportViewer.Common" version="10.0.40219.1" targetFramework="net45" />
 			<package id="Microsoft.ReportViewer.WinForms" version="10.0.40219.1" targetFramework="net45" />
-	
+
+	se actualizaon con nuget a:
+		Microsoft.Reporting.WinForms.v11
+		Microsoft.ReportViewer.Common.v12
+		Microsoft.ReportViewer.WinForms.v12
+
+		se eliminaron versiones anteriores
+
+		y se instalo el designer por si acaso para 2017
+
+		
+
 	build all
 	
 	run
@@ -68,3 +79,6 @@ Enable SQL Server authentication
 In SQL Server Management Studio Express tool, right-click the instance of SQL Express to configure; then select Properties.
 Select the Security section on the left.
 Change the Server Authentication to SQL Server and Windows Authentication mode.
+
+se bajo el designer de reporrtes: https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftRdlcReportDesignerforVisualStudio-18001#review-details
+
