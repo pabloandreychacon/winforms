@@ -1,10 +1,14 @@
-﻿using CursosBusiness.Business;
+﻿using BaseHelpers.Helpers;
+using CursosBusiness.Business;
 using CursosConsole.ServiceReference1;
+using CursosEntities.Entities;
 using GettingStartedWCFLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.NetworkInformation;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
@@ -16,63 +20,162 @@ namespace CursosConsole
 {
     class Program
     {
+        public static int port;
+        public static int timeout;
+        public static string host;
+        public static string userName;
+        public static string password;
+        public static string fromEmail;
+        public static string displayName;
+        public static string destinoCorreoRespaldo;
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 100; i++)
+
+
+            //respaldos como tarea de windows
+            // para probarlo solo debe ejecutarse y
+            /* task scheduler de windows
+             * y si quiere que caiga en error, poner breakpoint línea:
+             * DirectoryInfo df = new DirectoryInfo(rutaFinal); y alterar el valor del
+             * directorio destino del backup
+             * get cadena de conexion
+            */
+            CommonB biz = new CommonB();
+            var conn = biz.GetConnection();
+            // get parametros
+            var cursosParams = biz.GetList<Parametro>().FirstOrDefault();
+            // get ruta de parametros
+            var parameterRutaSistema = cursosParams.RutaSistema;
+            // get config for email
+            port = cursosParams.PortCorreo;
+            timeout = cursosParams.TimeOutCorreo;
+            host = cursosParams.HostCorreo;
+            fromEmail = cursosParams.FromCorreo;
+            displayName = cursosParams.DisplayNameCorreo;
+            userName = cursosParams.UserNameCorreo;
+            password = cursosParams.PasswordCorreo;
+            destinoCorreoRespaldo = cursosParams.CorreoContactoRespaldos;
+            var rutaFinal = "";
+            if (!string.IsNullOrWhiteSpace(parameterRutaSistema))
             {
-                if (i % 5 == 0 && i % 3 == 0) 
+                rutaFinal = parameterRutaSistema.Trim();
+            }
+            else
+            {
+                rutaFinal = Path.GetDirectoryName(Directory.GetCurrentDirectory());
+            }
+            //verficiar que exista ruta
+            var strBackup = "BACKUP DATABASE [Cursos] TO  DISK = N'" +
+                rutaFinal.Trim() + "\\Cursos.bak' WITH NOFORMAT, INIT,  NAME = N'Cursos-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10";
+            if (!string.IsNullOrWhiteSpace(rutaFinal))
+            {
+                DirectoryInfo df = new DirectoryInfo(rutaFinal);
+                try
                 {
-                    Console.WriteLine("FizzBuzz");
+                    if (df.Exists)
+                    {
+                        // send backup
+                        // usuario de bases de datos debe tener permisos db backupoperator, on user mapping, database role memebership
+                        //int count = AdoDataMethods.ExecuteSql(commB.GetConnection(), strBackup);
+                        Console.WriteLine("Haciendo respaldo...");
+                        int count = AdoDataMethods.ExecuteSql(conn.Trim(), strBackup);
+                        //int count = commB.ExecuteSql(strBackup);
+                        //MessageBox.Show("Respaldo realizado!", "Backup", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error en respaldo, intentanto enviar correo...");
+                        SendErrorEmail("El folder seleccionado: " + rutaFinal +
+                            " para hacer los respaldos es inaccesible o no existe, " +
+                            "por favor verifique los parámetros.");
+
+                        //MessageBox.Show("El folder seleccionado es inaccesible o no existe!", "Backup", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    }
                 }
-                else 
+                catch (Exception ex)
                 {
-                    if (i % 5 == 0) 
-                    {
-                        Console.WriteLine("Buzz");
-                    }
-                    else 
-                    {
-                        if (i % 3 == 0)
-                        {
-                            Console.WriteLine("Fizz");
-                        }
-                        else 
-                        {
-                            Console.WriteLine(i);
-                        }
-                    }
+                    SendErrorEmail("No se puede hacer el respaldo de la base de datos" +
+                            "Cursos. Mensaje: " + ex.Message + System.Environment.NewLine +
+                            "Inner Exception: " + ex.InnerException + Environment.NewLine +
+                            "Stack: " + ex.StackTrace + Environment.NewLine +
+                            "por favor verifique la configuración en la base de datos.");
+                    //General.LogInfo(ex, "Control", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
-            
-            string p = "FINISHED FILES ARE THE RE- SULT OF YEARS OF SCIENTIF- IC STUDY COMBINED WITH THE EXPERIENCE OF YEARS ";
-            int total = 0;
-            for (var item=0;item < p.Length; item++)
-            {
-                if (p[item].Equals("F")) total++;
-            }
-            Console.WriteLine(total);
+            //for (int i = 1; i <= 100; i++)
+            //{
+            //    if (i % 5 == 0 && i % 3 == 0) 
+            //    {
+            //        Console.WriteLine("FizzBuzz");
+            //    }
+            //    else 
+            //    {
+            //        if (i % 5 == 0) 
+            //        {
+            //            Console.WriteLine("Buzz");
+            //        }
+            //        else 
+            //        {
+            //            if (i % 3 == 0)
+            //            {
+            //                Console.WriteLine("Fizz");
+            //            }
+            //            else 
+            //            {
+            //                Console.WriteLine(i);
+            //            }
+            //        }
+            //    }
+            //}
+
+            //string p = "FINISHED FILES ARE THE RE- SULT OF YEARS OF SCIENTIF- IC STUDY COMBINED WITH THE EXPERIENCE OF YEARS ";
+            //int total = 0;
+            //for (var item=0;item < p.Length; item++)
+            //{
+            //    if (p[item].Equals("F")) total++;
+            //}
+            //Console.WriteLine(total);
             // From Data out
-            CommonB obj = new CommonB();
-            var oCustomers = obj.GetUsuario("Admin", "2");
-            Console.WriteLine(oCustomers.FirstOrDefault().Nombre);
+
+            //var oCustomers = obj.GetUsuario("Admin", "2");
+            //Console.WriteLine(oCustomers.FirstOrDefault().Nombre);
             // Data in
 
             //GeneralB obj2 = new GeneralB();
             //obj2.CustomerCode = "c001";
             //obj2.CustomerName = "Shivprasad";
-            Console.ReadLine();
+            //Console.ReadLine();
 
             /// test wcf host
             //RunService();
-            
+
 
             ///// test wcf client
             //TestService();
 
             // create xml
             //ExecuteXmlTest1();
-            ExecuteXmlTest2();
-            Console.ReadLine();
+            //ExecuteXmlTest2();
+            //Console.ReadLine();
+        }
+
+        public static void SendErrorEmail(string mensajeInicial)
+        {
+            try
+            {
+                //Se envía el mail
+                EmailTools.SendEmail(mensajeInicial, port, timeout, host,
+                userName, Tools.CodeDecode.Decode(password), "Error al crear el respaldo de la base de datos de Cursos",
+                fromEmail, displayName, destinoCorreoRespaldo, true);
+                Console.WriteLine("Correo enviado a: " + destinoCorreoRespaldo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error con el respaldo de la base de datos de Cursos y el envío" +
+                            " del correo de informe del error, por favor verfique los parámatros de configuración del correo" +
+                            Environment.NewLine + " Mensaje: " + ex.Message);
+                Console.ReadKey();
+            }
         }
 
         private static void ExecuteXmlTest2()
@@ -97,15 +200,15 @@ namespace CursosConsole
                 Console.WriteLine(xEle);
 
             var homePhone = from phoneno in xelement.Elements("Employee")
-            where (string)phoneno.Element("Phone").Attribute("Type") == "Home"
-            select phoneno;
+                            where (string)phoneno.Element("Phone").Attribute("Type") == "Home"
+                            select phoneno;
             Console.WriteLine("List HomePhone Nos.");
             foreach (XElement xEle in homePhone)
             {
                 Console.WriteLine(xEle.Element("Phone").Value);
             }
 
-            var addresses = from address in xelement.Elements("Employee")            
+            var addresses = from address in xelement.Elements("Employee")
                             where (string)address.Element("Address").Element("City") == "Alta"
                             select address;
             Console.WriteLine("Details of Employees living in Alta City");
@@ -187,27 +290,27 @@ namespace CursosConsole
             var countries = xElem.Elements("Employee").Elements("Address").Elements("Country").ToList();
             foreach (XElement cEle in countries)
                 cEle.ReplaceNodes("United States Of America");
- 
+
             Console.Write(xElem);
 
             //Remove an attribute from all the Elements using LINQ to XML
             var phone = xElem.Elements("Employee").Elements("Phone").ToList();
             foreach (XElement pEle in phone)
                 pEle.RemoveAttributes();
- 
+
             Console.Write(xElem);
 
             //Delete an Element based on a condition using LINQ to XML
             var addr = xElem.Elements("Employee").ToList();
             foreach (XElement addEle in addr)
                 addEle.SetElementValue("Address", null);
- 
+
             Console.Write(xElem);
 
             // Remove ‘n’ number of Elements using LINQ to XML
             var emps2 = xElem.Descendants("Employee");
             emps2.Reverse().Take(2).Remove();
- 
+
             Console.Write(xElem);
 
             // 4. Save/Persists Changes to the XML using LINQ to XML
@@ -223,11 +326,11 @@ namespace CursosConsole
                 new XElement("State", "CA"),
                 new XElement("Zip", "95220"),
                 new XElement("Country", "USA"))));
- 
+
             xElem.Save("..\\..\\Employees.xml");
             Console.WriteLine(xElem);
- 
-            Console.ReadLine();       
+
+            Console.ReadLine();
         }
 
         private static void ExecuteXmlTest1()
@@ -256,30 +359,30 @@ namespace CursosConsole
             // desde un text string
             XElement contactsString = XElement.Parse(
                 @"<Contacts>
-                    <Contact>
-                        <Name>Patrick Hines</Name>
-                        <Phone Type=""home"">206-555-0144</Phone>
-                        <Phone type=""work"">425-555-0145</Phone>
-                        <Address>
-                        <Street1>123 Main St</Street1>
-                        <City>Mercer Island</City>
-                        <State>WA</State>
-                        <Postal>68042</Postal>
-                        </Address>
-                        <NetWorth>10</NetWorth>
-                    </Contact>
-                    <Contact>
-                        <Name>Gretchen Rivas</Name>
-                        <Phone Type=""mobile"">206-555-0163</Phone>
-                        <Address>
-                        <Street1>123 Main St</Street1>
-                        <City>Mercer Island</City>
-                        <State>WA</State>
-                        <Postal>68042</Postal>
-                        </Address>
-                        <NetWorth>11</NetWorth>
-                    </Contact>
-                </Contacts>");
+        <Contact>
+            <Name>Patrick Hines</Name>
+            <Phone Type=""home"">206-555-0144</Phone>
+            <Phone type=""work"">425-555-0145</Phone>
+            <Address>
+            <Street1>123 Main St</Street1>
+            <City>Mercer Island</City>
+            <State>WA</State>
+            <Postal>68042</Postal>
+            </Address>
+            <NetWorth>10</NetWorth>
+        </Contact>
+        <Contact>
+            <Name>Gretchen Rivas</Name>
+            <Phone Type=""mobile"">206-555-0163</Phone>
+            <Address>
+            <Street1>123 Main St</Street1>
+            <City>Mercer Island</City>
+            <State>WA</State>
+            <Postal>68042</Postal>
+            </Address>
+            <NetWorth>11</NetWorth>
+        </Contact>
+    </Contacts>");
             // desde un archivo 
             XElement booksFromFile = XElement.Load(@"contacts.xml");
             Console.WriteLine(booksFromFile);
@@ -287,10 +390,10 @@ namespace CursosConsole
             Console.WriteLine(xmlTree);
             string str =
                 @"<?xml version=""1.0""?>
-                <!-- comment at the root level -->
-                <Root>
-                    <Child>Content</Child>
-                </Root>";
+    <!-- comment at the root level -->
+    <Root>
+        <Child>Content</Child>
+    </Root>";
             XDocument doc = XDocument.Parse(str);
             Console.WriteLine(doc);
             Console.WriteLine(contacts);
@@ -339,22 +442,22 @@ namespace CursosConsole
             Console.WriteLine("Value of e:" + (string)elem);
 
             XElement root = XElement.Parse(@"<Root>
-                <Child1>
-                    <GrandChild1/>
-                    <GrandChild2/>
-                    <GrandChild3/>
-                </Child1>
-                <Child2>
-                    <GrandChild4/>
-                    <GrandChild5/>
-                    <GrandChild6/>
-                </Child2>
-                <Child3>
-                    <GrandChild7/>
-                    <GrandChild8/>
-                    <GrandChild9/>
-                </Child3>
-            </Root>");
+    <Child1>
+        <GrandChild1/>
+        <GrandChild2/>
+        <GrandChild3/>
+    </Child1>
+    <Child2>
+        <GrandChild4/>
+        <GrandChild5/>
+        <GrandChild6/>
+    </Child2>
+    <Child3>
+        <GrandChild7/>
+        <GrandChild8/>
+        <GrandChild9/>
+    </Child3>
+</Root>");
             root.Element("Child1").Element("GrandChild1").Remove();
             root.Element("Child2").Elements().ToList().Remove();
             root.Element("Child3").Elements().Remove();

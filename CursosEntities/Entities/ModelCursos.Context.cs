@@ -38,12 +38,12 @@ namespace CursosEntities.Entities
         public virtual DbSet<Distrito> Distritos { get; set; }
         public virtual DbSet<Estudiante> Estudiantes { get; set; }
         public virtual DbSet<Horario> Horarios { get; set; }
-        public virtual DbSet<Parametro> Parametros { get; set; }
         public virtual DbSet<Profesore> Profesores { get; set; }
         public virtual DbSet<Provincia> Provincias { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<TipoId> TipoIds { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Parametro> Parametros { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

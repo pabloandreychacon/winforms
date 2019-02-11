@@ -139,5 +139,70 @@ namespace Cursos.Presentation.Forms.Mantenimientos
             if (e.KeyChar == (char)(Keys.Enter)) return;
             e.KeyChar = (char)(Convert.ToByte(e.KeyChar) + 1);
         }
+
+        private void passwordCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userNameCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timeOutCorreoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timeOutCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordCorreoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userNameCorreoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hostCorreoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hostCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromCorreoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void displayNameCorreoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void displayNameCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void portCorreoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

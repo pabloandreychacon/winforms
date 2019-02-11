@@ -28,5 +28,6 @@ namespace CursosEntities.Entities
         public string PasswordCorreo { get; set; }
         public string FromCorreo { get; set; }
         public string DisplayNameCorreo { get; set; }
+        public string CorreoContactoRespaldos { get; set; }
     }
 }

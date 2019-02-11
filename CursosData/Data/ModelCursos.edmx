@@ -145,6 +145,7 @@
           <Property Name="PasswordCorreo" Type="nvarchar" MaxLength="50" />
           <Property Name="FromCorreo" Type="nvarchar" MaxLength="50" />
           <Property Name="DisplayNameCorreo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorreoContactoRespaldos" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Profesores">
           <Key>
@@ -601,7 +602,6 @@
           <EntitySet Name="Distritos" EntityType="CursosModel.Distrito" />
           <EntitySet Name="Estudiantes" EntityType="CursosModel.Estudiante" />
           <EntitySet Name="Horarios" EntityType="CursosModel.Horario" />
-          <EntitySet Name="Parametros" EntityType="CursosModel.Parametro" />
           <EntitySet Name="Profesores" EntityType="CursosModel.Profesore" />
           <EntitySet Name="Provincias" EntityType="CursosModel.Provincia" />
           <EntitySet Name="Roles" EntityType="CursosModel.Role" />
@@ -683,6 +683,7 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
+          <EntitySet Name="Parametros" EntityType="CursosModel.Parametro" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -840,25 +841,6 @@
           <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CursosHorarios" Relationship="CursosModel.FK_CursosHorarios_Horarios" FromRole="Horario" ToRole="CursosHorario" />
-        </EntityType>
-        <EntityType Name="Parametro">
-          <Key>
-            <PropertyRef Name="IdParametro" />
-          </Key>
-          <Property Name="IdParametro" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RutaLogo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RutaSistema" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="HostCorreo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PortCorreo" Type="Int32" Nullable="false" />
-          <Property Name="TimeOutCorreo" Type="Int32" Nullable="false" />
-          <Property Name="UserNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FromCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DisplayNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Profesore">
           <Key>
@@ -1159,6 +1141,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Name="IdParametro" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RutaLogo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RutaSistema" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HostCorreo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PortCorreo" Type="Int32" Nullable="false" />
+          <Property Name="TimeOutCorreo" Type="Int32" Nullable="false" />
+          <Property Name="UserNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FromCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayNameCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoContactoRespaldos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1320,26 +1322,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Parametros">
-            <EntityTypeMapping TypeName="CursosModel.Parametro">
-              <MappingFragment StoreEntitySet="Parametros">
-                <ScalarProperty Name="DisplayNameCorreo" ColumnName="DisplayNameCorreo" />
-                <ScalarProperty Name="FromCorreo" ColumnName="FromCorreo" />
-                <ScalarProperty Name="PasswordCorreo" ColumnName="PasswordCorreo" />
-                <ScalarProperty Name="UserNameCorreo" ColumnName="UserNameCorreo" />
-                <ScalarProperty Name="TimeOutCorreo" ColumnName="TimeOutCorreo" />
-                <ScalarProperty Name="PortCorreo" ColumnName="PortCorreo" />
-                <ScalarProperty Name="HostCorreo" ColumnName="HostCorreo" />
-                <ScalarProperty Name="RutaSistema" ColumnName="RutaSistema" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="RutaLogo" ColumnName="RutaLogo" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Profesores">
             <EntityTypeMapping TypeName="CursosModel.Profesore">
               <MappingFragment StoreEntitySet="Profesores">
@@ -1399,6 +1381,27 @@
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="CursosModel.Parametro">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="CorreoContactoRespaldos" ColumnName="CorreoContactoRespaldos" />
+                <ScalarProperty Name="DisplayNameCorreo" ColumnName="DisplayNameCorreo" />
+                <ScalarProperty Name="FromCorreo" ColumnName="FromCorreo" />
+                <ScalarProperty Name="PasswordCorreo" ColumnName="PasswordCorreo" />
+                <ScalarProperty Name="UserNameCorreo" ColumnName="UserNameCorreo" />
+                <ScalarProperty Name="TimeOutCorreo" ColumnName="TimeOutCorreo" />
+                <ScalarProperty Name="PortCorreo" ColumnName="PortCorreo" />
+                <ScalarProperty Name="HostCorreo" ColumnName="HostCorreo" />
+                <ScalarProperty Name="RutaSistema" ColumnName="RutaSistema" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RutaLogo" ColumnName="RutaLogo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

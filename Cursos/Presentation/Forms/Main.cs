@@ -43,9 +43,13 @@ namespace Cursos.Presentation.Forms
                     if (usuarioActivo.Mantenimientos) mantenimientosToolStripMenuItem.Enabled = true;
                     if (usuarioActivo.Procesos) procesosToolStripMenuItem.Enabled = true;
                     if (usuarioActivo.Consultas) consultasToolStripMenuItem.Enabled = true;
-                    if (usuarioActivo.Seguridad) seguridadToolStripMenuItem.Enabled = true;
+                    //if (usuarioActivo.Seguridad) seguridadToolStripMenuItem.Enabled = true;
                     // algunos items deben ser solo para usuario tipo administrador
-                    if (Tools.UserCredentials.IsAdmin) usuariosToolStripMenuItem1.Enabled = true;
+                    if (Tools.UserCredentials.IsAdmin)
+                    {
+                        usuariosToolStripMenuItem1.Enabled = true;
+                        respaldosToolStripMenuItem1.Enabled = true;
+                    }
                 }
             }
         }
@@ -291,15 +295,13 @@ namespace Cursos.Presentation.Forms
             var formToShow = new Presentation.Forms.Procesos.ProcEstudiantesCursosForm { MdiParent = this };
             formToShow.Show();
         }
-        
-               
+              
         private void asignarAusenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Tools.FormManager.FindAndOpenForm("ProcAusenciasForm")) return;
             var formToShow = new Presentation.Forms.Procesos.ProcAusenciasForm { MdiParent = this };
             formToShow.Show();
         }
-		
 
         private void removerAusenciasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -308,10 +310,26 @@ namespace Cursos.Presentation.Forms
             formToShow.Show();
         }
 
+        private void crearRespaldoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var conn = commB.GetConnection();
+            if (Tools.FormManager.FindAndOpenForm("SeguRespaldosForm")) return;
+            var formToShow = new Forms.Seguridad.SeguRespaldosForm { MdiParent = this };
+            formToShow.txtConexion.Text = conn;
+            formToShow.Show();
+        }
+
+        private void restaurarRespaldoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var conn = commB.GetConnection();
+            if (Tools.FormManager.FindAndOpenForm("SeguRestauraForm")) return;
+            var formToShow = new Forms.Seguridad.SeguRestauraForm { MdiParent = this };
+            formToShow.txtConexion.Text = conn;
+            formToShow.Show();
+        }
+        
+        #endregion
 
 
-		#endregion
-
-		
-	}
+    }
 }
