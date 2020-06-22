@@ -79,15 +79,15 @@
   <ItemGroup>
     <Reference Include="BaseControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Base\BaseControls\bin\Debug\BaseControls.dll</HintPath>
+      <HintPath>..\..\winformsBase\BaseControls\bin\Debug\BaseControls.dll</HintPath>
     </Reference>
     <Reference Include="BaseForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Base\BaseForms\bin\Debug\BaseForms.dll</HintPath>
+      <HintPath>..\..\winformsBase\BaseForms\bin\Debug\BaseForms.dll</HintPath>
     </Reference>
     <Reference Include="BaseHelpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Base\BaseForms\bin\Debug\BaseHelpers.dll</HintPath>
+      <HintPath>..\..\winformsBase\BaseForms\bin\Debug\BaseHelpers.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>

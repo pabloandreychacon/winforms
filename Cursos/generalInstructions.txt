@@ -10,8 +10,8 @@ cursos> same level as base project
 	
 	copy data bak to c: data (se coloca en la raiz de c: porque el restaurador de SQLServer no puede ir dentro de las carpetas)
 	restore on ms sql management studio
-	delete local user
-	create login global on cursos db, data reader data writer, id cursos password cursos
+	delete local user Cursos
+	create login Cursos global on cursos db, data reader data writer, id cursos password cursos
 	
 	verfy data conecction on CursosData project> App.Config
 	and Dta> .edmx> update model from datbase
